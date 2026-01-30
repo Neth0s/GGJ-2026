@@ -7,9 +7,11 @@ public class NPCController : MonoBehaviour
 {
     #region VARIABLES
     [Header("NPC Data")]
-    [SerializeField] private Material _highlightMaterial;
+    [SerializeField] private NPCData _data;
+
+    [SerializeField] private Material _highlightMaterial; //TODO : might be removed (material highlight)
     
-    private Material _defaultMaterial;
+    private Material _defaultMaterial; //TODO : might be removed (material highlight)
     private MeshRenderer _meshRenderer;
 
     #endregion
@@ -25,15 +27,17 @@ public class NPCController : MonoBehaviour
     /// </summary>
     public void TriggerHightlight()
     {
-        print("I'm highlighted hooray woop woop !");
+        //TODO : Highlight to change (visual)
         _meshRenderer.material = _highlightMaterial;
+        print("Selected NPC " + _data.Name);
     }
 
     /// <summary>
-    /// Function that 
+    /// Function that will hide the highlight
     /// </summary>
     public void AbandonHighlight()
     {
+        //TODO : Highlight to change (visual)
         _meshRenderer.material = _defaultMaterial;
     }
 }

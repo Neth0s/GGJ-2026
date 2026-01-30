@@ -9,12 +9,18 @@ public class DetectController : MonoBehaviour
 {
     #region VARIABLES
     [Header("Detect Parameters")]
-    [SerializeField] private float _detectRadius = 20f;
+    [SerializeField] private float _detectRadius = 5f;
 
-    private NPCController _currentlySelectedNPC = null;
-    
+    [Header("Detected elements")]
+    [SerializeField] private NPCController _currentlySelectedNPC = null; //CAN BE NULL
+    [SerializeField] private GroupController _currentlySelectedGroup = null; //CAN BE NULL
+
     #endregion
 
+    #region GETTERS AND SETTERS
+    public NPCController GetCurrentlySelectedNPC() { return _currentlySelectedNPC; }
+    public GroupController GetCurrentlySelectedGroup() { return _currentlySelectedGroup; }
+    #endregion
 
     private void Update()
     {
@@ -29,12 +35,21 @@ public class DetectController : MonoBehaviour
         NPCController closestNPC = GetClosestNPC();
         if (closestNPC != _currentlySelectedNPC) 
         {
+            //We take into account null
             _currentlySelectedNPC?.AbandonHighlight();
             _currentlySelectedNPC = closestNPC;
             closestNPC?.TriggerHightlight();
         }
+
+        GroupController groupController = ObtainGroupController();
+        if(_currentlySelectedGroup != groupController)
+        {
+            _currentlySelectedGroup = groupController; //Group CAN be null
+            _currentlySelectedGroup?.TriggerGroupSelection();
+        }
     }
 
+    #region DETECT NPCs
     /// <summary>
     /// Obtain the list of NPC Controllers in range of the detect radius
     /// </summary>
@@ -60,7 +75,7 @@ public class DetectController : MonoBehaviour
     private NPCController GetClosestNPC()
     {
         List<NPCController> npcDetected = ObtainListNPCControllersInRange();
-        if (npcDetected.Count < 1) 
+        if (npcDetected.Count < 1) //handle case where no NPCs are found
         {
             return null;
         }
@@ -77,4 +92,21 @@ public class DetectController : MonoBehaviour
         }
         return closestNPC;
     }
+    #endregion
+
+    #region DETECT GROUPS
+    private GroupController ObtainGroupController()
+    {
+        Collider[] collidersDetected = Physics.OverlapSphere(gameObject.transform.position, _detectRadius);
+        foreach (var collider in collidersDetected) 
+        {
+            if (collider.gameObject.GetComponent<GroupController>() != null)
+            {
+                return collider.gameObject.GetComponent<GroupController>();
+            }
+        }
+        return null;
+    }
+
+    #endregion
 }

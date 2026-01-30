@@ -5,5 +5,13 @@ using UnityEngine;
 /// </summary>
 public class GroupController : MonoBehaviour
 {
-    
+    #region VARIABLES
+    [Header("Group Data")]
+    [SerializeField] private GroupData _data;
+    #endregion
+
+    public void TriggerGroupSelection()
+    {
+        print("Group "+gameObject.name+" is selected !");
+    }
 }
