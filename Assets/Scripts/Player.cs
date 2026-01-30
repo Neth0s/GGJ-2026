@@ -45,7 +45,7 @@ public class Player : MonoBehaviour
     private void Move()
     {
         rb.MovePosition(rb.position 
-            + transform.forward * moveDirection.x * MoveSpeed * Time.deltaTime
-            + transform.right * moveDirection.y * MoveSpeed * Time.deltaTime);
+            + transform.forward * moveDirection.y * MoveSpeed * Time.deltaTime
+            + transform.right * moveDirection.x * MoveSpeed * Time.deltaTime);
     }
 }
