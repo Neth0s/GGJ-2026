@@ -14,4 +14,7 @@ public static class GameParameters
 
     public static string VICTORY_SCENE_NAME = "EndVictoryScene";
     public static string DEFEAT_SCENE_NAME = "EndScene";
+
+
+    public static float DEFAULT_TIME_FAIL_ACCUSATION = 60.0f;
 }

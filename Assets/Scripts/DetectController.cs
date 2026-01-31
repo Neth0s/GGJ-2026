@@ -5,6 +5,7 @@ using UnityEngine;
 /// This script will govern the detection by the player towards NPCs and other shits like that
 /// </summary>
 [RequireComponent(typeof(PlayerMaskController))]
+[RequireComponent(typeof(PlayerDarkController))]
 public class DetectController : MonoBehaviour
 {
     #region VARIABLES
@@ -19,6 +20,7 @@ public class DetectController : MonoBehaviour
 
     private PlayerMaskController _playerMaskController;
     private InvestigationPlayer player;
+    private PlayerDarkController _playerDarkController;
     #endregion
 
     #region GETTERS AND SETTERS
@@ -28,9 +30,8 @@ public class DetectController : MonoBehaviour
 
     private void Awake()
     {
-
         _playerMaskController = GetComponent<PlayerMaskController>();
-
+        _playerDarkController = GetComponent<PlayerDarkController>();
         player = GetComponent<InvestigationPlayer>();
     }
 
@@ -72,8 +73,13 @@ public class DetectController : MonoBehaviour
             {
                 masksAreOK = _playerMaskController.ComparePlayerGroupMask(_currentlySelectedGroup.GetUpperMaskRequirements(), _currentlySelectedGroup.GetLowerMaskRequirements());
                 print("Compare result : " + masksAreOK);
+                _playerDarkController.DarkenPlayer();
             }
-            else { masksAreOK = false; }
+            else 
+            { 
+                masksAreOK = false;
+                _playerDarkController.BrightenPlayer();
+            }
 
             if (_currentlySelectedGroup) player.EnableInterraction(_currentlySelectedGroup);
             else player.DisableInterraction();
