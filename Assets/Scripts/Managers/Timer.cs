@@ -1,10 +1,19 @@
 using TMPro;
-using UnityEditor.Rendering;
 using UnityEngine;
 
 public class Timer : MonoBehaviour
 {
-    [SerializeField] private float timerDuration = 100f;
+    #region SINGLETON DESIGN PATTERN
+    public static Timer Instance;
+
+    private void Awake()
+    {
+        if (Instance == null) Instance = this;
+        else Destroy(gameObject);
+    }
+    #endregion
+
+    [SerializeField] private float timerDuration = 300f;
     [SerializeField] private TextMeshProUGUI textTimer;
     private float currentTime;
 

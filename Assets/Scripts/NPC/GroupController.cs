@@ -82,6 +82,7 @@ public class GroupController : MonoBehaviour
             else 
             {
                 textBubble.text = GameParameters.ACCUSATIONS_INCORRECT[Random.Range(0, GameParameters.ACCUSATIONS_INCORRECT.Length)];
+                Timer.Instance.RemoveTime(60f);
             }
             _isAccusing = true;
             bubbleDialog.SetActive(true);
