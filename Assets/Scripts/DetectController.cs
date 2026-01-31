@@ -52,6 +52,14 @@ public class DetectController : MonoBehaviour
             _currentlySelectedNPC?.AbandonHighlight();
             _currentlySelectedNPC = closestNPC;
             closestNPC?.TriggerHightlight();
+            if (closestNPC)
+            {
+                player.EnableAccusationInteraction(closestNPC);
+            }
+            else
+            {
+                player.DisableAccusationInteraction();
+            }
         }
 
         GroupController groupController = ObtainGroupController();
@@ -59,6 +67,7 @@ public class DetectController : MonoBehaviour
         {
             _currentlySelectedGroup = groupController; //Group CAN be null
             _currentlySelectedGroup?.TriggerGroupSelection();
+            //TODO : regroup following ifs
             if (_currentlySelectedGroup != null)
             {
                 masksAreOK = _playerMaskController.ComparePlayerGroupMask(_currentlySelectedGroup.GetUpperMaskRequirements(), _currentlySelectedGroup.GetLowerMaskRequirements());

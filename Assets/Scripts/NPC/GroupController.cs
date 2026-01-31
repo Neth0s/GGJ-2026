@@ -14,11 +14,14 @@ public class GroupController : MonoBehaviour
     [SerializeField] private GroupData _data;
 
     public GroupData Data => _data;
-    #endregion
 
     //dialog
     [SerializeField] private GameObject bubbleDialog;
+    private TextMeshPro textBubble;
     private int currentDialogIndex = 0;
+
+    private bool _isAccusing = false;
+    #endregion
 
 
     public void TriggerGroupSelection()
@@ -29,11 +32,11 @@ public class GroupController : MonoBehaviour
     private void Awake()
     {
         bubbleDialog.SetActive(false);
+        textBubble = bubbleDialog.GetComponentInChildren<TextMeshPro>();
     }
 
     public bool DisplayBubble()
     {
-        TextMeshPro textBubble = bubbleDialog.GetComponentInChildren<TextMeshPro>();
         if (currentDialogIndex < _data.indices.Count)
         {
             textBubble.text = _data.indices[currentDialogIndex];
@@ -47,6 +50,27 @@ public class GroupController : MonoBehaviour
             currentDialogIndex = 0;
             return false;
         }        
+    }
+
+    /// <summary>
+    /// Will display the accusation bubble
+    /// </summary>
+    /// <returns></returns>
+    public bool DisplayBubbleAccusation()
+    {
+        if (_isAccusing)
+        {
+            _isAccusing = false;
+            bubbleDialog.SetActive(false);
+            return false;
+        }
+        else
+        {
+            textBubble.text = "POUET";
+            _isAccusing = true;
+            bubbleDialog.SetActive(true);
+            return true;
+        }
     }
 
     public List<MaskProperty> GetUpperMaskRequirements()

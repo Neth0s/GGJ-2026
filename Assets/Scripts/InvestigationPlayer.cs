@@ -21,9 +21,13 @@ public class InvestigationPlayer : MonoBehaviour
 
     private Vector2 moveDirection;
 
+    [Header("Interaction data")]
     [SerializeField] private GameObject interactIcon;
+    [SerializeField] private GameObject _accusationInteractIcon;
     private bool isInDialog = false;
-    GroupController currentGroup; 
+    GroupController currentGroup;
+
+    private NPCController _currentNPC;
 
     private void OnEnable()
     {
@@ -45,6 +49,7 @@ public class InvestigationPlayer : MonoBehaviour
         detectController = GetComponent<DetectController>();
 
         interactIcon.SetActive(false);
+        _accusationInteractIcon.SetActive(false);
     }
 
     private void Update()
@@ -52,7 +57,11 @@ public class InvestigationPlayer : MonoBehaviour
         moveDirection = moveAction.ReadValue<Vector2>();
         if (interactAction.triggered && currentGroup) { Interact(); }
 
-        if (accuseAction.triggered) { print("accuse"); } //todo
+        if (accuseAction.triggered) 
+        { 
+            print("accuse");
+            InteractAccusation(); 
+        }
     }
 
     private void FixedUpdate()
@@ -73,14 +82,30 @@ public class InvestigationPlayer : MonoBehaviour
         currentGroup = group;
     }
 
+    public void EnableAccusationInteraction(NPCController npc)
+    {
+        _accusationInteractIcon.SetActive(true);
+        _currentNPC = npc;
+    }
+
     public void DisableInterraction()
     {
         interactIcon.SetActive(false);
     }
 
+    public void DisableAccusationInteraction()
+    {
+        _accusationInteractIcon.SetActive(false);
+    }
+
     private void Interact()
     {
         isInDialog = currentGroup.DisplayBubble();
+    }
+
+    private void InteractAccusation()
+    {
+        isInDialog = currentGroup.DisplayBubbleAccusation();
     }
 
 }
