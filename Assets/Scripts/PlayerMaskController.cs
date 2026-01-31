@@ -10,13 +10,34 @@ public class PlayerMaskController : MonoBehaviour
     [SerializeField] public MaskObject currentMask;
     [SerializeField] public SpriteRenderer playerVisualMaskUpper;
     [SerializeField] public SpriteRenderer playerVisualMaskLower;
+
+    private PlayerInventoryController _playerInventoryController;
     #endregion
+
+    private void Awake()
+    {
+        SelectStartingMask();    
+    }
 
     private void Start()
     {
         UpdateMaskVisual();
     }
 
+    private void SelectStartingMask()
+    {
+        _playerInventoryController = GetComponent<PlayerInventoryController>();
+        List<MaskObject> maskList = _playerInventoryController.GetListMasksInInventroy();
+        if (maskList != null && maskList.Count > 0)
+        {
+            currentMask = maskList[0];
+            UpdateMaskVisual();
+        }
+        else
+        {
+            Debug.LogError("ERROR : mask list in inventory is void, this should not happen at start");
+        }
+    }
 
     public void ChangeCurrentMask(MaskPart lower, MaskPart upper)
     {
