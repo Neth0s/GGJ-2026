@@ -29,7 +29,6 @@ public class NPCController : MonoBehaviour
     {
         //TODO : Highlight to change (visual)
         _meshRenderer.material = _highlightMaterial;
-        print("Selected NPC " + _data.Name);
     }
 
     /// <summary>

@@ -6,5 +6,5 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "ScriptableObjects/NPC/Group Data", fileName ="Group Data")]
 public class GroupData : ScriptableObject
 {
-    [SerializeField] public int Id;
+    //[SerializeField] public ??? Requirements; //Liste d'enums qui va dicter si le masque du joueur est valable ou non
 }
