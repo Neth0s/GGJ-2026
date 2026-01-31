@@ -15,3 +15,4 @@ MonoBehaviour:
   MaskProperties:
   - {fileID: 11400000, guid: 75a6f38f88c14844c9a4a50c52c781f1, type: 2}
   - {fileID: 11400000, guid: 048562a77c854024997a621422e9933c, type: 2}
+  MaskSprite: {fileID: 21300000, guid: cb5dd703fd731eb4a81939f45c4cbbc2, type: 3}

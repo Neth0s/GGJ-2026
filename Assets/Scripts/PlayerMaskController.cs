@@ -7,7 +7,7 @@ using UnityEngine;
 public class PlayerMaskController : MonoBehaviour
 {
     #region VARIABLES
-    [SerializeField] private MaskObject _currentMask;
+    [SerializeField] public MaskObject currentMask;
     #endregion
 
     public bool ComparePlayerGroupMask(List<MaskProperty> upperMaskReqs, List<MaskProperty> lowerMaskReqs)
@@ -22,7 +22,7 @@ public class PlayerMaskController : MonoBehaviour
         foreach (MaskProperty groupProp in upperMaskReqs)
         {
             bool isInMaskPart = false;
-            foreach(MaskProperty playerMaskPartProp in _currentMask.GetSuperiorPart().MaskProperties)
+            foreach(MaskProperty playerMaskPartProp in currentMask.GetUpperPart().MaskProperties)
             {
                 if(playerMaskPartProp == groupProp)
                 {
@@ -40,7 +40,7 @@ public class PlayerMaskController : MonoBehaviour
         foreach (MaskProperty groupProp in lowerMaskReqs)
         {
             bool isInMaskPart = false;
-            foreach (MaskProperty playerMaskPartProp in _currentMask.GetInferiorPart().MaskProperties)
+            foreach (MaskProperty playerMaskPartProp in currentMask.GetLowerPart().MaskProperties)
             {
                 if (playerMaskPartProp == groupProp)
                 {

@@ -118,6 +118,15 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": ""Press"",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ChooseMask"",
+                    ""type"": ""Button"",
+                    ""id"": ""38f493c8-1734-45db-911d-71e912a51358"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": ""Press"",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -294,6 +303,17 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
                     ""action"": ""Accuse"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""abcf93d5-978e-48f2-85ed-dd43aace89e7"",
+                    ""path"": ""<Keyboard>/v"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""ChooseMask"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -884,6 +904,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
         m_Player_Accuse = m_Player.FindAction("Accuse", throwIfNotFound: true);
+        m_Player_ChooseMask = m_Player.FindAction("ChooseMask", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -980,6 +1001,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_Interact;
     private readonly InputAction m_Player_Accuse;
+    private readonly InputAction m_Player_ChooseMask;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -1003,6 +1025,10 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Player/Accuse".
         /// </summary>
         public InputAction @Accuse => m_Wrapper.m_Player_Accuse;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/ChooseMask".
+        /// </summary>
+        public InputAction @ChooseMask => m_Wrapper.m_Player_ChooseMask;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -1038,6 +1064,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @Accuse.started += instance.OnAccuse;
             @Accuse.performed += instance.OnAccuse;
             @Accuse.canceled += instance.OnAccuse;
+            @ChooseMask.started += instance.OnChooseMask;
+            @ChooseMask.performed += instance.OnChooseMask;
+            @ChooseMask.canceled += instance.OnChooseMask;
         }
 
         /// <summary>
@@ -1058,6 +1087,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @Accuse.started -= instance.OnAccuse;
             @Accuse.performed -= instance.OnAccuse;
             @Accuse.canceled -= instance.OnAccuse;
+            @ChooseMask.started -= instance.OnChooseMask;
+            @ChooseMask.performed -= instance.OnChooseMask;
+            @ChooseMask.canceled -= instance.OnChooseMask;
         }
 
         /// <summary>
@@ -1379,6 +1411,13 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnAccuse(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "ChooseMask" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnChooseMask(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "UI" which allows adding and removing callbacks.

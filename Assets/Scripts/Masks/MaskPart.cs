@@ -5,6 +5,8 @@ using UnityEngine;
 public class MaskPart : ScriptableObject
 {
     [SerializeField] public List<MaskProperty> MaskProperties = new List<MaskProperty>();
+    [SerializeField] public Sprite MaskSprite;
+
 
 #if UNITY_EDITOR
     private void OnValidate()

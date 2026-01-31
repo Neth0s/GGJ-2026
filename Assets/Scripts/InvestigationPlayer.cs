@@ -8,13 +8,10 @@ public class InvestigationPlayer : MonoBehaviour
 
     public float MoveSpeed = 5.0f;
 
-    [Header("Mask Settings")]
-    [SerializeField] private string[] availableMasks = { "No Mask", "Red Mask", "Blue Mask", "Green Mask" };
-    private int _currentMaskIndex = 0;
-
     private InputAction moveAction;
     private InputAction interactAction;
     private InputAction accuseAction;
+    private InputAction chooseMaskAction;
     private Rigidbody rb;
     private PlayerInputs playerInputs;
     private DetectController detectController;
@@ -25,7 +22,8 @@ public class InvestigationPlayer : MonoBehaviour
     [SerializeField] private GameObject interactIcon;
     [SerializeField] private GameObject _accusationInteractIcon;
     private bool isInDialog = false;
-    GroupController currentGroup;
+    private bool isChoosingMask = false;
+    GroupController currentGroup; 
 
     private NPCController _currentNPC;
 
@@ -34,6 +32,7 @@ public class InvestigationPlayer : MonoBehaviour
         moveAction = playerInputs.Player.Move;
         interactAction = playerInputs.Player.Interact;
         accuseAction = playerInputs.Player.Accuse;
+        chooseMaskAction = playerInputs.Player.ChooseMask;
         playerInputs.Player.Enable();
     }
 
@@ -54,6 +53,13 @@ public class InvestigationPlayer : MonoBehaviour
 
     private void Update()
     {
+
+        if (chooseMaskAction.triggered)
+        {
+            DisplayChangeMaskUI();
+        }
+
+
         moveDirection = moveAction.ReadValue<Vector2>();
         if (interactAction.triggered && currentGroup) { Interact(); }
 
@@ -64,9 +70,16 @@ public class InvestigationPlayer : MonoBehaviour
         }
     }
 
+    private void DisplayChangeMaskUI()
+    {
+        isChoosingMask = !isChoosingMask;
+        UIManager.Instance.DisplayChooseMask(isChoosingMask);
+
+    }
+
     private void FixedUpdate()
     {
-        if (!isInDialog) Move();
+        if (!isInDialog && !isChoosingMask) Move();
     }
 
     private void Move()
@@ -91,6 +104,7 @@ public class InvestigationPlayer : MonoBehaviour
     public void DisableInterraction()
     {
         interactIcon.SetActive(false);
+        currentGroup = null;
     }
 
     public void DisableAccusationInteraction()

@@ -6,9 +6,9 @@ using UnityEngine;
 [CreateAssetMenu(menuName ="ScriptableObjects/Masks/Mask", fileName ="Mask")]
 public class MaskObject : ScriptableObject
 {
-    [SerializeField] private MaskPart _superiorPart;
-    [SerializeField] private MaskPart _inferiorPart;
+    [SerializeField] private MaskPart _upperPart;
+    [SerializeField] private MaskPart _lowerPart;
 
-    public MaskPart GetSuperiorPart() {  return _superiorPart; }
-    public MaskPart GetInferiorPart() { return _inferiorPart; }
+    public MaskPart GetUpperPart() {  return _upperPart; }
+    public MaskPart GetLowerPart() { return _lowerPart; }
 }
