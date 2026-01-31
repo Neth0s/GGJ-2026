@@ -9,14 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eddcce320353dd24b98477a8a260059d, type: 3}
-  m_Name: Group_dev
+  m_Script: {fileID: 11500000, guid: 6df1be3616107b442b20d9a371554466, type: 3}
+  m_Name: Part_dev_1
   m_EditorClassIdentifier: 
-  indices:
-  - indice_1
-  - indice_2
-  MaskRequirementsUpper:
+  MaskProperties:
   - {fileID: 11400000, guid: bade4170d6a890841a9974f9d0ed0a16, type: 2}
-  - {fileID: 11400000, guid: 048562a77c854024997a621422e9933c, type: 2}
-  MaskRequirementsLower:
-  - {fileID: 11400000, guid: a707ba1efd0de5f45b88189cff1f9a1a, type: 2}
+  - {fileID: 11400000, guid: 8a58247a1dc67c14faf9f488f9d2924d, type: 2}

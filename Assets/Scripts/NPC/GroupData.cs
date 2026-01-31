@@ -12,7 +12,7 @@ public class GroupData : ScriptableObject
     [SerializeField] public List<MaskProperty> MaskRequirementsUpper = new List<MaskProperty>();
     [SerializeField] public List<MaskProperty> MaskRequirementsLower = new List<MaskProperty>();
 
-
+#if UNITY_EDITOR
     /// <summary>
     /// Serves only to ensure that mask requirements are correctly defined
     /// SHOULD BE REMOVED eventually
@@ -22,28 +22,35 @@ public class GroupData : ScriptableObject
         List<MASK_TYPE> maskTypes = new List<MASK_TYPE>();
         foreach(MaskProperty property in MaskRequirementsUpper)
         {
-            if (maskTypes.Contains(property.MaskType))
+            if(property != null)
             {
-                Debug.LogError("ERROR : Mask Requirements Upper can only have one MaskProperty of each type ! Currently, there are two (or more) masks of type "+property.MaskType);
-                break;
-            }
-            else
-            {
-                maskTypes.Add(property.MaskType);
+                if (maskTypes.Contains(property.MaskType))
+                {
+                    Debug.LogError("ERROR : Mask Requirements Upper can only have one MaskProperty of each type ! Currently, there are two (or more) masks of type "+property.MaskType);
+                    break;
+                }
+                else
+                {
+                    maskTypes.Add(property.MaskType);
+                }
             }
         }
         maskTypes = new List<MASK_TYPE>();
         foreach (MaskProperty property in MaskRequirementsLower)
         {
-            if (maskTypes.Contains(property.MaskType))
+            if (property != null)
             {
-                Debug.LogError("ERROR : Mask Requirements Lower can only have one MaskProperty of each type ! Currently, there are two (or more) masks of type " + property.MaskType);
-                break;
-            }
-            else
-            {
-                maskTypes.Add(property.MaskType);
+                if (maskTypes.Contains(property.MaskType))
+                {
+                    Debug.LogError("ERROR : Mask Requirements Lower can only have one MaskProperty of each type ! Currently, there are two (or more) masks of type " + property.MaskType);
+                    break;
+                }
+                else
+                {
+                    maskTypes.Add(property.MaskType);
+                }
             }
         }
     }
+#endif
 }
