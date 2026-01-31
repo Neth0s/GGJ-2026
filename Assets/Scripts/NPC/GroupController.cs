@@ -13,8 +13,6 @@ public class GroupController : MonoBehaviour
     [Header("Group Data")]
     [SerializeField] private GroupData _data;
 
-    public GroupData Data => _data;
-
     //dialog
     [SerializeField] private GameObject bubbleDialog;
     private TextMeshPro textBubble;
@@ -82,7 +80,7 @@ public class GroupController : MonoBehaviour
             else 
             {
                 textBubble.text = GameParameters.ACCUSATIONS_INCORRECT[Random.Range(0, GameParameters.ACCUSATIONS_INCORRECT.Length)];
-                Timer.Instance.RemoveTime(60f);
+                Timer.Instance.RemoveTime(GameParameters.DEFAULT_TIME_FAIL_ACCUSATION);
             }
             _isAccusing = true;
             bubbleDialog.SetActive(true);
