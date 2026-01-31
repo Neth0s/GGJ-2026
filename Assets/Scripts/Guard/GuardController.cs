@@ -172,9 +172,12 @@ public class GuardController : MonoBehaviour
 
     private bool IsPlayerSuspicious(GroupController group)
     {
-        string playerMask = player.CurrentMaskFeature;
+        /*
+        //string playerMask = player.CurrentMaskFeature;
         if (group == null || group.Data == null) return false;
 
-        return playerMask != group.Data.CommonFeature;
+        return playerMask != group.Data.CommonFeature;*
+        */
+        return false;
     }
 }

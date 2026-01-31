@@ -12,8 +12,6 @@ public class InvestigationPlayer : MonoBehaviour
     [SerializeField] private string[] availableMasks = { "No Mask", "Red Mask", "Blue Mask", "Green Mask" };
     private int _currentMaskIndex = 0;
 
-    //public string CurrentMaskFeature => availableMasks[_currentMaskIndex];
-
     private InputAction moveAction;
     private InputAction interactAction;
     private InputAction accuseAction;
@@ -52,19 +50,9 @@ public class InvestigationPlayer : MonoBehaviour
     private void Update()
     {
         moveDirection = moveAction.ReadValue<Vector2>();
-        if (Keyboard.current.tabKey.wasPressedThisFrame)
-        {
-            CycleMask();
-        }
         if (interactAction.triggered && currentGroup) { Interact(); }
 
         if (accuseAction.triggered) { print("accuse"); } //todo
-    }
-
-    private void CycleMask()
-    {
-        _currentMaskIndex = (_currentMaskIndex + 1) % availableMasks.Length;
-        Debug.Log($"Switched to mask: {CurrentMaskFeature}");
     }
 
     private void FixedUpdate()
