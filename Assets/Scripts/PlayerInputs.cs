@@ -127,6 +127,15 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": ""Press"",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SeeIndice"",
+                    ""type"": ""Button"",
+                    ""id"": ""f843953b-a08b-48f9-b34f-ff260be110af"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": ""Press"",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -314,6 +323,17 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
                     ""action"": ""ChooseMask"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f7d4ef72-73b9-45a9-b4be-adcec07eb08d"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""SeeIndice"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -905,6 +925,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
         m_Player_Accuse = m_Player.FindAction("Accuse", throwIfNotFound: true);
         m_Player_ChooseMask = m_Player.FindAction("ChooseMask", throwIfNotFound: true);
+        m_Player_SeeIndice = m_Player.FindAction("SeeIndice", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1002,6 +1023,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Interact;
     private readonly InputAction m_Player_Accuse;
     private readonly InputAction m_Player_ChooseMask;
+    private readonly InputAction m_Player_SeeIndice;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -1029,6 +1051,10 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Player/ChooseMask".
         /// </summary>
         public InputAction @ChooseMask => m_Wrapper.m_Player_ChooseMask;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/SeeIndice".
+        /// </summary>
+        public InputAction @SeeIndice => m_Wrapper.m_Player_SeeIndice;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -1067,6 +1093,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @ChooseMask.started += instance.OnChooseMask;
             @ChooseMask.performed += instance.OnChooseMask;
             @ChooseMask.canceled += instance.OnChooseMask;
+            @SeeIndice.started += instance.OnSeeIndice;
+            @SeeIndice.performed += instance.OnSeeIndice;
+            @SeeIndice.canceled += instance.OnSeeIndice;
         }
 
         /// <summary>
@@ -1090,6 +1119,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @ChooseMask.started -= instance.OnChooseMask;
             @ChooseMask.performed -= instance.OnChooseMask;
             @ChooseMask.canceled -= instance.OnChooseMask;
+            @SeeIndice.started -= instance.OnSeeIndice;
+            @SeeIndice.performed -= instance.OnSeeIndice;
+            @SeeIndice.canceled -= instance.OnSeeIndice;
         }
 
         /// <summary>
@@ -1418,6 +1450,13 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnChooseMask(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "SeeIndice" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnSeeIndice(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "UI" which allows adding and removing callbacks.

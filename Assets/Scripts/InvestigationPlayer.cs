@@ -12,6 +12,7 @@ public class InvestigationPlayer : MonoBehaviour
     private InputAction interactAction;
     private InputAction accuseAction;
     private InputAction chooseMaskAction;
+    private InputAction seeIndiceAction;
     private Rigidbody rb;
     private PlayerInputs playerInputs;
     private DetectController detectController;
@@ -33,6 +34,7 @@ public class InvestigationPlayer : MonoBehaviour
         interactAction = playerInputs.Player.Interact;
         accuseAction = playerInputs.Player.Accuse;
         chooseMaskAction = playerInputs.Player.ChooseMask;
+        seeIndiceAction = playerInputs.Player.SeeIndice;
         playerInputs.Player.Enable();
     }
 
@@ -54,6 +56,10 @@ public class InvestigationPlayer : MonoBehaviour
     private void Update()
     {
         moveDirection = moveAction.ReadValue<Vector2>();
+        if (seeIndiceAction.triggered)
+        {
+            print("omg indice");
+        }
 
         if (chooseMaskAction.triggered && !isInDialog)
         {

@@ -41,6 +41,15 @@
                     "processors": "",
                     "interactions": "Press",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "SeeIndice",
+                    "type": "Button",
+                    "id": "f843953b-a08b-48f9-b34f-ff260be110af",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Press",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -228,6 +237,17 @@
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
                     "action": "ChooseMask",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f7d4ef72-73b9-45a9-b4be-adcec07eb08d",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "SeeIndice",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
