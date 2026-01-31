@@ -14,7 +14,13 @@ public class GroupController : MonoBehaviour
     {
         print("Group "+gameObject.name+" is selected !");
         print("Requirements are as follow :");
-        foreach(var req in _data.MaskRequirements)
+        print("Mask upper :");
+        foreach(var req in _data.MaskRequirementsUpper)
+        {
+            print(req.name);
+        }
+        print("Mask lower :");
+        foreach (var req in _data.MaskRequirementsLower)
         {
             print(req.name);
         }

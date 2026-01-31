@@ -9,20 +9,22 @@ public class GroupData : ScriptableObject
 {
     [SerializeField] private List<string> indices = new List<string>();
 
-    [SerializeField] public List<MaskProperty> MaskRequirements = new List<MaskProperty>();
+    [SerializeField] public List<MaskProperty> MaskRequirementsUpper = new List<MaskProperty>();
+    [SerializeField] public List<MaskProperty> MaskRequirementsLower = new List<MaskProperty>();
 
 
     /// <summary>
     /// Serves only to ensure that mask requirements are correctly defined
+    /// SHOULD BE REMOVED eventually
     /// </summary>
     private void OnValidate()
     {
         List<MASK_TYPE> maskTypes = new List<MASK_TYPE>();
-        foreach(MaskProperty property in MaskRequirements)
+        foreach(MaskProperty property in MaskRequirementsUpper)
         {
             if (maskTypes.Contains(property.MaskType))
             {
-                Debug.LogError("ERROR : Mask Requirements can only have one MaskProperty of each type ! Currently, there are two (or more) masks of type "+property.MaskType);
+                Debug.LogError("ERROR : Mask Requirements Upper can only have one MaskProperty of each type ! Currently, there are two (or more) masks of type "+property.MaskType);
                 break;
             }
             else
@@ -30,6 +32,18 @@ public class GroupData : ScriptableObject
                 maskTypes.Add(property.MaskType);
             }
         }
-
+        maskTypes = new List<MASK_TYPE>();
+        foreach (MaskProperty property in MaskRequirementsLower)
+        {
+            if (maskTypes.Contains(property.MaskType))
+            {
+                Debug.LogError("ERROR : Mask Requirements Lower can only have one MaskProperty of each type ! Currently, there are two (or more) masks of type " + property.MaskType);
+                break;
+            }
+            else
+            {
+                maskTypes.Add(property.MaskType);
+            }
+        }
     }
 }

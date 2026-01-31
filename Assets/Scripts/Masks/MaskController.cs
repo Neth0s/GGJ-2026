@@ -5,6 +5,6 @@ using UnityEngine;
 /// </summary>
 public class MaskController : MonoBehaviour
 {
-    [SerializeField] private MaskPartController _superiorPart;
-    [SerializeField] private MaskPartController _inferiorPart;
+    [SerializeField] private MaskPart _superiorPart;
+    [SerializeField] private MaskPart _inferiorPart;
 }
