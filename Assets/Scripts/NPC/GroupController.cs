@@ -13,5 +13,10 @@ public class GroupController : MonoBehaviour
     public void TriggerGroupSelection()
     {
         print("Group "+gameObject.name+" is selected !");
+        print("Requirements are as follow :");
+        foreach(var req in _data.MaskRequirements)
+        {
+            print(req.name);
+        }
     }
 }

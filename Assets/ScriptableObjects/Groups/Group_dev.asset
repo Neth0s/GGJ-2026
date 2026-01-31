@@ -13,5 +13,8 @@ MonoBehaviour:
   m_Name: Group_dev
   m_EditorClassIdentifier: 
   indices:
-  - indice 1
-  - indice 2
+  - indice_1
+  - indice_2
+  MaskRequirements:
+  - {fileID: 11400000, guid: bade4170d6a890841a9974f9d0ed0a16, type: 2}
+  - {fileID: 11400000, guid: 048562a77c854024997a621422e9933c, type: 2}
