@@ -251,6 +251,7 @@ GameObject:
   - component: {fileID: 188747490657777766}
   - component: {fileID: 5757962488437206913}
   - component: {fileID: 4902257885775778048}
+  - component: {fileID: 8250662942810543125}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -436,6 +437,21 @@ MonoBehaviour:
   currentMask: {fileID: 11400000, guid: c101fb4a85731df45bb70502b8b4c4cd, type: 2}
   playerVisualMaskUpper: {fileID: 2649319941526339221}
   playerVisualMaskLower: {fileID: 5139889103082681816}
+--- !u!114 &8250662942810543125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5844357712523291346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01f0da4c54ec9e74fa506bd6f396bcf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spriteRenderer: {fileID: 7781739795501308206}
+  _colorFactor: 0.02
+  _colorMin: 0.7
 --- !u!1 &5952684136166293848
 GameObject:
   m_ObjectHideFlags: 0
