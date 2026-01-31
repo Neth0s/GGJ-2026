@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c32ab01762e14a4e9ee2ec9b5f3208d, type: 3}
   m_Name: PlayerMask
   m_EditorClassIdentifier: 
-  _upperPart: {fileID: 11400000, guid: 01ee439c968e47549be0efdf3652a535, type: 2}
-  _lowerPart: {fileID: 11400000, guid: 42008f8a92268734f87f002599562974, type: 2}
+  _upperPart: {fileID: 11400000, guid: ab5735eabadaac6419adb8ab47ec048b, type: 2}
+  _lowerPart: {fileID: 11400000, guid: 82f148b4458760749bb269850c8e2ca3, type: 2}

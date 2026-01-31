@@ -9,6 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2478e1d454a670f4abb0dd8ed47a9ac8, type: 3}
-  m_Name: Family_Modern
+  m_Script: {fileID: 11500000, guid: ed2cf522a0c08f644bbb63e787cd2a06, type: 3}
+  m_Name: Color_Blue
   m_EditorClassIdentifier: 
+  MaskType: 1
