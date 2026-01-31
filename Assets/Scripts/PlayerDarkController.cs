@@ -11,7 +11,7 @@ public class PlayerDarkController : MonoBehaviour
 
     private Color _initialColor;
 
-    [SerializeField] private float _colorFactor = 0.2f;
+    [SerializeField] private float _colorFactor = 0.02f;
     [SerializeField] private float _colorMin = 0.3f;
     #endregion
 
