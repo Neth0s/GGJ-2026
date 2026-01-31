@@ -7,13 +7,12 @@ using UnityEngine;
 /// <summary>
 /// Script of the Group
 /// </summary>
+[RequireComponent(typeof(AppearController))]
 public class GroupController : MonoBehaviour
 {
     #region VARIABLES
     [Header("Group Data")]
     [SerializeField] private GroupData _data;
-
-    public GroupData Data => _data;
 
     //dialog
     [SerializeField] private GameObject bubbleDialog;
@@ -23,8 +22,12 @@ public class GroupController : MonoBehaviour
     private bool _isAccusing = false;
 
     private bool _hasWon = false;
+
+    //Appear controller
+    private AppearController _zoneAppearController;
     #endregion
 
+    public AppearController GetAppearController() { return _zoneAppearController; }
 
     public void TriggerGroupSelection()
     {
@@ -35,6 +38,7 @@ public class GroupController : MonoBehaviour
     {
         bubbleDialog.SetActive(false);
         textBubble = bubbleDialog.GetComponentInChildren<TextMeshPro>();
+        _zoneAppearController = GetComponent<AppearController>();
     }
 
     public bool DisplayBubble()
@@ -82,7 +86,7 @@ public class GroupController : MonoBehaviour
             else 
             {
                 textBubble.text = GameParameters.ACCUSATIONS_INCORRECT[Random.Range(0, GameParameters.ACCUSATIONS_INCORRECT.Length)];
-                Timer.Instance.RemoveTime(60f);
+                Timer.Instance.RemoveTime(GameParameters.DEFAULT_TIME_FAIL_ACCUSATION);
             }
             _isAccusing = true;
             bubbleDialog.SetActive(true);

@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6df1be3616107b442b20d9a371554466, type: 3}
+  m_Name: low_blue_tribal
+  m_EditorClassIdentifier: 
+  MaskProperties:
+  - {fileID: 11400000, guid: bade4170d6a890841a9974f9d0ed0a16, type: 2}
+  - {fileID: 11400000, guid: 8a58247a1dc67c14faf9f488f9d2924d, type: 2}
+  MaskSprite: {fileID: 21300000, guid: a482e22c3a6e2d140b12eb4b3eac0453, type: 3}
