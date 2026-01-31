@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 /// <summary>
 /// This script will govern the detection by the player towards NPCs and other shits like that
 /// </summary>
+[RequireComponent(typeof(PlayerMaskController))]
 public class DetectController : MonoBehaviour
 {
     #region VARIABLES
@@ -15,12 +15,19 @@ public class DetectController : MonoBehaviour
     [SerializeField] private NPCController _currentlySelectedNPC = null; //CAN BE NULL
     [SerializeField] private GroupController _currentlySelectedGroup = null; //CAN BE NULL
 
+    //internal variables
+    private PlayerMaskController _playerMaskController;
     #endregion
 
     #region GETTERS AND SETTERS
     public NPCController GetCurrentlySelectedNPC() { return _currentlySelectedNPC; }
     public GroupController GetCurrentlySelectedGroup() { return _currentlySelectedGroup; }
     #endregion
+
+    private void Awake()
+    {
+        _playerMaskController = GetComponent<PlayerMaskController>();
+    }
 
     private void Update()
     {
@@ -46,6 +53,11 @@ public class DetectController : MonoBehaviour
         {
             _currentlySelectedGroup = groupController; //Group CAN be null
             _currentlySelectedGroup?.TriggerGroupSelection();
+            if (_currentlySelectedGroup != null)
+            {
+                bool masksAreOK = _playerMaskController.ComparePlayerGroupMask(_currentlySelectedGroup.GetUpperMaskRequirements(), _currentlySelectedGroup.GetLowerMaskRequirements());
+                print("Compare result : " + masksAreOK);
+            }
         }
     }
 

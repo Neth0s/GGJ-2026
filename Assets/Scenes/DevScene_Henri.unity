@@ -167,7 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f2c14c7c8c4be7468a593c993026249, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _data: {fileID: 11400000, guid: a6cb9dec9a4b9ec459e6ad8cc55c3fde, type: 2}
+  _data: {fileID: 11400000, guid: 87152b7d072026543ac15ebd5378e1e2, type: 2}
 --- !u!65 &113837350
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -285,6 +285,7 @@ GameObject:
   m_Component:
   - component: {fileID: 249729952}
   - component: {fileID: 249729951}
+  - component: {fileID: 249729953}
   m_Layer: 0
   m_Name: PLAYER_DEV
   m_TagString: Untagged
@@ -323,6 +324,19 @@ Transform:
   - {fileID: 268300144}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &249729953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 249729950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7316204b259d154d97077a35975bb1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _currentMask: {fileID: 11400000, guid: ca83cddb5be19fb47a57a7c3cfc76372, type: 2}
 --- !u!1 &260554832
 GameObject:
   m_ObjectHideFlags: 0
