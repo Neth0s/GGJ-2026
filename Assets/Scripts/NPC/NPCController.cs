@@ -40,4 +40,17 @@ public class NPCController : MonoBehaviour
         //TODO : Highlight to change (visual)
         _meshRenderer.material = _defaultMaterial;
     }
+
+    /// <summary>
+    /// Will tell if the NPC is a bad guy or not
+    /// </summary>
+    /// <returns></returns>
+    public bool IsNPCBadGuy()
+    {
+        if (_data.IsBadGuy)
+        {
+            return true;
+        }
+        return false;
+    }
 }

@@ -53,11 +53,12 @@ public class GroupController : MonoBehaviour
     }
 
     /// <summary>
-    /// Will display the accusation bubble
+    /// Will display the accusation bubble for a specific NPC
     /// </summary>
     /// <returns></returns>
-    public bool DisplayBubbleAccusation()
+    public bool DisplayBubbleAccusation(NPCController selectedNPC)
     {
+        print("Displaying bubble accusation with NPC " + selectedNPC.name);
         if (_isAccusing)
         {
             _isAccusing = false;
@@ -66,7 +67,15 @@ public class GroupController : MonoBehaviour
         }
         else
         {
-            textBubble.text = "POUET";
+            if (selectedNPC.IsNPCBadGuy())
+            {
+                textBubble.text = GameParameters.ACCUSATIONS_CORRECT[Random.Range(0, GameParameters.ACCUSATIONS_CORRECT.Length)];
+                print("------ I WON !!!! WOOP WOOP !!!! ------");
+            }
+            else 
+            {
+                textBubble.text = GameParameters.ACCUSATIONS_INCORRECT[Random.Range(0, GameParameters.ACCUSATIONS_INCORRECT.Length)];
+            }
             _isAccusing = true;
             bubbleDialog.SetActive(true);
             return true;

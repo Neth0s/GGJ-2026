@@ -105,7 +105,7 @@ public class InvestigationPlayer : MonoBehaviour
 
     private void InteractAccusation()
     {
-        isInDialog = currentGroup.DisplayBubbleAccusation();
+        isInDialog = currentGroup.DisplayBubbleAccusation(_currentNPC);
     }
 
 }
