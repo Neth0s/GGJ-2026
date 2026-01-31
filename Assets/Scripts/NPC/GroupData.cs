@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
@@ -7,4 +8,6 @@ using UnityEngine;
 public class GroupData : ScriptableObject
 {
     //[SerializeField] public ??? Requirements; //Liste d'enums qui va dicter si le masque du joueur est valable ou non
+    [SerializeField] private List<string> indices;
+
 }

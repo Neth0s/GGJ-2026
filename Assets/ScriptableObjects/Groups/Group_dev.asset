@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eddcce320353dd24b98477a8a260059d, type: 3}
   m_Name: Group_dev
   m_EditorClassIdentifier: 
-  Id: 0
+  indices:
+  - indice 1
+  - indice 2
