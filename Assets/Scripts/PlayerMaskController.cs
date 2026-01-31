@@ -8,12 +8,13 @@ public class PlayerMaskController : MonoBehaviour
 {
     #region VARIABLES
     [SerializeField] public MaskObject currentMask;
-    [SerializeField] public SpriteRenderer playerVisualMask;
+    [SerializeField] public SpriteRenderer playerVisualMaskUpper;
+    [SerializeField] public SpriteRenderer playerVisualMaskLower;
     #endregion
 
     private void Start()
     {
-        playerVisualMask.sprite = currentMask.GetUpperPart().MaskSprite; //todo to change !!
+        UpdateMaskVisual();
     }
 
 
@@ -21,7 +22,13 @@ public class PlayerMaskController : MonoBehaviour
     {
         currentMask.SetLowerPart(lower);
         currentMask.SetUpperPart(upper);
-        playerVisualMask.sprite = currentMask.GetUpperPart().MaskSprite; //todo to change !!
+        UpdateMaskVisual();
+    }
+
+    private void UpdateMaskVisual(){
+        playerVisualMaskUpper.sprite = currentMask.GetUpperPart().MaskSprite;
+        playerVisualMaskLower.sprite = currentMask.GetLowerPart().MaskSprite;
+
     }
 
     public bool ComparePlayerGroupMask(List<MaskProperty> upperMaskReqs, List<MaskProperty> lowerMaskReqs)

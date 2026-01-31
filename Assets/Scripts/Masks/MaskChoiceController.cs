@@ -10,11 +10,13 @@ public class MaskChoiceController : MonoBehaviour
 
     [SerializeField] private List<MaskPart> upperParts = new List<MaskPart>();
     [SerializeField] private Image upperImage;
-    //[SerializeField] private List<MaskPart> lowerParts = new List<MaskPart>(); //todo
+    [SerializeField] private List<MaskPart> lowerParts = new List<MaskPart>();
+    [SerializeField] private Image lowerImage;
 
     private MaskPart currentDisplayUpperPart;
     private int currentIndexUpperPart;
-    //private MaskPart currentDisplayLowerPart;
+    private MaskPart currentDisplayLowerPart;
+    private int currentIndexLowerPart;
 
     private PlayerMaskController playerMaskController;
 
@@ -49,6 +51,29 @@ public class MaskChoiceController : MonoBehaviour
         upperImage.sprite = newUpperPart.MaskSprite;
 
         playerMaskController.ChangeCurrentMask(playerMaskController.currentMask.GetLowerPart(), newUpperPart);
+
+    }
+
+    public void LowerLeftButton()
+    {
+        if (currentIndexLowerPart > 0) currentIndexLowerPart--;
+        else currentIndexLowerPart = lowerParts.Count - 1;
+
+        MaskPart newLowerPart = lowerParts[currentIndexLowerPart];
+        lowerImage.sprite = newLowerPart.MaskSprite;
+
+        playerMaskController.ChangeCurrentMask(newLowerPart, playerMaskController.currentMask.GetUpperPart());
+    }
+
+    public void LowerRightButton()
+    {
+        if (currentIndexLowerPart < lowerParts.Count - 1) currentIndexLowerPart++;
+        else currentIndexLowerPart = 0;
+
+        MaskPart newLowerPart = lowerParts[currentIndexLowerPart];
+        lowerImage.sprite = newLowerPart.MaskSprite;
+
+        playerMaskController.ChangeCurrentMask(newLowerPart, playerMaskController.currentMask.GetUpperPart());
 
     }
 }
