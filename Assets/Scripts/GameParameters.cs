@@ -17,4 +17,6 @@ public static class GameParameters
 
 
     public static float DEFAULT_TIME_FAIL_ACCUSATION = 60.0f;
+
+    public static int MAXIMUM_MASK_INVENTORY = 3;
 }
