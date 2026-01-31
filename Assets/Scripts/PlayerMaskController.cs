@@ -30,7 +30,10 @@ public class PlayerMaskController : MonoBehaviour
         List<MaskObject> maskList = _playerInventoryController.GetListMasksInInventroy();
         if (maskList != null && maskList.Count > 0)
         {
-            currentMask = maskList[0];
+            MaskPart lowerPart = maskList[0].GetLowerPart();
+            MaskPart upperPart = maskList[0].GetUpperPart();
+            currentMask.SetLowerPart(lowerPart);
+            currentMask.SetUpperPart(upperPart);
             UpdateMaskVisual();
         }
         else
