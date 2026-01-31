@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using Enums;
 
 /// <summary>
 /// Scriptable object of the data for the Group
@@ -7,7 +8,10 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "ScriptableObjects/NPC/Group Data", fileName ="Group Data")]
 public class GroupData : ScriptableObject
 {
-    //[SerializeField] public ??? Requirements; //Liste d'enums qui va dicter si le masque du joueur est valable ou non
-    [SerializeField] private List<string> indices;
+    [SerializeField] private Enums.MaskType commonMask;
+    [SerializeField] private List<string> clues;
+
+    public Enums.MaskType CommonMask => commonMask;
+    public List<string> Clues => clues;
 
 }
