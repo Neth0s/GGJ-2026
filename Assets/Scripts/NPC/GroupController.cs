@@ -21,6 +21,8 @@ public class GroupController : MonoBehaviour
     private int currentDialogIndex = 0;
 
     private bool _isAccusing = false;
+
+    private bool _hasWon = false;
     #endregion
 
 
@@ -55,14 +57,18 @@ public class GroupController : MonoBehaviour
     /// <summary>
     /// Will display the accusation bubble for a specific NPC
     /// </summary>
-    /// <returns></returns>
+    /// <param name="selectedNPC">Currently selected NPC</param>
+    /// <returns>Boolean (true if accusation is correct) </returns>
     public bool DisplayBubbleAccusation(NPCController selectedNPC)
     {
-        print("Displaying bubble accusation with NPC " + selectedNPC.name);
         if (_isAccusing)
         {
             _isAccusing = false;
             bubbleDialog.SetActive(false);
+            if (_hasWon)
+            {
+                GameManager.Instance.WinGame();
+            }
             return false;
         }
         else
@@ -70,6 +76,7 @@ public class GroupController : MonoBehaviour
             if (selectedNPC.IsNPCBadGuy())
             {
                 textBubble.text = GameParameters.ACCUSATIONS_CORRECT[Random.Range(0, GameParameters.ACCUSATIONS_CORRECT.Length)];
+                _hasWon = true;
                 print("------ I WON !!!! WOOP WOOP !!!! ------");
             }
             else 

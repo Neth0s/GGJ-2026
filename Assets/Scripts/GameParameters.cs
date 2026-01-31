@@ -11,4 +11,7 @@ public static class GameParameters
     public static string ACCUSATION_INCORRECT_RANDOM_2 = "Es stupido ma què no es hables spanish (NON)";
     public static string ACCUSATION_INCORRECT_RANDOM_3 = "MONETTO NO ES BUENO";
     public static string[] ACCUSATIONS_INCORRECT = { ACCUSATION_INCORRECT_RANDOM_1, ACCUSATION_INCORRECT_RANDOM_2, ACCUSATION_INCORRECT_RANDOM_3 };
+
+    public static string VICTORY_SCENE_NAME = "EndVictoryScene";
+    public static string DEFEAT_SCENE_NAME = "EndScene";
 }

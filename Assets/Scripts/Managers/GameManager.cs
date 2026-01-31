@@ -33,9 +33,15 @@ public class GameManager : MonoBehaviour
         }*/
     }
 
-   public void LooseGame()
+    public void LooseGame()
     {
         SceneManager.LoadScene(2);
     }
+    
+    public void WinGame()
+    {
+        SceneManager.LoadScene(3);
+    }
 
+    
 }
