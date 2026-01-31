@@ -125,4 +125,11 @@ public class DetectiveManager : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+
+    public void ApplyTimePenalty(float amount)
+    {
+        _timer -= amount;
+        if (_timer < 0) _timer = 0;
+        UpdateTimerUI();
+    }
 }

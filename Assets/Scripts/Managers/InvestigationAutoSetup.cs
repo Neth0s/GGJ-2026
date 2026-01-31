@@ -49,10 +49,17 @@ public class InvestigationAutoSetup : MonoBehaviour
             // Add GuardController
             GuardController guard = guardObj.AddComponent<GuardController>();
             
+            // Use NavMeshAgent for intelligent pathfinding
+            UnityEngine.AI.NavMeshAgent agent = guardObj.AddComponent<UnityEngine.AI.NavMeshAgent>();
+            agent.speed = 3.5f;
+            agent.acceleration = 8f;
+            agent.angularSpeed = 120f;
+            agent.stoppingDistance = 0.6f;
+
             // Link references
             guard.Setup(player, new System.Collections.Generic.List<GroupController>(groups));
             
-            Debug.Log("Created Guard and linked to Player and Group.");
+            Debug.Log("Created Guard with NavMeshAgent for pathfinding.");
         }
         else
         {
