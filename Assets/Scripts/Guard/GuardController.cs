@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 /// <summary>
 /// Controls the Guard's suspicion behavior.
@@ -7,9 +8,12 @@ using UnityEngine;
 public class GuardController : MonoBehaviour
 {
     [Header("Roaming Settings")]
-    [SerializeField] private float moveSpeed = 3.0f;
+    [SerializeField] private float moveSpeed = 3.5f;
     [SerializeField] private float waitTimeAtGroup = 3.0f;
+    [Header("Detection Settings")]
+    [SerializeField] private float visionRange = 7.0f;
     [SerializeField] private float detectionRadius = 5.0f;
+    [SerializeField] private float timePenaltyPerSecond = 5.0f;
     [SerializeField] private float suspicionIncreaseRate = 1.0f;
     [SerializeField] private float suspicionDecreaseRate = 2.0f;
 
@@ -22,16 +26,27 @@ public class GuardController : MonoBehaviour
     private float _currentSuspicion = 0f;
     private bool _isChecking = false;
 
+    private NavMeshAgent _agent;
+
     public void Setup(InvestigationPlayer playerRef, List<GroupController> groups)
     {
         player = playerRef;
         patrolGroups = groups;
+        _agent = GetComponent<NavMeshAgent>();
+        if (_agent != null) _agent.speed = moveSpeed;
     }
 
     private void Update()
     {
         if (player == null || patrolGroups == null || patrolGroups.Count == 0) return;
+        
+        if (_agent == null) 
+        {
+            _agent = GetComponent<NavMeshAgent>();
+            if (_agent != null) _agent.speed = moveSpeed;
+        }
 
+        // 1. Core State Machine (Roaming/Checking)
         if (_isChecking)
         {
             UpdateCheckingState();
@@ -40,29 +55,74 @@ public class GuardController : MonoBehaviour
         {
             UpdateRoamingState();
         }
+
+        // 2. Proximity Detection (Always active)
+        CheckForProximityPenalty();
+    }
+
+    private void CheckForProximityPenalty()
+    {
+        float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
+
+        if (distanceToPlayer < visionRange)
+        {
+            if (!IsPlayerSafelyBlended())
+            {
+                Debug.Log("Guard sees you! Losing time...");
+                DetectiveManager.Instance.ApplyTimePenalty(timePenaltyPerSecond * Time.deltaTime);
+            }
+        }
+    }
+
+    private bool IsPlayerSafelyBlended()
+    {
+        // Player is only safe if they are inside a group's territory AND have the matching mask
+        foreach (var group in patrolGroups)
+        {
+            if (IsPlayerInTerritory(group))
+            {
+                if (!IsPlayerSuspicious(group))
+                {
+                    return true; // Safely blended!
+                }
+            }
+        }
+        return false;
     }
 
     private void UpdateRoamingState()
     {
         GroupController target = patrolGroups[_targetGroupIndex];
-        float distanceToTarget = Vector3.Distance(transform.position, target.transform.position);
-
-        if (distanceToTarget < 0.5f)
+        
+        if (_agent != null && _agent.isOnNavMesh)
         {
-            _isChecking = true;
-            _waitTimer = waitTimeAtGroup;
-            Debug.Log($"Guard reached {target.name}, checking group...");
+            _agent.SetDestination(target.transform.position);
+
+            // Check if we arrived
+            if (!_agent.pathPending && _agent.remainingDistance <= _agent.stoppingDistance)
+            {
+                _isChecking = true;
+                _waitTimer = waitTimeAtGroup;
+                Debug.Log($"Guard reached {target.name}, checking group...");
+            }
         }
         else
         {
-            // Move towards target
-            transform.position = Vector3.MoveTowards(transform.position, target.transform.position, moveSpeed * Time.deltaTime);
-            
-            // Basic rotation towards target
-            Vector3 direction = (target.transform.position - transform.position).normalized;
-            if (direction != Vector3.zero)
+            // Fallback to direct movement if NavMesh fails
+            float distanceToTarget = Vector3.Distance(transform.position, target.transform.position);
+            if (distanceToTarget < 0.5f)
             {
-                transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction), Time.deltaTime * 5f);
+                _isChecking = true;
+                _waitTimer = waitTimeAtGroup;
+            }
+            else
+            {
+                transform.position = Vector3.MoveTowards(transform.position, target.transform.position, moveSpeed * Time.deltaTime);
+                Vector3 direction = (target.transform.position - transform.position).normalized;
+                if (direction != Vector3.zero)
+                {
+                    transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction), Time.deltaTime * 5f);
+                }
             }
         }
     }
