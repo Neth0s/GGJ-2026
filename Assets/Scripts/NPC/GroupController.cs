@@ -1,3 +1,5 @@
+using NUnit.Framework;
+using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
@@ -13,16 +15,15 @@ public class GroupController : MonoBehaviour
     public void TriggerGroupSelection()
     {
         print("Group "+gameObject.name+" is selected !");
-        print("Requirements are as follow :");
-        print("Mask upper :");
-        foreach(var req in _data.MaskRequirementsUpper)
-        {
-            print(req.name);
-        }
-        print("Mask lower :");
-        foreach (var req in _data.MaskRequirementsLower)
-        {
-            print(req.name);
-        }
+    }
+
+    public List<MaskProperty> GetUpperMaskRequirements()
+    {
+        return _data.MaskRequirementsUpper;
+    }
+
+    public List<MaskProperty> GetLowerMaskRequirements()
+    {
+        return _data.MaskRequirementsLower;
     }
 }

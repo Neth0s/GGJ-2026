@@ -9,9 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6df1be3616107b442b20d9a371554466, type: 3}
-  m_Name: Part_dev_1
+  m_Script: {fileID: 11500000, guid: 1c32ab01762e14a4e9ee2ec9b5f3208d, type: 3}
+  m_Name: Mask_dev_FALSE
   m_EditorClassIdentifier: 
-  MaskProperties:
-  - {fileID: 11400000, guid: bade4170d6a890841a9974f9d0ed0a16, type: 2}
-  - {fileID: 11400000, guid: 048562a77c854024997a621422e9933c, type: 2}
+  _superiorPart: {fileID: 11400000, guid: 01ee439c968e47549be0efdf3652a535, type: 2}
+  _inferiorPart: {fileID: 11400000, guid: 42008f8a92268734f87f002599562974, type: 2}
