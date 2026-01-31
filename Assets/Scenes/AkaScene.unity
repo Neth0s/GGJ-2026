@@ -358,7 +358,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 348147596739467429, guid: 687c4c9d760ea5e49b8914759b278d80, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.3083086
+      value: -11.67
       objectReference: {fileID: 0}
     - target: {fileID: 348147596739467429, guid: 687c4c9d760ea5e49b8914759b278d80, type: 3}
       propertyPath: m_LocalPosition.y
@@ -403,7 +403,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5020896035280366912, guid: 687c4c9d760ea5e49b8914759b278d80, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 687c4c9d760ea5e49b8914759b278d80, type: 3}
 --- !u!1 &548702916
 GameObject:
@@ -848,6 +851,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2771573725643374524, guid: 5ddcd0333af64e84583fd4f3ce07cae4, type: 3}
+      propertyPath: m_TagString
+      value: MainCamera
+      objectReference: {fileID: 0}
+    - target: {fileID: 4902257885775778048, guid: 5ddcd0333af64e84583fd4f3ce07cae4, type: 3}
+      propertyPath: _currentMask
+      value: 
+      objectReference: {fileID: 11400000, guid: ca83cddb5be19fb47a57a7c3cfc76372, type: 2}
     - target: {fileID: 5519992655866031730, guid: 5ddcd0333af64e84583fd4f3ce07cae4, type: 3}
       propertyPath: m_LocalPosition.y
       value: 6.8

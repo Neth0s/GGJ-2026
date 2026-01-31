@@ -15,8 +15,10 @@ public class DetectController : MonoBehaviour
     [SerializeField] private NPCController _currentlySelectedNPC = null; //CAN BE NULL
     [SerializeField] private GroupController _currentlySelectedGroup = null; //CAN BE NULL
 
-    //internal variables
+    public bool masksAreOK = false;
+
     private PlayerMaskController _playerMaskController;
+    private InvestigationPlayer player;
     #endregion
 
     #region GETTERS AND SETTERS
@@ -26,7 +28,10 @@ public class DetectController : MonoBehaviour
 
     private void Awake()
     {
+
         _playerMaskController = GetComponent<PlayerMaskController>();
+
+        player = GetComponent<InvestigationPlayer>();
     }
 
     private void Update()
@@ -39,6 +44,7 @@ public class DetectController : MonoBehaviour
     /// </summary>
     private void StartDetectScan()
     {
+        
         NPCController closestNPC = GetClosestNPC();
         if (closestNPC != _currentlySelectedNPC) 
         {
@@ -55,9 +61,13 @@ public class DetectController : MonoBehaviour
             _currentlySelectedGroup?.TriggerGroupSelection();
             if (_currentlySelectedGroup != null)
             {
-                bool masksAreOK = _playerMaskController.ComparePlayerGroupMask(_currentlySelectedGroup.GetUpperMaskRequirements(), _currentlySelectedGroup.GetLowerMaskRequirements());
+                masksAreOK = _playerMaskController.ComparePlayerGroupMask(_currentlySelectedGroup.GetUpperMaskRequirements(), _currentlySelectedGroup.GetLowerMaskRequirements());
                 print("Compare result : " + masksAreOK);
             }
+            else { masksAreOK = false; }
+
+            if (_currentlySelectedGroup) player.EnableInterraction(_currentlySelectedGroup);
+            else player.DisableInterraction();
         }
     }
 

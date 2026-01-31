@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -22,22 +23,19 @@ public class InvestigationPlayer : MonoBehaviour
 
     private Vector2 moveDirection;
 
+    [SerializeField] private GameObject interactIcon;
+    private bool isInDialog = false;
+    GroupController currentGroup; 
+
     private void OnEnable()
     {
         moveAction = playerInputs.Player.Move;
         interactAction = playerInputs.Player.Interact;
-        accuseAction = playerInputs.Player.Accuse;
-
-        interactAction.performed += OnInteractPerformed;
-        accuseAction.performed += OnAccusePerformed;
-
         playerInputs.Player.Enable();
     }
 
     private void OnDisable()
     {
-        interactAction.performed -= OnInteractPerformed;
-        accuseAction.performed -= OnAccusePerformed;
         playerInputs.Player.Disable();
     }
 
@@ -46,17 +44,18 @@ public class InvestigationPlayer : MonoBehaviour
         playerInputs = new PlayerInputs();
         rb = GetComponent<Rigidbody>();
         detectController = GetComponent<DetectController>();
+
+        interactIcon.SetActive(false);
     }
 
     private void Update()
     {
         moveDirection = moveAction.ReadValue<Vector2>();
-
-        // Temporary mask cycle for testing/MVP
         if (Keyboard.current.tabKey.wasPressedThisFrame)
         {
             CycleMask();
         }
+        if (interactAction.triggered && currentGroup) { Interact(); }
     }
 
     private void CycleMask()
@@ -64,6 +63,8 @@ public class InvestigationPlayer : MonoBehaviour
         _currentMaskIndex = (_currentMaskIndex + 1) % availableMasks.Length;
         Debug.Log($"Switched to mask: {CurrentMaskFeature}");
     }
+
+    /*
 
     private void OnInteractPerformed(InputAction.CallbackContext context)
     {
@@ -87,11 +88,14 @@ public class InvestigationPlayer : MonoBehaviour
             Debug.Log($"Accusing {npc.name}!");
             DetectiveManager.Instance.AttemptAccusation(npc.Data.IsCulprit);
         }
+
+        if (interactAction.triggered && currentGroup) { Interact(); }
     }
+    */
 
     private void FixedUpdate()
     {
-        Move();
+        if (!isInDialog) Move();
     }
 
     private void Move()
@@ -100,4 +104,21 @@ public class InvestigationPlayer : MonoBehaviour
             + transform.forward * moveDirection.y * MoveSpeed * Time.deltaTime
             + transform.right * moveDirection.x * MoveSpeed * Time.deltaTime);
     }
+
+    public void EnableInterraction(GroupController group)
+    {
+        interactIcon.SetActive(true);
+        currentGroup = group;
+    }
+
+    public void DisableInterraction()
+    {
+        interactIcon.SetActive(false);
+    }
+
+    private void Interact()
+    {
+        isInDialog = currentGroup.DisplayBubble();
+    }
+
 }
