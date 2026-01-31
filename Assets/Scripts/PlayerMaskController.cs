@@ -33,11 +33,6 @@ public class PlayerMaskController : MonoBehaviour
 
     public bool ComparePlayerGroupMask(List<MaskProperty> upperMaskReqs, List<MaskProperty> lowerMaskReqs)
     {
-        print("Comparing player mask to group");
-        print("Group requirements for upper mask :");
-        foreach(var prop in upperMaskReqs) { print(prop.name); }
-        print("Group requirements for lower mask :");
-        foreach (var prop in lowerMaskReqs) { print(prop.name); }
         //By the grace of Shaddam IV of House Corino, I swear on the ten gods : there are ways to modularise this shit
         //We start by comparing upper mask part :
         foreach (MaskProperty groupProp in upperMaskReqs)
