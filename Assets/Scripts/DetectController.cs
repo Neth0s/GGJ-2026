@@ -66,6 +66,7 @@ public class DetectController : MonoBehaviour
         GroupController groupController = ObtainGroupController();
         if(_currentlySelectedGroup != groupController)
         {
+            _currentlySelectedGroup?.GetAppearController().Hide(); //we're forced to put it here cause otherwise we'll lose the last group
             _currentlySelectedGroup = groupController; //Group CAN be null
             _currentlySelectedGroup?.TriggerGroupSelection();
             //TODO : regroup following ifs
@@ -80,7 +81,6 @@ public class DetectController : MonoBehaviour
             { 
                 masksAreOK = false;
                 _playerDarkController.Brighten();
-                _currentlySelectedGroup?.GetAppearController().Hide();
             }
 
             if (_currentlySelectedGroup) player.EnableInterraction(_currentlySelectedGroup);

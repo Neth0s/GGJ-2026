@@ -12,7 +12,7 @@ public class DarkController : MonoBehaviour
     private Color _initialColor;
 
     [SerializeField] private float _colorFactor = 0.02f;
-    [SerializeField] private float _colorMin = 0.3f;
+    [SerializeField] private float _colorMin = 0.7f;
 
     private Coroutine _currentCoroutine=null;
     #endregion
