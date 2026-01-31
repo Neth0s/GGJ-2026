@@ -53,14 +53,14 @@ public class InvestigationPlayer : MonoBehaviour
 
     private void Update()
     {
+        moveDirection = moveAction.ReadValue<Vector2>();
 
-        if (chooseMaskAction.triggered)
+        if (chooseMaskAction.triggered && !isInDialog)
         {
             DisplayChangeMaskUI();
         }
+        if (isChoosingMask) return; //skip interaction
 
-
-        moveDirection = moveAction.ReadValue<Vector2>();
         if (interactAction.triggered && currentGroup) { Interact(); }
 
         if (accuseAction.triggered) 
@@ -68,6 +68,8 @@ public class InvestigationPlayer : MonoBehaviour
             print("accuse");
             InteractAccusation(); 
         }
+
+        
     }
 
     private void DisplayChangeMaskUI()

@@ -11,4 +11,7 @@ public class MaskObject : ScriptableObject
 
     public MaskPart GetUpperPart() {  return _upperPart; }
     public MaskPart GetLowerPart() { return _lowerPart; }
+
+    public void SetUpperPart(MaskPart upperPart) { _upperPart = upperPart; }
+    public void SetLowerPart(MaskPart lowerPart) { _lowerPart = lowerPart; }
 }

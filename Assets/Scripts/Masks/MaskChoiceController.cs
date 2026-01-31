@@ -29,11 +29,26 @@ public class MaskChoiceController : MonoBehaviour
 
     public void UpperLeftButton()
     {
-        //todo
+        if (currentIndexUpperPart > 0) currentIndexUpperPart--;
+        else currentIndexUpperPart = upperParts.Count - 1;
+
+        MaskPart newUpperPart = upperParts[currentIndexUpperPart];
+        upperImage.sprite = newUpperPart.MaskSprite;
+
+        playerMaskController.ChangeCurrentMask(playerMaskController.currentMask.GetLowerPart(), newUpperPart);
     }
 
     public void UpperRightButton()
     {
-        //todo
+       
+
+        if (currentIndexUpperPart < upperParts.Count - 1) currentIndexUpperPart++;
+        else currentIndexUpperPart = 0;
+
+        MaskPart newUpperPart = upperParts[currentIndexUpperPart];
+        upperImage.sprite = newUpperPart.MaskSprite;
+
+        playerMaskController.ChangeCurrentMask(playerMaskController.currentMask.GetLowerPart(), newUpperPart);
+
     }
 }

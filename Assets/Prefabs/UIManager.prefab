@@ -97,6 +97,8 @@ MonoBehaviour:
   upperParts:
   - {fileID: 11400000, guid: 01ee439c968e47549be0efdf3652a535, type: 2}
   - {fileID: 11400000, guid: 42008f8a92268734f87f002599562974, type: 2}
+  - {fileID: 11400000, guid: 7b3fbe5f558f46d48ba70428cfe08b1a, type: 2}
+  - {fileID: 11400000, guid: 16c5d429f3d044e4790d5dbdc925f062, type: 2}
   upperImage: {fileID: 6424041708533873594}
 --- !u!1 &936951260107114529
 GameObject:
@@ -111,7 +113,7 @@ GameObject:
   - component: {fileID: 3985560798649590974}
   - component: {fileID: 8201841629973472933}
   m_Layer: 0
-  m_Name: UpperLeft
+  m_Name: UpperLeftButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -217,7 +219,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3985560798649590974}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1737563364416667806}
+        m_TargetAssemblyTypeName: MaskChoiceController, Assembly-CSharp
+        m_MethodName: UpperLeftButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &3614985822070994759
 GameObject:
   m_ObjectHideFlags: 0
@@ -333,7 +347,7 @@ GameObject:
   - component: {fileID: 1981206153933148787}
   - component: {fileID: 7277444336184063053}
   m_Layer: 0
-  m_Name: LowerLeft
+  m_Name: LowerLeftButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -528,7 +542,7 @@ GameObject:
   - component: {fileID: 6928059931658546421}
   - component: {fileID: 6611650913093073764}
   m_Layer: 0
-  m_Name: LowerRight
+  m_Name: LowerRightButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -648,7 +662,7 @@ GameObject:
   - component: {fileID: 7128073516507890945}
   - component: {fileID: 2004329909411401801}
   m_Layer: 0
-  m_Name: UpperRight
+  m_Name: UpperRightButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -754,7 +768,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7128073516507890945}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1737563364416667806}
+        m_TargetAssemblyTypeName: MaskChoiceController, Assembly-CSharp
+        m_MethodName: UpperRightButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7779837788437541541
 GameObject:
   m_ObjectHideFlags: 0

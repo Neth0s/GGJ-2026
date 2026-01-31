@@ -8,7 +8,21 @@ public class PlayerMaskController : MonoBehaviour
 {
     #region VARIABLES
     [SerializeField] public MaskObject currentMask;
+    [SerializeField] public SpriteRenderer playerVisualMask;
     #endregion
+
+    private void Start()
+    {
+        playerVisualMask.sprite = currentMask.GetUpperPart().MaskSprite; //todo to change !!
+    }
+
+
+    public void ChangeCurrentMask(MaskPart lower, MaskPart upper)
+    {
+        currentMask.SetLowerPart(lower);
+        currentMask.SetUpperPart(upper);
+        playerVisualMask.sprite = currentMask.GetUpperPart().MaskSprite; //todo to change !!
+    }
 
     public bool ComparePlayerGroupMask(List<MaskProperty> upperMaskReqs, List<MaskProperty> lowerMaskReqs)
     {
