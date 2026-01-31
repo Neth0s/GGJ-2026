@@ -6,11 +6,9 @@ using UnityEngine.UI;
 
 public class MaskChoiceController : MonoBehaviour
 {
-    //hello
-
-    [SerializeField] private List<MaskPart> upperParts = new List<MaskPart>();
+    [SerializeField] private List<MaskPart> upperParts = new List<MaskPart>(); //to change -> get this list on player inventory
     [SerializeField] private Image upperImage;
-    [SerializeField] private List<MaskPart> lowerParts = new List<MaskPart>();
+    [SerializeField] private List<MaskPart> lowerParts = new List<MaskPart>(); //to change -> get this list on player inventory
     [SerializeField] private Image lowerImage;
 
     private MaskPart currentDisplayUpperPart;
@@ -27,6 +25,10 @@ public class MaskChoiceController : MonoBehaviour
         currentDisplayUpperPart = playerMaskController.currentMask.GetUpperPart();
         upperImage.sprite = currentDisplayUpperPart.MaskSprite;
         currentIndexUpperPart = upperParts.IndexOf(currentDisplayUpperPart);
+
+        currentDisplayLowerPart = playerMaskController.currentMask.GetLowerPart();
+        lowerImage.sprite = currentDisplayLowerPart.MaskSprite;
+        currentIndexUpperPart = upperParts.IndexOf(currentDisplayLowerPart);
     }
 
     public void UpperLeftButton()

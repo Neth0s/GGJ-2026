@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -6,7 +7,8 @@ public class GameManager : MonoBehaviour
     private static GameManager instance = null;
     public static GameManager Instance => instance;
 
-
+    [SerializeField] private List<MaskObject> allMaskObjects = new List<MaskObject>();
+    [SerializeField] private List<MaskObject> inventory = new List<MaskObject>();
 
     private void Awake()
     {
@@ -20,17 +22,6 @@ public class GameManager : MonoBehaviour
             instance = this;
         }
         DontDestroyOnLoad(this.gameObject);
-
-        //Old IA guard
-        /*
-        // Auto-Setup for Investigation Scene
-        if (SceneManager.GetActiveScene().name == "ImplementationSceneVictor")
-        {
-            if (gameObject.GetComponent<InvestigationAutoSetup>() == null)
-            {
-                gameObject.AddComponent<InvestigationAutoSetup>();
-            }
-        }*/
     }
 
     public void LooseGame()
