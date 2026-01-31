@@ -9,33 +9,34 @@ public class NPCController : MonoBehaviour
     [Header("NPC Data")]
     [SerializeField] private NPCData _data;
 
+    [Header("Highlight")]
+    [SerializeField] private GameObject baseSprite;
+    [SerializeField] private Sprite outline;
+    [SerializeField] private Vector3 _highlightScale;
+    [SerializeField] private Color _highlightColor = Color.cyan;
+
     private SpriteRenderer _spriteRenderer;
     private GameObject _highlight;
-    private SpriteRenderer _highlightRenderer;
-
-    /* TODO : DELETE
-    [SerializeField] private Material _highlightMaterial; //TODO : might be removed (material highlight)
-    
-    private Material _defaultMaterial; //TODO : might be removed (material highlight)
-    private MeshRenderer _meshRenderer;
-    */
+    private SpriteRenderer _highlightRd;
     #endregion
 
     private void Awake()
     {
-        //_meshRenderer = GetComponentInChildren<MeshRenderer>();
         _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         if (_spriteRenderer == null) return;
+
         _highlight = new GameObject("Highlight Object");
         _highlight.transform.parent = this.transform;
-        _highlightRenderer = _highlight.AddComponent<SpriteRenderer>();
-        _highlightRenderer.sprite = _spriteRenderer.sprite;
-        _highlight.transform.localPosition = new Vector3(0.0f, 0.11f, 0.16f);
-        _highlight.transform.localScale = new Vector3(0.39f, 0.39f, 0.39f);
+
+        _highlight.transform.localPosition = baseSprite.transform.localPosition;
+        _highlight.transform.localScale = baseSprite.transform.localScale.x * _highlightScale;
         _highlight.transform.rotation = transform.rotation;
-        _highlightRenderer.color = Color.cyan;
+
+        _highlightRd = _highlight.AddComponent<SpriteRenderer>();
+        _highlightRd.sprite = outline;
+        _highlightRd.color = _highlightColor;
+
         _highlight.SetActive(false);
-        //_defaultMaterial = _meshRenderer.material;
     }
 
     /// <summary>
