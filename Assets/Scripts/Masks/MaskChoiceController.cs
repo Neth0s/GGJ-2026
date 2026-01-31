@@ -1,11 +1,14 @@
-using NUnit.Framework;
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// This script will govern the "make a mask" window 
+/// </summary>
 public class MaskChoiceController : MonoBehaviour
 {
+    #region VARIABLES
+    [Header("")]
     [SerializeField] private List<MaskPart> upperParts = new List<MaskPart>(); //to change -> get this list on player inventory
     [SerializeField] private Image upperImage;
     [SerializeField] private List<MaskPart> lowerParts = new List<MaskPart>(); //to change -> get this list on player inventory
@@ -17,10 +20,26 @@ public class MaskChoiceController : MonoBehaviour
     private int currentIndexLowerPart;
 
     private PlayerMaskController playerMaskController;
+    private PlayerInventoryController _playerInventoryController;
+    #endregion
 
+    /// <summary>
+    /// Function that will recover the data from the player inventory
+    /// </summary>
+    private void RecoverDataFromPlayerInventory()
+    {
+        _playerInventoryController = GameObject.FindWithTag("Player").GetComponent<PlayerInventoryController>();
+        upperParts = _playerInventoryController.GetListUpperPartsFromInventory();
+        lowerParts = _playerInventoryController.GetListLowerPartsFromInventory();
+    }
+
+    /// <summary>
+    /// This function will be called when UI must be initialized.
+    /// </summary>
     public void InitializeUI()
     {
         playerMaskController = GameObject.FindWithTag("Player").GetComponent<PlayerMaskController>(); //rip in peace le code
+        RecoverDataFromPlayerInventory(); //we recover (and update) the code 
 
         currentDisplayUpperPart = playerMaskController.currentMask.GetUpperPart();
         upperImage.sprite = currentDisplayUpperPart.MaskSprite;
@@ -31,6 +50,8 @@ public class MaskChoiceController : MonoBehaviour
         currentIndexUpperPart = upperParts.IndexOf(currentDisplayLowerPart);
     }
 
+
+    #region BUTTON FUNCTIONS
     public void UpperLeftButton()
     {
         if (currentIndexUpperPart > 0) currentIndexUpperPart--;
@@ -78,4 +99,5 @@ public class MaskChoiceController : MonoBehaviour
         playerMaskController.ChangeCurrentMask(newLowerPart, playerMaskController.currentMask.GetUpperPart());
 
     }
+    #endregion
 }
