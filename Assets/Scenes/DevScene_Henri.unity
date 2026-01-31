@@ -186,6 +186,7 @@ GameObject:
   m_Component:
   - component: {fileID: 109409626}
   - component: {fileID: 109409627}
+  - component: {fileID: 109409628}
   m_Layer: 0
   m_Name: PouetPouetLeMarchand
   m_TagString: Merchant
@@ -230,6 +231,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &109409628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 109409625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6ca4bc5ff3386249bcf1100a02a1489, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &160696147
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1151,6 +1164,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1479414957 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8868432089169053807, guid: 4cfc9220748984c4eb1711713595e90d, type: 3}
+  m_PrefabInstance: {fileID: 2142419965}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3a10fd9de038d44d981300d5316deab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1483211700
 GameObject:
   m_ObjectHideFlags: 0
@@ -1572,6 +1596,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2108023567380639788, guid: 4cfc9220748984c4eb1711713595e90d, type: 3}
+      propertyPath: _merchantUIController
+      value: 
+      objectReference: {fileID: 1479414957}
     - target: {fileID: 3545948657296950761, guid: 4cfc9220748984c4eb1711713595e90d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -8.470651

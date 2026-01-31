@@ -8,8 +8,8 @@ public class MaskButtonMerchant : MonoBehaviour
 
     private void Start()
     {
-        upperImage.sprite = maskObject.GetUpperPart().MaskSprite;
-        lowerImage.sprite = maskObject.GetLowerPart().MaskSprite;
+        upperImage.sprite = maskObject?.GetUpperPart().MaskSprite;
+        lowerImage.sprite = maskObject?.GetLowerPart().MaskSprite;
     }
 
 

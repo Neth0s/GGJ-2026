@@ -26,6 +26,7 @@ public class InvestigationPlayer : MonoBehaviour
     GroupController currentGroup; 
 
     private NPCController _currentNPC;
+    private MerchantController _currentMerchant;
 
     private void OnEnable()
     {
@@ -65,8 +66,20 @@ public class InvestigationPlayer : MonoBehaviour
 
         if (accuseAction.triggered) 
         { 
-            print("accuse");
             InteractAccusation(); 
+        }
+
+        if(interactAction.triggered && _currentMerchant)
+        {
+            if (!isInDialog)
+            {
+                InteractMerchant();
+            }
+            else
+            {
+                _currentMerchant.EndMerchantInteraction();
+                isInDialog = false;
+            }
         }
 
         
@@ -91,22 +104,32 @@ public class InvestigationPlayer : MonoBehaviour
             + transform.right * moveDirection.x * MoveSpeed * Time.deltaTime);
     }
 
-    public void EnableInterraction(GroupController group)
+    public void EnableInteraction(GroupController group)
     {
         interactIcon.SetActive(true);
         currentGroup = group;
     }
 
-    public void EnableAccusationInteraction(NPCController npc)
+    public void EnableInteraction(NPCController npc)
     {
         _accusationInteractIcon.SetActive(true);
         _currentNPC = npc;
     }
+    public void EnableInteraction(MerchantController merchant)
+    {
+        interactIcon.SetActive(true);
+        _currentMerchant = merchant;
+    }
 
-    public void DisableInterraction()
+    public void DisableInteraction()
     {
         interactIcon.SetActive(false);
         currentGroup = null;
+    }
+    public void DisableMerchantInteraction()
+    {
+        interactIcon.SetActive(false);
+        _currentMerchant= null;
     }
 
     public void DisableAccusationInteraction()
@@ -122,6 +145,10 @@ public class InvestigationPlayer : MonoBehaviour
     private void InteractAccusation()
     {
         isInDialog = currentGroup.DisplayBubbleAccusation(_currentNPC);
+    }
+    private void InteractMerchant()
+    {
+        isInDialog = _currentMerchant.StartMerchantInteraction(this);
     }
 
 }
