@@ -281,6 +281,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 60365ecd-da1a-46eb-b26b-aa38a7880025
     m_ActionName: 'Player/Accuse[/Keyboard/x]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 38f493c8-1734-45db-911d-71e912a51358
+    m_ActionName: 'Player/ChooseMask[/Keyboard/v]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: 
@@ -299,11 +303,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoveSpeed: 5
-  availableMasks:
-  - No Mask
-  - Red Mask
-  - Blue Mask
-  - Green Mask
   interactIcon: {fileID: 8939190389451797303}
   _accusationInteractIcon: {fileID: 554574881222009437}
 --- !u!114 &5757962488437206913
@@ -334,7 +333,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7316204b259d154d97077a35975bb1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _currentMask: {fileID: 11400000, guid: ca83cddb5be19fb47a57a7c3cfc76372, type: 2}
+  currentMask: {fileID: 11400000, guid: ca83cddb5be19fb47a57a7c3cfc76372, type: 2}
 --- !u!1 &7504598514586641603
 GameObject:
   m_ObjectHideFlags: 0
