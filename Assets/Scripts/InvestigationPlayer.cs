@@ -12,7 +12,7 @@ public class InvestigationPlayer : MonoBehaviour
     [SerializeField] private string[] availableMasks = { "No Mask", "Red Mask", "Blue Mask", "Green Mask" };
     private int _currentMaskIndex = 0;
 
-    public string CurrentMaskFeature => availableMasks[_currentMaskIndex];
+    //public string CurrentMaskFeature => availableMasks[_currentMaskIndex];
 
     private InputAction moveAction;
     private InputAction interactAction;
@@ -31,6 +31,7 @@ public class InvestigationPlayer : MonoBehaviour
     {
         moveAction = playerInputs.Player.Move;
         interactAction = playerInputs.Player.Interact;
+        accuseAction = playerInputs.Player.Accuse;
         playerInputs.Player.Enable();
     }
 
@@ -56,6 +57,8 @@ public class InvestigationPlayer : MonoBehaviour
             CycleMask();
         }
         if (interactAction.triggered && currentGroup) { Interact(); }
+
+        if (accuseAction.triggered) { print("accuse"); } //todo
     }
 
     private void CycleMask()
@@ -63,35 +66,6 @@ public class InvestigationPlayer : MonoBehaviour
         _currentMaskIndex = (_currentMaskIndex + 1) % availableMasks.Length;
         Debug.Log($"Switched to mask: {CurrentMaskFeature}");
     }
-
-    /*
-
-    private void OnInteractPerformed(InputAction.CallbackContext context)
-    {
-        if (detectController == null) return;
-
-        NPCController npc = detectController.GetCurrentlySelectedNPC();
-        if (npc != null)
-        {
-            Debug.Log($"Asking clue to {npc.name}: {npc.Data.ClueText}");
-            DetectiveManager.Instance.AddClue(npc.Data.ClueText);
-        }
-    }
-
-    private void OnAccusePerformed(InputAction.CallbackContext context)
-    {
-        if (detectController == null) return;
-
-        NPCController npc = detectController.GetCurrentlySelectedNPC();
-        if (npc != null)
-        {
-            Debug.Log($"Accusing {npc.name}!");
-            DetectiveManager.Instance.AttemptAccusation(npc.Data.IsCulprit);
-        }
-
-        if (interactAction.triggered && currentGroup) { Interact(); }
-    }
-    */
 
     private void FixedUpdate()
     {

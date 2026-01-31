@@ -316,7 +316,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e93fdf0be7288944929f36ec24fb940, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _detectRadius: 5
+  _detectRadius: 1.5
   _currentlySelectedNPC: {fileID: 0}
   _currentlySelectedGroup: {fileID: 0}
   masksAreOK: 0

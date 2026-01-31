@@ -21,6 +21,8 @@ public class GameManager : MonoBehaviour
         }
         DontDestroyOnLoad(this.gameObject);
 
+        //Old IA guard
+        /*
         // Auto-Setup for Investigation Scene
         if (SceneManager.GetActiveScene().name == "ImplementationSceneVictor")
         {
@@ -28,7 +30,7 @@ public class GameManager : MonoBehaviour
             {
                 gameObject.AddComponent<InvestigationAutoSetup>();
             }
-        }
+        }*/
     }
 
    public void LooseGame()

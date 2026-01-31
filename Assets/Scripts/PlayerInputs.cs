@@ -108,7 +108,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": ""Press"",
-                    ""initialStateCheck"": true
+                    ""initialStateCheck"": false
                 },
                 {
                     ""name"": ""Accuse"",
@@ -116,7 +116,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""id"": ""60365ecd-da1a-46eb-b26b-aa38a7880025"",
                     ""expectedControlType"": """",
                     ""processors"": """",
-                    ""interactions"": ""Hold"",
+                    ""interactions"": ""Press"",
                     ""initialStateCheck"": false
                 }
             ],

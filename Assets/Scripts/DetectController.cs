@@ -9,7 +9,7 @@ public class DetectController : MonoBehaviour
 {
     #region VARIABLES
     [Header("Detect Parameters")]
-    [SerializeField] private float _detectRadius = 5f;
+    [SerializeField] private float _detectRadius = 1f;
 
     [Header("Detected elements")]
     [SerializeField] private NPCController _currentlySelectedNPC = null; //CAN BE NULL
