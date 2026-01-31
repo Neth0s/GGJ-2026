@@ -5,7 +5,7 @@ using UnityEngine;
 /// This script will govern the detection by the player towards NPCs and other shits like that
 /// </summary>
 [RequireComponent(typeof(PlayerMaskController))]
-[RequireComponent(typeof(PlayerDarkController))]
+[RequireComponent(typeof(DarkController))]
 public class DetectController : MonoBehaviour
 {
     #region VARIABLES
@@ -20,7 +20,7 @@ public class DetectController : MonoBehaviour
 
     private PlayerMaskController _playerMaskController;
     private InvestigationPlayer player;
-    private PlayerDarkController _playerDarkController;
+    private DarkController _playerDarkController;
     #endregion
 
     #region GETTERS AND SETTERS
@@ -31,7 +31,7 @@ public class DetectController : MonoBehaviour
     private void Awake()
     {
         _playerMaskController = GetComponent<PlayerMaskController>();
-        _playerDarkController = GetComponent<PlayerDarkController>();
+        _playerDarkController = GetComponent<DarkController>();
         player = GetComponent<InvestigationPlayer>();
     }
 
@@ -66,6 +66,7 @@ public class DetectController : MonoBehaviour
         GroupController groupController = ObtainGroupController();
         if(_currentlySelectedGroup != groupController)
         {
+            _currentlySelectedGroup?.GetAppearController().Hide(); //we're forced to put it here cause otherwise we'll lose the last group
             _currentlySelectedGroup = groupController; //Group CAN be null
             _currentlySelectedGroup?.TriggerGroupSelection();
             //TODO : regroup following ifs
@@ -73,12 +74,13 @@ public class DetectController : MonoBehaviour
             {
                 masksAreOK = _playerMaskController.ComparePlayerGroupMask(_currentlySelectedGroup.GetUpperMaskRequirements(), _currentlySelectedGroup.GetLowerMaskRequirements());
                 print("Compare result : " + masksAreOK);
-                _playerDarkController.DarkenPlayer();
+                _playerDarkController.Darken();
+                _currentlySelectedGroup.GetAppearController().Appear();
             }
             else 
             { 
                 masksAreOK = false;
-                _playerDarkController.BrightenPlayer();
+                _playerDarkController.Brighten();
             }
 
             if (_currentlySelectedGroup) player.EnableInterraction(_currentlySelectedGroup);

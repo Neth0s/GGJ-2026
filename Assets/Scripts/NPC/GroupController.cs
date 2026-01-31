@@ -7,6 +7,7 @@ using UnityEngine;
 /// <summary>
 /// Script of the Group
 /// </summary>
+[RequireComponent(typeof(AppearController))]
 public class GroupController : MonoBehaviour
 {
     #region VARIABLES
@@ -21,8 +22,12 @@ public class GroupController : MonoBehaviour
     private bool _isAccusing = false;
 
     private bool _hasWon = false;
+
+    //Appear controller
+    private AppearController _zoneAppearController;
     #endregion
 
+    public AppearController GetAppearController() { return _zoneAppearController; }
 
     public void TriggerGroupSelection()
     {
@@ -33,6 +38,7 @@ public class GroupController : MonoBehaviour
     {
         bubbleDialog.SetActive(false);
         textBubble = bubbleDialog.GetComponentInChildren<TextMeshPro>();
+        _zoneAppearController = GetComponent<AppearController>();
     }
 
     public bool DisplayBubble()
