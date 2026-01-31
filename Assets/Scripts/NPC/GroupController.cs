@@ -8,6 +8,7 @@ public class GroupController : MonoBehaviour
     #region VARIABLES
     [Header("Group Data")]
     [SerializeField] private GroupData _data;
+    public GroupData Data => _data;
     #endregion
 
     public void TriggerGroupSelection()

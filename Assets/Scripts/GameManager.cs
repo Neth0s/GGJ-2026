@@ -20,6 +20,15 @@ public class GameManager : MonoBehaviour
             instance = this;
         }
         DontDestroyOnLoad(this.gameObject);
+
+        // Auto-Setup for Investigation Scene
+        if (SceneManager.GetActiveScene().name == "ImplementationSceneVictor")
+        {
+            if (gameObject.GetComponent<InvestigationAutoSetup>() == null)
+            {
+                gameObject.AddComponent<InvestigationAutoSetup>();
+            }
+        }
     }
 
    public void LooseGame()

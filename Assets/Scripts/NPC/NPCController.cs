@@ -8,6 +8,7 @@ public class NPCController : MonoBehaviour
     #region VARIABLES
     [Header("NPC Data")]
     [SerializeField] private NPCData _data;
+    public NPCData Data => _data;
 
     [SerializeField] private Material _highlightMaterial; //TODO : might be removed (material highlight)
     
