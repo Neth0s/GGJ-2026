@@ -6,8 +6,8 @@ public class WaterScript : MonoBehaviour
 
     private void Awake()
     {
-        #if UNITY_WEBGL
+#if UNITY_WEBGL && !UNITY_EDITOR
         GetComponent<MeshRenderer>().material = webglMaterial;
-        #endif
+#endif
     }
 }
