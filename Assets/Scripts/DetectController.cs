@@ -15,7 +15,7 @@ public class DetectController : MonoBehaviour
     [Header("Detected elements")]
     [SerializeField] private NPCController _currentlySelectedNPC = null; //CAN BE NULL
     [SerializeField] private GroupController _currentlySelectedGroup = null; //CAN BE NULL
-
+    [SerializeField] private MerchantController _currentlySelectedMerchant = null; //CAN BE NULL
     public bool masksAreOK = false;
 
     private PlayerMaskController _playerMaskController;
@@ -55,7 +55,7 @@ public class DetectController : MonoBehaviour
             closestNPC?.TriggerHightlight();
             if (closestNPC)
             {
-                player.EnableAccusationInteraction(closestNPC);
+                player.EnableInteraction(closestNPC);
             }
             else
             {
@@ -83,8 +83,22 @@ public class DetectController : MonoBehaviour
                 _playerDarkController.Brighten();
             }
 
-            if (_currentlySelectedGroup) player.EnableInterraction(_currentlySelectedGroup);
-            else player.DisableInterraction();
+            if (_currentlySelectedGroup) player.EnableInteraction(_currentlySelectedGroup);
+            else player.DisableInteraction();
+        }
+
+        MerchantController merchantController = ObtainMerchantController();
+        if (_currentlySelectedMerchant != merchantController)
+        {
+            _currentlySelectedMerchant = merchantController;
+            if (_currentlySelectedMerchant != null)
+            {
+                player.EnableInteraction(_currentlySelectedMerchant);
+            }
+            else
+            {
+                player.DisableInteraction();
+            }
         }
     }
 
@@ -146,6 +160,24 @@ public class DetectController : MonoBehaviour
         }
         return null;
     }
+    #endregion
 
+    #region DETECT MERCHANT
+    /// <summary>
+    /// Function that will return the merchant controller if found
+    /// </summary>
+    /// <returns></returns>
+    private MerchantController ObtainMerchantController()
+    {
+        Collider[] collidersDetected = Physics.OverlapSphere(gameObject.transform.position, _detectRadius);
+        foreach (var collider in collidersDetected)
+        {
+            if (collider.gameObject.GetComponent<MerchantController>() != null)
+            {
+                return collider.gameObject.GetComponent<MerchantController>();
+            }
+        }
+        return null;
+    }
     #endregion
 }

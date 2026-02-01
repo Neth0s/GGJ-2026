@@ -27,7 +27,7 @@ public class PlayerMaskController : MonoBehaviour
     private void SelectStartingMask()
     {
         _playerInventoryController = GetComponent<PlayerInventoryController>();
-        List<MaskObject> maskList = _playerInventoryController.GetListMasksInInventroy();
+        List<MaskObject> maskList = _playerInventoryController.GetListMasksInInventory();
         if (maskList != null && maskList.Count > 0)
         {
             MaskPart lowerPart = maskList[0].GetLowerPart();
