@@ -84,6 +84,11 @@ public class GuardNew : MonoBehaviour
             gaugeDarkSprite.enabled = false;
             gaugeDarkSprite.gameObject.SetActive(false);
         }
+
+        if (!_guardIsImmobile)
+        {
+            GetComponentInChildren<Animator>().SetBool("WalkBool", true);
+        }
     }
 
     void Update()
@@ -104,9 +109,11 @@ public class GuardNew : MonoBehaviour
                     float currentFacing = transform.localScale.x;
                     if ((direction.x > 0 && currentFacing < 0) || (direction.x < 0 && currentFacing > 0))
                     {
-                        Vector3 scale = transform.localScale;
-                        scale.x *= -1;
-                        transform.localScale = scale;
+                        //Vector3 scale = transform.localScale;
+                        //scale.x *= -1;
+                        //transform.localScale = scale;
+                        int rotation = direction.x < 0 ? 0 : 180;
+                        this.transform.localRotation = Quaternion.Euler(0, rotation, 0);
                     }
                 }
 
