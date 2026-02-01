@@ -17,7 +17,7 @@ public class GroupController : MonoBehaviour
     //dialog
     [SerializeField] private GameObject bubbleDialog;
     private TextMeshPro textBubble;
-    private int currentDialogIndex = 0;
+    public int currentDialogIndex = 0;
 
     private bool _isAccusing = false;
 
@@ -111,5 +111,11 @@ public class GroupController : MonoBehaviour
     public string GetGroupIndice()
     {
         return _data.indice;
+    }
+
+    public void ForceStopDialog()
+    {
+        currentDialogIndex = 0;
+        bubbleDialog.SetActive(false);
     }
 }

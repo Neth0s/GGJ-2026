@@ -263,6 +263,8 @@ public class GuardNew : MonoBehaviour
             playerRb.linearVelocity = Vector3.zero;
             playerRb.angularVelocity = Vector3.zero;
         }
+
+        playerTransform.gameObject.GetComponent<InvestigationPlayer>().GetTeleported();
     }
 
     private void OnDrawGizmosSelected()

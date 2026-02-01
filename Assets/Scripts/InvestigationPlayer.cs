@@ -212,6 +212,18 @@ public class InvestigationPlayer : MonoBehaviour
         isInDialog = currentGroup.DisplayBubbleAccusation(_currentNPC);
     }
 
+    //vraiment très moche
+    public void GetTeleported()
+    {
+        isInDialog = false;
+        if (currentGroup) currentGroup.ForceStopDialog();
+        isLookingForIndice = false;
+        isChoosingMask = false;
+        UIManager.Instance.DisplayChooseMask(false);
+        UIManager.Instance.DisplayIndice(false,indices);
+    }
+
+
     #region MERCHANT RELATED
     /// <summary>
     /// Will trigger the merchant's interaction
