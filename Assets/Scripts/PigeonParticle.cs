@@ -25,8 +25,8 @@ public class PigeonParticle : MonoBehaviour
             {
                 audioSource.PlayOneShot(pigeonsAudioClip, 1);
             }
-        }
-            foreach (GameObject p in pigeonSprites) {
+            foreach (GameObject p in pigeonSprites)
+            {
                 p.SetActive(false);
             }
             canFlyAway = false;
