@@ -86,7 +86,6 @@ public class GroupController : MonoBehaviour
             {
                 textBubble.text = GameParameters.ACCUSATIONS_CORRECT[Random.Range(0, GameParameters.ACCUSATIONS_CORRECT.Length)];
                 _hasWon = true;
-                print("------ I WON !!!! WOOP WOOP !!!! ------");
             }
             else 
             {
