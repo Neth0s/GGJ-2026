@@ -15,7 +15,11 @@ MonoBehaviour:
   dialogs:
   - Je peux vous aider ?
   - Une malfaitrice ?!
-  - 
+  - "Oui, je me souviens de quelqu'un qui ressemble \xE0 cette description. "
+  - "Je n'ai plus tous les d\xE9tails en t\xEAte, mais son masque \xE9tait particulier
+    :"
+  - Le haut et le bas n'avaient pas l'air d'aller ensemble.
+  - "Une v\xE9ritable faute de go\xFBt si vous voulez mon avis..."
   indice: Son masque n'est pas uniforme
   MaskRequirementsUpper:
   - {fileID: 11400000, guid: a707ba1efd0de5f45b88189cff1f9a1a, type: 2}
