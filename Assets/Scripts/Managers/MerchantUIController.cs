@@ -87,7 +87,7 @@ public class MerchantUIController : MonoBehaviour
     private List<MaskObject> ObtainListMasksNotInPlayerInventory()
     {
         List<MaskObject> playerInventoryMasks = PlayerInventoryController.Instance.GetListMasksInInventory();
-        List<MaskObject> listReturn = _merchantInventory;
+        List<MaskObject> listReturn = new List<MaskObject>(_merchantInventory);
         foreach(var mask in playerInventoryMasks)
         {
             listReturn.Remove(mask);
