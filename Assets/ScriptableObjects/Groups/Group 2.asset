@@ -12,8 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eddcce320353dd24b98477a8a260059d, type: 3}
   m_Name: Group 2
   m_EditorClassIdentifier: 
-  dialogs: []
-  indice: 
+  dialogs:
+  - "Qu\xE9 pasa?"
+  - Un fauteur de trouble, ici ?
+  - Maintenant que vous le dites...
+  - Je crois avoir vu passer quelqu'un en tenue d'arlequin, elle m'avait l'air un
+    peu louche
+  - Pourvu qu'elle ne perturbe pas ce carnaval!
+  indice: Elle porte une tenue d'arlequin
   MaskRequirementsUpper:
   - {fileID: 11400000, guid: 048562a77c854024997a621422e9933c, type: 2}
   MaskRequirementsLower:
