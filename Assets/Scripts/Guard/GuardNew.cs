@@ -8,7 +8,8 @@ public class GuardNew : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private Vector3[] waypoints;
     [SerializeField] private float minPauseTime, maxPauseTime;
-    
+    [SerializeField] private bool _guardIsImmobile = false;
+
     [Header("Detection")]
     [SerializeField] private float detectionRadius = 5f;
     
@@ -87,39 +88,42 @@ public class GuardNew : MonoBehaviour
     {
         CheckDetection();
 
-        if (isWalking && !isDetectingPlayer)
+        if (!_guardIsImmobile)
         {
-            Vector3 target = waypoints[currentWaypoint];
-            Vector3 direction = (target - transform.position).normalized;
-
-            rb.MovePosition(rb.position + direction * speed * Time.deltaTime);
-
-            if (Mathf.Abs(direction.x) > 0.5f)
+            if (isWalking && !isDetectingPlayer)
             {
-                float currentFacing = transform.localScale.x;
-                if ((direction.x > 0 && currentFacing < 0) || (direction.x < 0 && currentFacing > 0))
+                Vector3 target = waypoints[currentWaypoint];
+                Vector3 direction = (target - transform.position).normalized;
+
+                rb.MovePosition(rb.position + direction * speed * Time.deltaTime);
+
+                if (Mathf.Abs(direction.x) > 0.5f)
                 {
-                    Vector3 scale = transform.localScale;
-                    scale.x *= -1;
-                    transform.localScale = scale;
+                    float currentFacing = transform.localScale.x;
+                    if ((direction.x > 0 && currentFacing < 0) || (direction.x < 0 && currentFacing > 0))
+                    {
+                        Vector3 scale = transform.localScale;
+                        scale.x *= -1;
+                        transform.localScale = scale;
+                    }
+                }
+
+                if (Vector3.Distance(transform.position, target) < 0.05f)
+                {
+                    transform.position = target;
+                    isWalking = false;
+                    pauseDuration = Random.Range(minPauseTime, maxPauseTime);
+                    pauseTimer = 0f;
                 }
             }
-
-            if (Vector3.Distance(transform.position, target) < 0.05f)
+            else if (!isWalking && !isDetectingPlayer)
             {
-                transform.position = target;
-                isWalking = false;
-                pauseDuration = Random.Range(minPauseTime, maxPauseTime);
-                pauseTimer = 0f;
-            }
-        }
-        else if (!isWalking && !isDetectingPlayer)
-        {
-            pauseTimer += Time.deltaTime;
-            if (pauseTimer >= pauseDuration)
-            {
-                currentWaypoint = (currentWaypoint + 1) % waypoints.Length;
-                isWalking = true;
+                pauseTimer += Time.deltaTime;
+                if (pauseTimer >= pauseDuration)
+                {
+                    currentWaypoint = (currentWaypoint + 1) % waypoints.Length;
+                    isWalking = true;
+                }
             }
         }
 

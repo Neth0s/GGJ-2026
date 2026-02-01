@@ -12987,14 +12987,6 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 7482667652216324306, guid: e8d32ca13ca29a84a8196ea8712ccb74, type: 3}
-    - target: {fileID: 3204353144761123132, guid: 7cb60b4929621444f9bdacefc0beb7c4, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3204353144761123132, guid: 7cb60b4929621444f9bdacefc0beb7c4, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.953
-      objectReference: {fileID: 0}
     - target: {fileID: 3501924518585477868, guid: 7cb60b4929621444f9bdacefc0beb7c4, type: 3}
       propertyPath: maxPauseTime
       value: 0.38
@@ -13090,14 +13082,6 @@ PrefabInstance:
     - target: {fileID: 8013934486135390199, guid: 7cb60b4929621444f9bdacefc0beb7c4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8206860427441639636, guid: 7cb60b4929621444f9bdacefc0beb7c4, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8206860427441639636, guid: 7cb60b4929621444f9bdacefc0beb7c4, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.953
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
