@@ -8,8 +8,11 @@ public class MusicManager : MonoBehaviour
 
     [SerializeField] private AudioSource musicAudioSource;
     [SerializeField] private AudioSource musicAccusedSource;
+    [SerializeField] private AudioSource guardSource;
     [SerializeField] private AudioClip musicClip;
     [SerializeField] private AudioClip accusedClip;
+    [SerializeField] private AudioClip guardSuspicious;
+    [SerializeField] private AudioClip guardCatch;
 
     private void Awake()
     {
@@ -41,18 +44,37 @@ public class MusicManager : MonoBehaviour
         musicAudioSource.Play();
     }
 
+    public void PlayGuardSuspiciousSound()
+    {
+        if (!guardSource.isPlaying)
+        {
+            musicAudioSource.volume = 0.5f;
+            guardSource.PlayOneShot(guardSuspicious);
+            StartCoroutine(waitForSound(guardSource));
+        }
+    }
+
+    public void PlayGuardCatchSound()
+    {
+        if (!guardSource.isPlaying)
+        {
+            musicAudioSource.volume = 0.5f;
+            guardSource.PlayOneShot(guardCatch);
+            StartCoroutine(waitForSound(guardSource));
+        }
+    }
 
     public void PlayAccuseAndLoop()
     {
         musicAudioSource.volume = 0.1f;
         musicAccusedSource.PlayOneShot(accusedClip);
-        StartCoroutine(waitForSound());
+        StartCoroutine(waitForSound(musicAccusedSource));
     }
 
-    private IEnumerator waitForSound()
+    private IEnumerator waitForSound(AudioSource audioSource)
     {
         //Wait Until Sound has finished playing
-        while (musicAccusedSource.isPlaying)
+        while (audioSource.isPlaying)
         {
             yield return null;
         }

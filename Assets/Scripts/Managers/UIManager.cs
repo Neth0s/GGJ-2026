@@ -33,23 +33,24 @@ public class UIManager : MonoBehaviour
             instance = this;
         }
         DontDestroyOnLoad(this.gameObject);
+        chooseMaskButtonUI.SetActive(false);
+        indicePanelButtonUI.SetActive(false);
     }
 
     private void Start()
     {
         chooseMaskPanel.SetActive(false);
-        _merchantUIController.gameObject.SetActive(false);
-        chooseMaskButtonUI.SetActive(false);
-        indicePanelButtonUI.SetActive(false);
+        _merchantUIController.gameObject.SetActive(false);  
     }
 
-    private void OnLevelWasLoaded(int level)
+    /// <summary>
+    /// Function to change the display status of the two buttons of the UI
+    /// </summary>
+    /// <param name="status"></param>
+    public void DisplayButtonsUI(bool status)
     {
-        if (level>1)
-        {
-            chooseMaskButtonUI.SetActive(true);
-            indicePanelButtonUI.SetActive(true);
-        }
+        chooseMaskButtonUI.SetActive(status);
+        indicePanelButtonUI.SetActive(status);
     }
 
     public void DisplayChooseMask(bool display)

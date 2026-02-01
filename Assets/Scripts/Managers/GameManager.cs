@@ -23,12 +23,12 @@ public class GameManager : MonoBehaviour
 
     public void LooseGame()
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene("EndScene");
     }
     
     public void WinGame()
     {
-        SceneManager.LoadScene(3);
+        SceneManager.LoadScene("EndVictoryScene");
     }
 
     
