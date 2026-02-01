@@ -20,8 +20,9 @@ MonoBehaviour:
   - "Il y a un code vestimentaire tr\xE8s strict \xE0 respecter pour pouvoir faire
     partie de ce carnaval."
   - "Par exemple, dans ce groupe nous portons tous des masques v\xE9nitiens"
-  - "Si vous voulez vous int\xE9grer dans un groupe, vous devez absolument porter
-    un masque qui a au moins un point commun avec les autres masques du groupe"
+  - "Si vous voulez vous int\xE9grer dans un groupe, c'est tr\xE8s simple :"
+  - Vous devez porter un masque qui a au moins un point commun avec tous les autres
+    masques du groupe.
   - "Sinon vous pourriez vous faire \xE9jecter par les vigies!"
   - Ciao!
   indice: 

@@ -43,13 +43,10 @@ public class GroupController : MonoBehaviour
 
     public bool DisplayBubble()
     {
+        bubbleDialog.SetActive(true);
+
         if (currentDialogIndex < _data.dialogs.Count)
         {           
-            if (bubbleDialog.activeSelf)
-            {
-                bubbleDialog.GetComponentInChildren<Animator>().SetTrigger("NewBubble");
-            }
-            else bubbleDialog.SetActive(true);
             textBubble.text = _data.dialogs[currentDialogIndex];
             currentDialogIndex++;
             return true;
