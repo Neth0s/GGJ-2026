@@ -3,19 +3,13 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
-
-    public void LaunchLevel1()
+    
+    public void LaunchLevel(int levelIndex)
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(levelIndex);
     }
-
-    public void LaunchLevel2()
+    public void LaunchLevel(string levelName)
     {
-        SceneManager.LoadScene(1);
-    }
-
-    public void LaunchLevel3()
-    {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(levelName);
     }
 }
