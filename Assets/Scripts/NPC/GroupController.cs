@@ -43,11 +43,15 @@ public class GroupController : MonoBehaviour
 
     public bool DisplayBubble()
     {
-        if (currentDialogIndex < _data.indices.Count)
-        {
-            textBubble.text = _data.indices[currentDialogIndex];
+        if (currentDialogIndex < _data.dialogs.Count)
+        {           
+            if (bubbleDialog.activeSelf)
+            {
+                bubbleDialog.GetComponentInChildren<Animator>().SetTrigger("NewBubble");
+            }
+            else bubbleDialog.SetActive(true);
+            textBubble.text = _data.dialogs[currentDialogIndex];
             currentDialogIndex++;
-            bubbleDialog.SetActive(true);
             return true;
         }
         else
@@ -102,5 +106,10 @@ public class GroupController : MonoBehaviour
     public List<MaskProperty> GetLowerMaskRequirements()
     {
         return _data.MaskRequirementsLower;
+    }
+
+    public string GetGroupIndice()
+    {
+        return _data.indice;
     }
 }

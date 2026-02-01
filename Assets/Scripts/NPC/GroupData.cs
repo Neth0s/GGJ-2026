@@ -8,9 +8,8 @@ using UnityEngine;
 public class GroupData : ScriptableObject
 {
 
-    [SerializeField, Tooltip("The feature that is common to this group (and required for the player to blend in).")] public string CommonFeature;
-    [SerializeField] public List<string> indices = new List<string>();
-
+    [SerializeField] public List<string> dialogs = new List<string>();
+    [SerializeField] public string indice;
 
     [SerializeField] public List<MaskProperty> MaskRequirementsUpper = new List<MaskProperty>();
     [SerializeField] public List<MaskProperty> MaskRequirementsLower = new List<MaskProperty>();

@@ -8,11 +8,14 @@ using UnityEngine.UI;
 public class MaskChoiceController : MonoBehaviour
 {
     #region VARIABLES
-    [Header("")]
+    [Header("Mask Choice elements")]
     [SerializeField] private List<MaskPart> upperParts = new List<MaskPart>(); //to change -> get this list on player inventory
     [SerializeField] private Image upperImage;
     [SerializeField] private List<MaskPart> lowerParts = new List<MaskPart>(); //to change -> get this list on player inventory
     [SerializeField] private Image lowerImage;
+
+    [Header("Player inventory display elements")]
+    [SerializeField] private List<MaskUIElementController> _playerInventoryDisplays = new List<MaskUIElementController>();
 
     private MaskPart currentDisplayUpperPart;
     private int currentIndexUpperPart;
@@ -28,7 +31,7 @@ public class MaskChoiceController : MonoBehaviour
     /// </summary>
     private void RecoverDataFromPlayerInventory()
     {
-        _playerInventoryController = GameObject.FindWithTag("Player").GetComponent<PlayerInventoryController>();
+        _playerInventoryController = PlayerInventoryController.Instance;
         upperParts = _playerInventoryController.GetListUpperPartsFromInventory();
         lowerParts = _playerInventoryController.GetListLowerPartsFromInventory();
     }
@@ -40,6 +43,7 @@ public class MaskChoiceController : MonoBehaviour
     {
         playerMaskController = GameObject.FindWithTag("Player").GetComponent<PlayerMaskController>(); //rip in peace le code
         RecoverDataFromPlayerInventory(); //we recover (and update) the code 
+        UpdatePlayerInventoryDisplay(); //we update the player inventory on the page
 
         currentDisplayUpperPart = playerMaskController.currentMask.GetUpperPart();
         upperImage.sprite = currentDisplayUpperPart.MaskSprite;
@@ -50,6 +54,19 @@ public class MaskChoiceController : MonoBehaviour
         currentIndexUpperPart = upperParts.IndexOf(currentDisplayLowerPart);
     }
 
+    /// <summary>
+    /// Will update the visuals of the player's inventory
+    /// </summary>
+    private void UpdatePlayerInventoryDisplay()
+    {
+        _playerInventoryController = PlayerInventoryController.Instance;
+        List<MaskObject> maskList = _playerInventoryController.GetListMasksInInventory();
+        if (maskList.Count != _playerInventoryDisplays.Count) { Debug.LogError("ERROR : this shouldn't happen right now."); }
+        for(int ite=0; ite<maskList.Count; ite++)
+        {
+            _playerInventoryDisplays[ite].UpdateMaskVisual(maskList[ite]);
+        }
+    }
 
     #region BUTTON FUNCTIONS
     public void UpperLeftButton()

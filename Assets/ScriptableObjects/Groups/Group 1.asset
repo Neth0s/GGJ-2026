@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eddcce320353dd24b98477a8a260059d, type: 3}
+  m_Name: Group 1
+  m_EditorClassIdentifier: 
+  dialogs:
+  - Buongiorno!
+  - "Vous avez l\u2019air nouvelle ici~"
+  - Comment je sais ?
+  - "C\u2019est une question de style, \xE9videmment~"
+  - "Il y a un code vestimentaire tr\xE8s strict \xE0 respecter pour pouvoir faire
+    partie de ce carnaval."
+  - "Par exemple, dans ce groupe nous portons tous des masques v\xE9nitiens"
+  - "Si vous voulez vous int\xE9grer dans un groupe, vous devez absolument porter
+    un masque qui a au moins un point commun avec les autres masques du groupe"
+  - "Sinon vous pourriez vous faire \xE9jecter par les vigies!"
+  - Ciao!
+  indice: 
+  MaskRequirementsUpper:
+  - {fileID: 11400000, guid: a707ba1efd0de5f45b88189cff1f9a1a, type: 2}
+  MaskRequirementsLower:
+  - {fileID: 11400000, guid: a707ba1efd0de5f45b88189cff1f9a1a, type: 2}

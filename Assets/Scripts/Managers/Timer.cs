@@ -15,7 +15,10 @@ public class Timer : MonoBehaviour
 
     [SerializeField] private float timerDuration = 300f;
     [SerializeField] private TextMeshProUGUI textTimer;
+    
     private float currentTime;
+    private int minutes;
+    private int seconds;
 
     private void Start()
     {
@@ -29,7 +32,11 @@ public class Timer : MonoBehaviour
         {
             GameManager.Instance.LooseGame();
         }
-        textTimer.text = ((int)currentTime).ToString();
+
+        minutes = Mathf.FloorToInt(currentTime / 60F);
+        seconds = Mathf.FloorToInt(currentTime - minutes * 60);
+
+        textTimer.text = string.Format("{0:0}:{1:00}", minutes, seconds);
     }
 
     public void AddTime(float time)
