@@ -132,6 +132,7 @@ public class InvestigationPlayer : MonoBehaviour
     {
         interactIcon.SetActive(false);
         currentGroup = null;
+        _currentNPC = null;
     }
     public void DisableMerchantInteraction()
     {
