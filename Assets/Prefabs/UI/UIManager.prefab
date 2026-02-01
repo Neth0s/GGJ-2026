@@ -3182,7 +3182,7 @@ PrefabInstance:
     - target: {fileID: 4676449357816833565, guid: 40190422e84bf8a4998f5e0543d7486e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 7207766560344239878}
+      objectReference: {fileID: 3755262315281257779}
     - target: {fileID: 4676449357816833565, guid: 40190422e84bf8a4998f5e0543d7486e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: OnMerchantInventoryButtonClicked
@@ -3424,7 +3424,7 @@ PrefabInstance:
     - target: {fileID: 4676449357816833565, guid: 40190422e84bf8a4998f5e0543d7486e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 7207766560344239878}
+      objectReference: {fileID: 6167134561373280353}
     - target: {fileID: 4676449357816833565, guid: 40190422e84bf8a4998f5e0543d7486e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: OnMerchantInventoryButtonClicked
@@ -3553,7 +3553,7 @@ PrefabInstance:
     - target: {fileID: 4676449357816833565, guid: 40190422e84bf8a4998f5e0543d7486e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 7207766560344239878}
+      objectReference: {fileID: 6045999967352537053}
     - target: {fileID: 4676449357816833565, guid: 40190422e84bf8a4998f5e0543d7486e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: OnMerchantInventoryButtonClicked
@@ -3795,7 +3795,7 @@ PrefabInstance:
     - target: {fileID: 4676449357816833565, guid: 40190422e84bf8a4998f5e0543d7486e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 7207766560344239878}
+      objectReference: {fileID: 5347261360644052807}
     - target: {fileID: 4676449357816833565, guid: 40190422e84bf8a4998f5e0543d7486e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: OnMerchantInventoryButtonClicked
@@ -4062,6 +4062,10 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4676449357816833565, guid: 40190422e84bf8a4998f5e0543d7486e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 7207766560344239878}
+    - target: {fileID: 4676449357816833565, guid: 40190422e84bf8a4998f5e0543d7486e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: OnMerchantInventoryButtonClicked
       objectReference: {fileID: 0}
@@ -4302,14 +4306,6 @@ PrefabInstance:
     - target: {fileID: 4676449357816833565, guid: 40190422e84bf8a4998f5e0543d7486e, type: 3}
       propertyPath: m_Navigation.m_WrapAround
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4676449357816833565, guid: 40190422e84bf8a4998f5e0543d7486e, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 7207766560344239878}
-    - target: {fileID: 4676449357816833565, guid: 40190422e84bf8a4998f5e0543d7486e, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnMerchantInventoryButtonClicked
       objectReference: {fileID: 0}
     - target: {fileID: 6312450636924566318, guid: 40190422e84bf8a4998f5e0543d7486e, type: 3}
       propertyPath: m_Name
