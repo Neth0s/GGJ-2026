@@ -72,7 +72,7 @@ public class PlayerMaskController : MonoBehaviour
         foreach (MaskProperty groupProp in upperMaskReqs)
         {
             bool isInMaskPart = false;
-            foreach(MaskProperty playerMaskPartProp in currentMask.GetUpperPart().MaskProperties)
+            foreach (MaskProperty playerMaskPartProp in currentMask.GetUpperPart().MaskProperties)
             {
                 if(playerMaskPartProp == groupProp)
                 {
@@ -82,6 +82,7 @@ public class PlayerMaskController : MonoBehaviour
             }
             if (!isInMaskPart)
             {
+                Debug.Log("Failed on upper mask part property: " + groupProp);
                 return false;
             }
         }
@@ -99,6 +100,7 @@ public class PlayerMaskController : MonoBehaviour
             }
             if (!isInMaskPart)
             {
+                Debug.Log("Failed on lower mask part property: " + groupProp);
                 return false;
             }
         }

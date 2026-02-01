@@ -79,6 +79,7 @@ public class DetectController : MonoBehaviour
                 {
                     _playerDarkController.Darken();
                 }
+                
                 _currentlySelectedGroup.GetAppearController().Appear();
             }
             else 
