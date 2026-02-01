@@ -38,6 +38,7 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         chooseMaskPanel.SetActive(false);
+        _merchantUIController.gameObject.SetActive(false);
     }
 
     public void DisplayChooseMask(bool display)

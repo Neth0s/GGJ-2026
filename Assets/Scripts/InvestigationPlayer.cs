@@ -157,6 +157,11 @@ public class InvestigationPlayer : MonoBehaviour
     {
         isInDialog = currentGroup.DisplayBubbleAccusation(_currentNPC);
     }
+
+    #region MERCHANT RELATED
+    /// <summary>
+    /// Will trigger the merchant's interaction
+    /// </summary>
     private void InteractMerchant()
     {
         UIManager.Instance.DisplayMerchantUI(true);
@@ -164,11 +169,14 @@ public class InvestigationPlayer : MonoBehaviour
         //isInDialog = _currentMerchant.StartMerchantInteraction(this);
     }
 
+    /// <summary>
+    /// Will deactivate the merchant's interaction
+    /// </summary>
     public void DeactivateMerchantInteraction()
     {
         UIManager.Instance.DisplayMerchantUI(false);
         _currentMerchant = null;
         isInDialog = false;
     }
-
+    #endregion
 }
