@@ -29,7 +29,6 @@ public class MusicManager : MonoBehaviour
     {
         musicAudioSource.clip = musicClip;
         musicAudioSource.loop = true;
-        musicAudioSource.Play();
     }
 
     public void StopMusic()
