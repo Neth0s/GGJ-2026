@@ -10,7 +10,7 @@ public class GuardNew : MonoBehaviour
     [SerializeField] private float minPauseTime, maxPauseTime;
     
     [Header("Detection")]
-    [SerializeField] private float detectionRadius = 10f;
+    [SerializeField] private float detectionRadius = 20f;
     
     [Header("Gauge")]
     [SerializeField] private float gaugeIncreaseSpeed = 20f;
