@@ -10,7 +10,9 @@ public class UIManager : MonoBehaviour
     #region VARIABLES
     [Header("UI Variables")]
     [SerializeField] private GameObject chooseMaskPanel;
+    [SerializeField] private GameObject chooseMaskButtonUI;
     [SerializeField] private GameObject indicePanel;
+    [SerializeField] private GameObject indicePanelButtonUI;
 
     [SerializeField] private MerchantUIController _merchantUIController;
     #endregion
@@ -41,6 +43,8 @@ public class UIManager : MonoBehaviour
     public void DisplayChooseMask(bool display)
     {
         chooseMaskPanel.SetActive(display);
+        indicePanelButtonUI.SetActive(!display);
+        chooseMaskButtonUI.SetActive(!display);
         if (display) chooseMaskPanel.GetComponent<MaskChoiceController>().InitializeUI();
               
     }
@@ -48,14 +52,17 @@ public class UIManager : MonoBehaviour
     public void DisplayIndice(bool display, List<string> indices)
     {
         indicePanel.SetActive(display);
+        indicePanelButtonUI.SetActive(!display);
+        chooseMaskButtonUI.SetActive(!display);
         if (display) {
-            string textToDisplay = "";
+            string textToDisplay = "Indices :" + '\n';
             foreach (string indice in indices)
             {
-                textToDisplay += indice + '\n';
+                textToDisplay += '-' + indice + '\n';
             }
             indicePanel.GetComponentInChildren<TextMeshProUGUI>().text = textToDisplay;
         }
+        
     }
 
     public void DisplayMerchantUI(bool display)
