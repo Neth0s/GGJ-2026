@@ -75,11 +75,6 @@ public class InvestigationPlayer : MonoBehaviour
             {
                 InteractMerchant();
             }
-            else
-            {
-                _currentMerchant.EndMerchantInteraction();
-                isInDialog = false;
-            }
         }
 
         
@@ -148,7 +143,9 @@ public class InvestigationPlayer : MonoBehaviour
     }
     private void InteractMerchant()
     {
-        isInDialog = _currentMerchant.StartMerchantInteraction(this);
+        UIManager.Instance.DisplayMerchantUI(true);
+        isInDialog = true;
+        //isInDialog = _currentMerchant.StartMerchantInteraction(this);
     }
 
 }

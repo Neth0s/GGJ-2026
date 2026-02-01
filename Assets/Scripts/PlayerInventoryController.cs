@@ -8,11 +8,21 @@ using UnityEngine;
 /// </summary>
 public class PlayerInventoryController : MonoBehaviour
 {
+    #region SINGLETON DESIGN PATTERN
+    public static PlayerInventoryController Instance;
+
+    private void Awake()
+    {
+        if (Instance == null) Instance = this;
+        else Destroy(gameObject);
+    }
+    #endregion
+
     #region VARIABLES
     [SerializeField] private List<MaskObject> _masksInInventory = new List<MaskObject>();
     #endregion
 
-    public List<MaskObject> GetListMasksInInventroy()
+    public List<MaskObject> GetListMasksInInventory()
     {
         return _masksInInventory; 
     }

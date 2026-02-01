@@ -399,6 +399,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ddcd0333af64e84583fd4f3ce07cae4, type: 3}
+--- !u!114 &353239241 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3755262315281257779, guid: 4cfc9220748984c4eb1711713595e90d, type: 3}
+  m_PrefabInstance: {fileID: 2142419965}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1069a15192718d749b4b3c90b427d83a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &362896420
 GameObject:
   m_ObjectHideFlags: 0
@@ -573,6 +584,28 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 1
+--- !u!114 &436974875 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7594961421188063398, guid: 4cfc9220748984c4eb1711713595e90d, type: 3}
+  m_PrefabInstance: {fileID: 2142419965}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1069a15192718d749b4b3c90b427d83a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &546313420 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6045999967352537053, guid: 4cfc9220748984c4eb1711713595e90d, type: 3}
+  m_PrefabInstance: {fileID: 2142419965}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1069a15192718d749b4b3c90b427d83a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &739775460
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -663,6 +696,17 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 687c4c9d760ea5e49b8914759b278d80, type: 3}
+--- !u!114 &754135811 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5347261360644052807, guid: 4cfc9220748984c4eb1711713595e90d, type: 3}
+  m_PrefabInstance: {fileID: 2142419965}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1069a15192718d749b4b3c90b427d83a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -919,6 +963,17 @@ Transform:
   - {fileID: 1245955024}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1170635974 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7207766560344239878, guid: 4cfc9220748984c4eb1711713595e90d, type: 3}
+  m_PrefabInstance: {fileID: 2142419965}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1069a15192718d749b4b3c90b427d83a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1245955023
 GameObject:
   m_ObjectHideFlags: 0
@@ -1228,6 +1283,17 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1499317028 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6167134561373280353, guid: 4cfc9220748984c4eb1711713595e90d, type: 3}
+  m_PrefabInstance: {fileID: 2142419965}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1069a15192718d749b4b3c90b427d83a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1630402815
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1596,10 +1662,42 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 171373781983689784, guid: 4cfc9220748984c4eb1711713595e90d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1499317028}
+    - target: {fileID: 171373781983689784, guid: 4cfc9220748984c4eb1711713595e90d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnMerchantInventoryButtonClicked
+      objectReference: {fileID: 0}
+    - target: {fileID: 209155238181444410, guid: 4cfc9220748984c4eb1711713595e90d, type: 3}
+      propertyPath: _merchantUIController
+      value: 
+      objectReference: {fileID: 1479414957}
+    - target: {fileID: 258925909858501509, guid: 4cfc9220748984c4eb1711713595e90d, type: 3}
+      propertyPath: _merchantUIController
+      value: 
+      objectReference: {fileID: 1479414957}
+    - target: {fileID: 293142244436843396, guid: 4cfc9220748984c4eb1711713595e90d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 546313420}
+    - target: {fileID: 293142244436843396, guid: 4cfc9220748984c4eb1711713595e90d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnMerchantInventoryButtonClicked
+      objectReference: {fileID: 0}
     - target: {fileID: 2108023567380639788, guid: 4cfc9220748984c4eb1711713595e90d, type: 3}
       propertyPath: _merchantUIController
       value: 
       objectReference: {fileID: 1479414957}
+    - target: {fileID: 2144714386099401502, guid: 4cfc9220748984c4eb1711713595e90d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 754135811}
+    - target: {fileID: 2144714386099401502, guid: 4cfc9220748984c4eb1711713595e90d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnMerchantInventoryButtonClicked
+      objectReference: {fileID: 0}
     - target: {fileID: 3545948657296950761, guid: 4cfc9220748984c4eb1711713595e90d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -8.470651
@@ -1640,14 +1738,110 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3743026482310695775, guid: 4cfc9220748984c4eb1711713595e90d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1170635974}
+    - target: {fileID: 3743026482310695775, guid: 4cfc9220748984c4eb1711713595e90d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnMerchantInventoryButtonClicked
+      objectReference: {fileID: 0}
+    - target: {fileID: 3755262315281257779, guid: 4cfc9220748984c4eb1711713595e90d, type: 3}
+      propertyPath: _merchantUIController
+      value: 
+      objectReference: {fileID: 1479414957}
+    - target: {fileID: 4508242395262239999, guid: 4cfc9220748984c4eb1711713595e90d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 436974875}
+    - target: {fileID: 4508242395262239999, guid: 4cfc9220748984c4eb1711713595e90d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnMerchantInventoryButtonClicked
+      objectReference: {fileID: 0}
+    - target: {fileID: 5290953076238842897, guid: 4cfc9220748984c4eb1711713595e90d, type: 3}
+      propertyPath: _merchantUIController
+      value: 
+      objectReference: {fileID: 1479414957}
+    - target: {fileID: 5347261360644052807, guid: 4cfc9220748984c4eb1711713595e90d, type: 3}
+      propertyPath: _merchantUIController
+      value: 
+      objectReference: {fileID: 1479414957}
+    - target: {fileID: 6045999967352537053, guid: 4cfc9220748984c4eb1711713595e90d, type: 3}
+      propertyPath: _merchantUIController
+      value: 
+      objectReference: {fileID: 1479414957}
+    - target: {fileID: 6167134561373280353, guid: 4cfc9220748984c4eb1711713595e90d, type: 3}
+      propertyPath: _merchantUIController
+      value: 
+      objectReference: {fileID: 1479414957}
     - target: {fileID: 6909435969235530704, guid: 4cfc9220748984c4eb1711713595e90d, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7200016188263608682, guid: 4cfc9220748984c4eb1711713595e90d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 353239241}
+    - target: {fileID: 7200016188263608682, guid: 4cfc9220748984c4eb1711713595e90d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnMerchantInventoryButtonClicked
+      objectReference: {fileID: 0}
+    - target: {fileID: 7207766560344239878, guid: 4cfc9220748984c4eb1711713595e90d, type: 3}
+      propertyPath: _merchantUIController
+      value: 
+      objectReference: {fileID: 1479414957}
+    - target: {fileID: 7594961421188063398, guid: 4cfc9220748984c4eb1711713595e90d, type: 3}
+      propertyPath: _merchantUIController
+      value: 
+      objectReference: {fileID: 1479414957}
     - target: {fileID: 7934280093113648966, guid: 4cfc9220748984c4eb1711713595e90d, type: 3}
       propertyPath: m_Name
       value: UIManager
       objectReference: {fileID: 0}
+    - target: {fileID: 8868432089169053807, guid: 4cfc9220748984c4eb1711713595e90d, type: 3}
+      propertyPath: _merchantButton
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8868432089169053807, guid: 4cfc9220748984c4eb1711713595e90d, type: 3}
+      propertyPath: _merchantInventory.Array.size
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8868432089169053807, guid: 4cfc9220748984c4eb1711713595e90d, type: 3}
+      propertyPath: '_merchantInventory.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: ed0b5b1b850e02e45915b7ba748d6075, type: 2}
+    - target: {fileID: 8868432089169053807, guid: 4cfc9220748984c4eb1711713595e90d, type: 3}
+      propertyPath: '_merchantInventory.Array.data[1]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 100fd8173850a2e49a9be87d6fbf9e05, type: 2}
+    - target: {fileID: 8868432089169053807, guid: 4cfc9220748984c4eb1711713595e90d, type: 3}
+      propertyPath: '_merchantInventory.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 5f662b72b8d959145b41c2d37df38864, type: 2}
+    - target: {fileID: 8868432089169053807, guid: 4cfc9220748984c4eb1711713595e90d, type: 3}
+      propertyPath: '_merchantInventory.Array.data[3]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 43c3814c5be5c2b4ebabcd5477f2731c, type: 2}
+    - target: {fileID: 8868432089169053807, guid: 4cfc9220748984c4eb1711713595e90d, type: 3}
+      propertyPath: '_merchantInventory.Array.data[4]'
+      value: 
+      objectReference: {fileID: 11400000, guid: f94acea7f4a47804298d3aa587035caf, type: 2}
+    - target: {fileID: 8868432089169053807, guid: 4cfc9220748984c4eb1711713595e90d, type: 3}
+      propertyPath: '_merchantInventory.Array.data[5]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 003c2c06b5a75034bac5e30f7f253f09, type: 2}
+    - target: {fileID: 8868432089169053807, guid: 4cfc9220748984c4eb1711713595e90d, type: 3}
+      propertyPath: '_merchantInventory.Array.data[6]'
+      value: 
+      objectReference: {fileID: 11400000, guid: aed1d1d6b9b57834099dee137ff35d58, type: 2}
+    - target: {fileID: 8868432089169053807, guid: 4cfc9220748984c4eb1711713595e90d, type: 3}
+      propertyPath: '_merchantInventory.Array.data[7]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 0526231b8db95d340a9eed0f6bc2de7f, type: 2}
+    - target: {fileID: 8868432089169053807, guid: 4cfc9220748984c4eb1711713595e90d, type: 3}
+      propertyPath: '_merchantInventory.Array.data[8]'
+      value: 
+      objectReference: {fileID: 11400000, guid: fa5d05fa82c39354d9ec6630c4377f45, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
