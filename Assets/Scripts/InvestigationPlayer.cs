@@ -142,12 +142,14 @@ public class InvestigationPlayer : MonoBehaviour
         {
             isWalking = true;
             animator.SetBool("WalkBool", true);
-        }
-        foreach(var sprite in sprites)
-        {
-            int rotation = moveDirection.x < 0 ? 0 : 180;
-            sprite.transform.localRotation = Quaternion.Euler(0, rotation, 0);
-        }
+
+            foreach (var sprite in sprites)
+            {
+
+                int rotation = moveDirection.x < 0 ? 0 : 180;
+                sprite.transform.localRotation = Quaternion.Euler(0, rotation, 0);
+            }
+        }    
     }
 
 
