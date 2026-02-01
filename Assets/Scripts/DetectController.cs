@@ -73,11 +73,13 @@ public class DetectController : MonoBehaviour
             if (_currentlySelectedGroup != null)
             {
                 masksAreOK = _playerMaskController.ComparePlayerGroupMask(_currentlySelectedGroup.GetUpperMaskRequirements(), _currentlySelectedGroup.GetLowerMaskRequirements());
-                print("Compare result : " + masksAreOK);
+                
+                print("Do you fit in group with mask : " + masksAreOK);
                 if (masksAreOK)
                 {
                     _playerDarkController.Darken();
                 }
+                _playerDarkController.Darken();
                 _currentlySelectedGroup.GetAppearController().Appear();
             }
             else 

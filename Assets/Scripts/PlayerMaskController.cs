@@ -82,7 +82,6 @@ public class PlayerMaskController : MonoBehaviour
             }
             if (!isInMaskPart)
             {
-                Debug.Log("MASKS DO NOT MATCH !!!!");
                 return false;
             }
         }
