@@ -18,7 +18,7 @@ public class PigeonParticle : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-       if(canFlyAway && other.gameObject.transform.parent.tag == "Player")
+       if(canFlyAway && other.gameObject.transform.parent && other.gameObject.transform.parent.tag == "Player")
        {
             ps.Play();
             if(!audioSource.isPlaying)
