@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class UIManager : MonoBehaviour
@@ -6,6 +8,7 @@ public class UIManager : MonoBehaviour
     public static UIManager Instance => instance;
 
     [SerializeField] private GameObject chooseMaskPanel;
+    [SerializeField] private GameObject indicePanel;
 
     private void Awake()
     {
@@ -34,10 +37,17 @@ public class UIManager : MonoBehaviour
     }
 
 
-    public void DisplayIndice(bool display)
+    public void DisplayIndice(bool display, List<string> indices)
     {
-        //chooseMaskPanel.SetActive(display);
-        //if (display) chooseMaskPanel.GetComponent<MaskChoiceController>().InitializeUI();
+        indicePanel.SetActive(display);
+        if (display) {
+            string textToDisplay = "";
+            foreach(string indice in indices)
+            {
+                textToDisplay += indice + '\n';
+            }
+            indicePanel.GetComponentInChildren<TextMeshProUGUI>().text = textToDisplay;
+        }
 
     }
 }

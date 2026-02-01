@@ -86,8 +86,7 @@ public class InvestigationPlayer : MonoBehaviour
     private void DisplayIndicesUI()
     {
         isLookingForIndice = !isLookingForIndice;
-        //UIManager.Instance.DisplayIndice(isLookingForIndice);
-        //UIManager.Instance.DisplayChooseMask(isLookingForIndice);
+        UIManager.Instance.DisplayIndice(isLookingForIndice, indices);
     }
 
     private void FixedUpdate()
