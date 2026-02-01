@@ -136,6 +136,15 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": ""Press"",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""EscapeUI"",
+                    ""type"": ""Button"",
+                    ""id"": ""eae91bc3-4270-42fe-b609-266fdfdb0a31"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": ""Press"",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -336,6 +345,17 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""action"": ""SeeIndice"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d8dcdcb8-22ed-4b95-8199-f533a0056e56"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""EscapeUI"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -429,6 +449,15 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""type"": ""PassThrough"",
                     ""id"": ""9caa3d8a-6b2f-4e8e-8bad-6ede561bd9be"",
                     ""expectedControlType"": ""Quaternion"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Escape"",
+                    ""type"": ""Button"",
+                    ""id"": ""742fc9bc-3ab2-4b78-92d9-a4aa381e1a8d"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
@@ -852,6 +881,17 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""action"": ""TrackedDeviceOrientation"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8ddb013a-2821-419f-a37c-eaa6ba2470f5"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Escape"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -926,6 +966,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         m_Player_Accuse = m_Player.FindAction("Accuse", throwIfNotFound: true);
         m_Player_ChooseMask = m_Player.FindAction("ChooseMask", throwIfNotFound: true);
         m_Player_SeeIndice = m_Player.FindAction("SeeIndice", throwIfNotFound: true);
+        m_Player_EscapeUI = m_Player.FindAction("EscapeUI", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -938,6 +979,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         m_UI_ScrollWheel = m_UI.FindAction("ScrollWheel", throwIfNotFound: true);
         m_UI_TrackedDevicePosition = m_UI.FindAction("TrackedDevicePosition", throwIfNotFound: true);
         m_UI_TrackedDeviceOrientation = m_UI.FindAction("TrackedDeviceOrientation", throwIfNotFound: true);
+        m_UI_Escape = m_UI.FindAction("Escape", throwIfNotFound: true);
     }
 
     ~@PlayerInputs()
@@ -1024,6 +1066,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Accuse;
     private readonly InputAction m_Player_ChooseMask;
     private readonly InputAction m_Player_SeeIndice;
+    private readonly InputAction m_Player_EscapeUI;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -1055,6 +1098,10 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Player/SeeIndice".
         /// </summary>
         public InputAction @SeeIndice => m_Wrapper.m_Player_SeeIndice;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/EscapeUI".
+        /// </summary>
+        public InputAction @EscapeUI => m_Wrapper.m_Player_EscapeUI;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -1096,6 +1143,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @SeeIndice.started += instance.OnSeeIndice;
             @SeeIndice.performed += instance.OnSeeIndice;
             @SeeIndice.canceled += instance.OnSeeIndice;
+            @EscapeUI.started += instance.OnEscapeUI;
+            @EscapeUI.performed += instance.OnEscapeUI;
+            @EscapeUI.canceled += instance.OnEscapeUI;
         }
 
         /// <summary>
@@ -1122,6 +1172,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @SeeIndice.started -= instance.OnSeeIndice;
             @SeeIndice.performed -= instance.OnSeeIndice;
             @SeeIndice.canceled -= instance.OnSeeIndice;
+            @EscapeUI.started -= instance.OnEscapeUI;
+            @EscapeUI.performed -= instance.OnEscapeUI;
+            @EscapeUI.canceled -= instance.OnEscapeUI;
         }
 
         /// <summary>
@@ -1169,6 +1222,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
     private readonly InputAction m_UI_ScrollWheel;
     private readonly InputAction m_UI_TrackedDevicePosition;
     private readonly InputAction m_UI_TrackedDeviceOrientation;
+    private readonly InputAction m_UI_Escape;
     /// <summary>
     /// Provides access to input actions defined in input action map "UI".
     /// </summary>
@@ -1220,6 +1274,10 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "UI/TrackedDeviceOrientation".
         /// </summary>
         public InputAction @TrackedDeviceOrientation => m_Wrapper.m_UI_TrackedDeviceOrientation;
+        /// <summary>
+        /// Provides access to the underlying input action "UI/Escape".
+        /// </summary>
+        public InputAction @Escape => m_Wrapper.m_UI_Escape;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -1276,6 +1334,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @TrackedDeviceOrientation.started += instance.OnTrackedDeviceOrientation;
             @TrackedDeviceOrientation.performed += instance.OnTrackedDeviceOrientation;
             @TrackedDeviceOrientation.canceled += instance.OnTrackedDeviceOrientation;
+            @Escape.started += instance.OnEscape;
+            @Escape.performed += instance.OnEscape;
+            @Escape.canceled += instance.OnEscape;
         }
 
         /// <summary>
@@ -1317,6 +1378,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @TrackedDeviceOrientation.started -= instance.OnTrackedDeviceOrientation;
             @TrackedDeviceOrientation.performed -= instance.OnTrackedDeviceOrientation;
             @TrackedDeviceOrientation.canceled -= instance.OnTrackedDeviceOrientation;
+            @Escape.started -= instance.OnEscape;
+            @Escape.performed -= instance.OnEscape;
+            @Escape.canceled -= instance.OnEscape;
         }
 
         /// <summary>
@@ -1457,6 +1521,13 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnSeeIndice(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "EscapeUI" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnEscapeUI(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "UI" which allows adding and removing callbacks.
@@ -1535,5 +1606,12 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnTrackedDeviceOrientation(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Escape" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnEscape(InputAction.CallbackContext context);
     }
 }

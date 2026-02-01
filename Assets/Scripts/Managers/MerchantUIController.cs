@@ -12,10 +12,10 @@ public class MerchantUIController : MonoBehaviour
     [SerializeField] private List<MaskObject> _merchantInventory = new List<MaskObject>();
     [Header("Player Choice UI elements")]
     [SerializeField] private GameObject _playerChoicePage;
-    [SerializeField] private List<MaskButtonMerchant> _playerInventoryButtons;
+    [SerializeField] private List<MaskButtonMerchant> _playerInventoryButtons = new List<MaskButtonMerchant>();
     [Header("Merchant UI elements")]
     [SerializeField] private GameObject _merchantChoicePage;
-    [SerializeField] private List<MaskButtonMerchant> _merchantButtons;
+    [SerializeField] private List<MaskButtonMerchant> _merchantButtons = new List<MaskButtonMerchant>();
 
     private PlayerInventoryController _playerInventory;
     #endregion
@@ -24,15 +24,15 @@ public class MerchantUIController : MonoBehaviour
     {
         if(_merchantButtons.Count < 1)
         {
-            Debug.LogError("ERROR : Merchant button elements list must not be null");
+            Debug.LogWarning("WARNING : Merchant button elements list must not be null");
         }
         if (_playerInventoryButtons.Count < 1)
         {
-            Debug.LogError("ERROR : Player inventory buttons must not be null");
+            Debug.LogWarning("WARNING : Player inventory buttons must not be null");
         }
         if (_merchantInventory.Count < 1)
         {
-            Debug.LogError("ERROR : Merchant inventory is empty");
+            Debug.LogWarning("WARNING : Merchant inventory is empty");
         }
     }
 

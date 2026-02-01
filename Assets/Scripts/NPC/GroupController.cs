@@ -81,6 +81,7 @@ public class GroupController : MonoBehaviour
         }
         else
         {
+            MusicManager.Instance.PlayAccuseAndLoop();
             if (selectedNPC.IsNPCBadGuy())
             {
                 textBubble.text = GameParameters.ACCUSATIONS_CORRECT[Random.Range(0, GameParameters.ACCUSATIONS_CORRECT.Length)];
