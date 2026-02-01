@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6655812085984246216}
   - component: {fileID: 8928779950255869688}
   m_Layer: 0
-  m_Name: PouetPouetLeMarchand
+  m_Name: Marchand
   m_TagString: Merchant
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
