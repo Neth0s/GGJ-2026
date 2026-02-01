@@ -6,6 +6,18 @@ using UnityEngine;
 /// </summary>
 public class PlayerMaskController : MonoBehaviour
 {
+    #region SINGLETON DESIGN PATTERN
+    public static PlayerMaskController Instance;
+
+    private void Awake()
+    {
+        if (Instance == null) Instance = this;
+        else Destroy(gameObject);
+
+        SelectStartingMask();
+    }
+    #endregion
+
     #region VARIABLES
     [SerializeField] public MaskObject currentMask;
     [SerializeField] public SpriteRenderer playerVisualMaskUpper;
@@ -14,16 +26,14 @@ public class PlayerMaskController : MonoBehaviour
     private PlayerInventoryController _playerInventoryController;
     #endregion
 
-    private void Awake()
-    {
-        SelectStartingMask();    
-    }
-
     private void Start()
     {
         UpdateMaskVisual();
     }
 
+    /// <summary>
+    /// Will select the starting mask of the player
+    /// </summary>
     private void SelectStartingMask()
     {
         _playerInventoryController = GetComponent<PlayerInventoryController>();

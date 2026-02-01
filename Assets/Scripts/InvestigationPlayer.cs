@@ -164,4 +164,11 @@ public class InvestigationPlayer : MonoBehaviour
         //isInDialog = _currentMerchant.StartMerchantInteraction(this);
     }
 
+    public void DeactivateMerchantInteraction()
+    {
+        UIManager.Instance.DisplayMerchantUI(false);
+        _currentMerchant = null;
+        isInDialog = false;
+    }
+
 }

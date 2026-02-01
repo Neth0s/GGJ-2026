@@ -87,7 +87,7 @@ public class MerchantUIController : MonoBehaviour
     private List<MaskObject> ObtainListMasksNotInPlayerInventory()
     {
         List<MaskObject> playerInventoryMasks = PlayerInventoryController.Instance.GetListMasksInInventory();
-        List<MaskObject> listReturn = _merchantInventory;
+        List<MaskObject> listReturn = new List<MaskObject>(_merchantInventory);
         foreach(var mask in playerInventoryMasks)
         {
             listReturn.Remove(mask);
@@ -115,5 +115,6 @@ public class MerchantUIController : MonoBehaviour
         print("Selected mask for purchase : " + selectedMask.name);
         PlayerInventoryController.Instance.AddMaskToInventory(selectedMask);
         UIManager.Instance.DisplayMerchantUI(false);
+        GameObject.FindGameObjectWithTag("Player").GetComponent<InvestigationPlayer>().DeactivateMerchantInteraction();
     }
 }

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 /// Script that will govern the player's inventory.
@@ -69,6 +70,11 @@ public class PlayerInventoryController : MonoBehaviour
         if(_masksInInventory.Contains(mask))
         {
             _masksInInventory.Remove(mask);
+            //next, if the mask removed has elements present in the currently held mask -> we take the first mask of the list
+            if(mask.GetLowerPart() == PlayerMaskController.Instance.currentMask.GetLowerPart() || mask.GetUpperPart() == PlayerMaskController.Instance.currentMask.GetUpperPart())
+            {
+                PlayerMaskController.Instance.ChangeCurrentMask(_masksInInventory[0].GetLowerPart(), _masksInInventory[0].GetUpperPart());
+            }
         }
     }
     /// <summary>
@@ -78,6 +84,11 @@ public class PlayerInventoryController : MonoBehaviour
     public void RemoveMaskFromInventory(int maskIndex)
     {
         _masksInInventory.Remove(_masksInInventory[maskIndex]);
+        //next, if the mask removed has elements present in the currently held mask -> we take the first mask of the list
+        if (_masksInInventory[maskIndex].GetLowerPart() == PlayerMaskController.Instance.currentMask.GetLowerPart() || _masksInInventory[maskIndex].GetUpperPart() == PlayerMaskController.Instance.currentMask.GetUpperPart())
+        {
+            PlayerMaskController.Instance.ChangeCurrentMask(_masksInInventory[0].GetLowerPart(), _masksInInventory[0].GetUpperPart());
+        }
     }
     #endregion
 }
