@@ -381,7 +381,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 338a3a2ee598ab047b7485e2687cf12d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 5
+  MoveSpeed: 7
   indices: []
   interactIcon: {fileID: 8939190389451797303}
   _accusationInteractIcon: {fileID: 554574881222009437}

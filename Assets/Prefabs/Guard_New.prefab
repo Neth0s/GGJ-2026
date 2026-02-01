@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8013934486135390199}
   - component: {fileID: 1201973879298303057}
+  - component: {fileID: 3501924518585477868}
   m_Layer: 0
   m_Name: Guard_New
   m_TagString: Untagged
@@ -90,6 +91,36 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &3501924518585477868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 162472447302593392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63723190add34aa4ca3d910e9450dc13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 0}
+  speed: 2
+  waypoints:
+  - {x: -10, y: 0, z: -10}
+  - {x: 10, y: 0, z: -10}
+  - {x: 10, y: 0, z: 10}
+  - {x: -10, y: 0, z: 10}
+  minPauseTime: 0
+  maxPauseTime: 0
+  detectionRadius: 5
+  gaugeIncreaseSpeed: 100
+  maxGauge: 100
+  penaltySeconds: 20
+  respawnCooldown: 0.5
+  gaugeLightSprite: {fileID: 3124440393001740092}
+  gaugeDarkSprite: {fileID: 4212172216860025969}
+  gaugeOffset: {x: 0, y: 2, z: 0}
+  fadeSmoothing: 0.15
 --- !u!1 &3317372991685696153
 GameObject:
   m_ObjectHideFlags: 0
