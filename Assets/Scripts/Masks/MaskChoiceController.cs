@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 /// <summary>
@@ -13,6 +14,7 @@ public class MaskChoiceController : MonoBehaviour
     [SerializeField] private Image upperImage;
     [SerializeField] private List<MaskPart> lowerParts = new List<MaskPart>(); //to change -> get this list on player inventory
     [SerializeField] private Image lowerImage;
+    [SerializeField] private GameObject _startButton;
 
     [Header("Player inventory display elements")]
     [SerializeField] private List<MaskUIElementController> _playerInventoryDisplays = new List<MaskUIElementController>();
@@ -44,6 +46,8 @@ public class MaskChoiceController : MonoBehaviour
         playerMaskController = GameObject.FindWithTag("Player").GetComponent<PlayerMaskController>(); //rip in peace le code
         RecoverDataFromPlayerInventory(); //we recover (and update) the code 
         UpdatePlayerInventoryDisplay(); //we update the player inventory on the page
+
+        EventSystem.current.SetSelectedGameObject(_startButton);
 
         currentDisplayUpperPart = playerMaskController.currentMask.GetUpperPart();
         upperImage.sprite = currentDisplayUpperPart.MaskSprite;
