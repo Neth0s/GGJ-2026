@@ -20,6 +20,7 @@ public class InvestigationPlayer : MonoBehaviour
     private Animator animator;
     private bool isWalking = false;
     private SpriteRenderer[] sprites;
+    private bool isFacingRight = false;
 
     public List<string> indices = new List<string>();
 
@@ -139,15 +140,26 @@ public class InvestigationPlayer : MonoBehaviour
         else if (!isWalking && moveDirection.magnitude > 0)
         {
             isWalking = true;
-            animator.SetBool("WalkBool", true);
+            animator.SetBool("WalkBool", true);           
+        }
 
+        if(isFacingRight && moveDirection.x < 0)
+        {
+            isFacingRight = false;
             foreach (var sprite in sprites)
             {
-
-                int rotation = moveDirection.x < 0 ? 0 : 180;
-                sprite.transform.localRotation = Quaternion.Euler(0, rotation, 0);
+                sprite.transform.localRotation = Quaternion.Euler(0, 0,0);
             }
-        }    
+        }
+        if (!isFacingRight && moveDirection.x > 0)
+        {
+            isFacingRight = true;
+            foreach (var sprite in sprites)
+            {
+                sprite.transform.localRotation = Quaternion.Euler(0, 180, 0);
+            }
+        }
+
     }
 
 
