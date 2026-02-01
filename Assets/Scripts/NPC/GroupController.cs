@@ -2,6 +2,7 @@
 using NUnit.Framework;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 /// <summary>
@@ -16,6 +17,7 @@ public class GroupController : MonoBehaviour
 
     //dialog
     [SerializeField] private GameObject bubbleDialog;
+    [SerializeField] private BubbleDialog bubbleDialogScript; //rip
     private TextMeshPro textBubble;
     private int currentDialogIndex = 0;
 
@@ -23,6 +25,7 @@ public class GroupController : MonoBehaviour
 
     private bool _hasWon = false;
 
+    private bool canDisplayNewBubble = true;
     //Appear controller
     private AppearController _zoneAppearController;
     #endregion
@@ -39,20 +42,35 @@ public class GroupController : MonoBehaviour
         bubbleDialog.SetActive(false);
         textBubble = bubbleDialog.GetComponentInChildren<TextMeshPro>();
         _zoneAppearController = GetComponent<AppearController>();
+        bubbleDialogScript = bubbleDialog.GetComponentInChildren<BubbleDialog>();
     }
 
+    //dont look at this plz
     public bool DisplayBubble()
     {
         if (currentDialogIndex < _data.dialogs.Count)
-        {           
-            if (bubbleDialog.activeSelf)
+        {
+            string newText = _data.dialogs[currentDialogIndex];
+
+            if (!bubbleDialog.activeSelf)
             {
-                bubbleDialog.GetComponentInChildren<Animator>().SetTrigger("NewBubble");
+                bubbleDialogScript.canDisplayNewBubble = false;
+                textBubble.text = newText;
+                currentDialogIndex++;
+                bubbleDialog.SetActive(true);
+                           
+                return true;
             }
-            else bubbleDialog.SetActive(true);
-            textBubble.text = _data.dialogs[currentDialogIndex];
-            currentDialogIndex++;
-            return true;
+            else if (bubbleDialogScript.canDisplayNewBubble)
+            {
+                bubbleDialogScript.canDisplayNewBubble = false;
+                textBubble.text = newText;
+                currentDialogIndex++;
+                
+                bubbleDialog.GetComponentInChildren<Animator>().SetTrigger("NewBubble");              
+                return true;
+            }
+            else return true;
         }
         else
         {
@@ -61,6 +79,7 @@ public class GroupController : MonoBehaviour
             return false;
         }        
     }
+
 
     /// <summary>
     /// Will display the accusation bubble for a specific NPC
