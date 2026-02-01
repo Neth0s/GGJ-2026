@@ -42,6 +42,8 @@ public class GuardNew : MonoBehaviour
     private Transform playerTransform;
     private DetectController detectController;
     private Vector3 playerStartPosition;
+
+    private bool isSoundEffectTriggered = false;
     
     private void Start()
     {
@@ -130,6 +132,11 @@ public class GuardNew : MonoBehaviour
         if (isDetectingPlayer)
         {
             print("player suspicious");
+            if (!isSoundEffectTriggered)
+            {
+                MusicManager.Instance.PlayGuardSuspiciousSound();
+                isSoundEffectTriggered = true;
+            }
             // accumulate gauge while detecting
             currentGauge += gaugeIncreaseSpeed * Time.deltaTime;
             currentGauge = Mathf.Min(currentGauge, maxGauge);
@@ -137,6 +144,7 @@ public class GuardNew : MonoBehaviour
             // trigger once when reaching max
             if (currentGauge >= maxGauge && !gaugeTriggered)
             {
+                MusicManager.Instance.PlayGuardCatchSound();
                 StartCoroutine(HandleCaught());
             }
         }
@@ -144,6 +152,7 @@ public class GuardNew : MonoBehaviour
         {
             // decay gauge when not detecting
             currentGauge = Mathf.Max(0, currentGauge - gaugeIncreaseSpeed * 0.3f * Time.deltaTime);
+            isSoundEffectTriggered = false;
         }
         UpdateGaugeVisual();
     }
