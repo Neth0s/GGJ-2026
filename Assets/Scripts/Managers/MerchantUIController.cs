@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 /// <summary>
 /// This script will govern the UI-side of the merchant
@@ -45,11 +46,13 @@ public class MerchantUIController : MonoBehaviour
         {
             _playerChoicePage.SetActive(true);
             _merchantChoicePage.SetActive(false);
+            EventSystem.current.SetSelectedGameObject(_playerInventoryButtons[0].gameObject);
         }
         else
         {
             _playerChoicePage.SetActive(false);
             _merchantChoicePage.SetActive(true);
+            EventSystem.current.SetSelectedGameObject(_merchantButtons[0].gameObject);
         }
     }
 
