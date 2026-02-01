@@ -694,10 +694,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8512145793622240432}
     m_Modifications:
+    - target: {fileID: 1147214107045039841, guid: 4e0f9fe262b44c745987466b6a0c9a31, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 0231b952651044747bdf6129471b553b, type: 2}
     - target: {fileID: 4563041854601044403, guid: 4e0f9fe262b44c745987466b6a0c9a31, type: 3}
       propertyPath: m_Name
       value: AccusationInteractIcon
       objectReference: {fileID: 0}
+    - target: {fileID: 6171381166664975515, guid: 4e0f9fe262b44c745987466b6a0c9a31, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c819c1bd757982143865482e6db7f6c1, type: 3}
     - target: {fileID: 7115243745270143079, guid: 4e0f9fe262b44c745987466b6a0c9a31, type: 3}
       propertyPath: m_FlipX
       value: 0
@@ -793,10 +801,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8512145793622240432}
     m_Modifications:
+    - target: {fileID: 1147214107045039841, guid: 4e0f9fe262b44c745987466b6a0c9a31, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: fdaf6a2df5aac254d88c70e75d7c4a86, type: 2}
     - target: {fileID: 4563041854601044403, guid: 4e0f9fe262b44c745987466b6a0c9a31, type: 3}
       propertyPath: m_Name
       value: InterractIcon
       objectReference: {fileID: 0}
+    - target: {fileID: 6171381166664975515, guid: 4e0f9fe262b44c745987466b6a0c9a31, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 09713e3f3928bd947abe199228d22da0, type: 3}
     - target: {fileID: 9123423645374284954, guid: 4e0f9fe262b44c745987466b6a0c9a31, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.05
