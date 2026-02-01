@@ -12,6 +12,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject chooseMaskPanel;
     [SerializeField] private GameObject chooseMaskButtonUI;
     [SerializeField] private GameObject indicePanel;
+    [SerializeField] private TextMeshProUGUI indiceText;
     [SerializeField] private GameObject indicePanelButtonUI;
 
     [SerializeField] private MerchantUIController _merchantUIController;
@@ -73,7 +74,7 @@ public class UIManager : MonoBehaviour
             {
                 textToDisplay += '-' + indice + '\n';
             }
-            indicePanel.GetComponentInChildren<TextMeshProUGUI>().text = textToDisplay;
+            indiceText.text = textToDisplay;
         }
         
     }

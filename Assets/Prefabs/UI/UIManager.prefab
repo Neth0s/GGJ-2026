@@ -2492,6 +2492,7 @@ MonoBehaviour:
   chooseMaskPanel: {fileID: 818510485230618968}
   chooseMaskButtonUI: {fileID: 2275419756100244703}
   indicePanel: {fileID: 7690226845661168869}
+  indiceText: {fileID: 7894858474358847417}
   indicePanelButtonUI: {fileID: 7357951701526115136}
   _merchantUIController: {fileID: 8868432089169053807}
 --- !u!1 &8837337266510663786
@@ -2666,8 +2667,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -60}
-  m_SizeDelta: {x: 600, y: 200}
+  m_AnchoredPosition: {x: -15, y: -70}
+  m_SizeDelta: {x: 600, y: 180}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &2862671717414856883
 CanvasRenderer:
@@ -2699,8 +2700,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Marchand de masques
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e8d86b66c719bd14b9688cbc1afbf025, type: 2}
+  m_sharedMaterial: {fileID: -893070515123797291, guid: e8d86b66c719bd14b9688cbc1afbf025, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2734,9 +2735,9 @@ MonoBehaviour:
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
-  m_characterSpacing: 0
+  m_characterSpacing: -8
   m_wordSpacing: 0
-  m_lineSpacing: 0
+  m_lineSpacing: 10
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
@@ -3019,6 +3020,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 9086355949690160363, guid: 42c1397ce5f7dd947ba21d05975306f5, type: 3}
   m_PrefabInstance: {fileID: 1486209912056086542}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7894858474358847417 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8732550038865098679, guid: 42c1397ce5f7dd947ba21d05975306f5, type: 3}
+  m_PrefabInstance: {fileID: 1486209912056086542}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1582949040057915774
 PrefabInstance:
   m_ObjectHideFlags: 0
