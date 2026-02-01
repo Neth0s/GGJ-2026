@@ -7,9 +7,6 @@ public class GameManager : MonoBehaviour
     private static GameManager instance = null;
     public static GameManager Instance => instance;
 
-    [SerializeField] private List<MaskObject> allMaskObjects = new List<MaskObject>();
-    [SerializeField] private List<MaskObject> inventory = new List<MaskObject>();
-
     private void Awake()
     {
         if (instance != null && instance != this)
