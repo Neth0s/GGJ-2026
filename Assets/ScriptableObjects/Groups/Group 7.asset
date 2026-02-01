@@ -18,7 +18,7 @@ MonoBehaviour:
   - "Non \xE7a ne nous dit rien, d\xE9sol\xE9..."
   indice: Elle est grande
   MaskRequirementsUpper:
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 8a58247a1dc67c14faf9f488f9d2924d, type: 2}
   MaskRequirementsLower:
   - {fileID: 11400000, guid: a707ba1efd0de5f45b88189cff1f9a1a, type: 2}
   - {fileID: 11400000, guid: bade4170d6a890841a9974f9d0ed0a16, type: 2}

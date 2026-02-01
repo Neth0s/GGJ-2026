@@ -145,7 +145,7 @@ public class GuardNew : MonoBehaviour
             {
                 MusicManager.Instance.PlayGuardCatchSound();
                 StartCoroutine(HandleCaught());
-            }
+            }   
         }
         else
         {
