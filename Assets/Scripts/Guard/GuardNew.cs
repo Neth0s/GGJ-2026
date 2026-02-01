@@ -10,15 +10,24 @@ public class GuardNew : MonoBehaviour
     [SerializeField] private float minPauseTime, maxPauseTime;
     
     [Header("Detection")]
-    [SerializeField] private float detectionRadius = 20f;
+    [SerializeField] private float detectionRadius = 5f;
     
     [Header("Gauge")]
-    [SerializeField] private float gaugeIncreaseSpeed = 20f;
+    [SerializeField] private float gaugeIncreaseSpeed = 100f;
     [SerializeField] private float maxGauge = 100f;
 
-    [Header("Gauge Visual")]
-[SerializeField] private SpriteRenderer gaugeSprite;
-[SerializeField] private Vector3 gaugeOffset = new Vector3(0, 2, 0); // Position au-dessus du garde
+    [Header("Penalty")]
+    [SerializeField] private float penaltySeconds = 20f;     // seconds subtracted from Timer when player is caught
+    [SerializeField] private float respawnCooldown = 0.5f;   // prevents immediate re-trigger
+
+    
+    [Header("Gauge Visual (crossfade)")]
+    [Tooltip("SpriteRenderer showing the LIGHT (empty) image")]
+    [SerializeField] private SpriteRenderer gaugeLightSprite;
+    [Tooltip("SpriteRenderer showing the DARK (filled) image — will fade in as gauge fills")]
+    [SerializeField] private SpriteRenderer gaugeDarkSprite;
+    [SerializeField] private Vector3 gaugeOffset = new Vector3(0, 2, 0); // Position au-dessus du garde
+    [SerializeField] private float fadeSmoothing = 0.15f; // how quickly alpha lerps to the target (lower = snappier)
 
     private int currentWaypoint = 0;
     private bool isWalking = true;
@@ -27,26 +36,48 @@ public class GuardNew : MonoBehaviour
 
     private float currentGauge = 0f;
     private bool isDetectingPlayer = false;
+    private bool gaugeTriggered = false;
     
     private Transform playerTransform;
     private DetectController detectController;
-
+    private Vector3 playerStartPosition;
+    
     private void Start()
     {
+        if (waypoints == null || waypoints.Length == 0)
+        {
+            Debug.LogError("GuardNew: waypoints must be set and contain at least one position.");
+            enabled = false;
+            return;
+        }   
         transform.position = waypoints[0];
         currentWaypoint = 1;
         
         // Trouve automatiquement le joueur par son tag
         GameObject player = GameObject.FindGameObjectWithTag("Player");
-        print(player.name);
+        
         if (player != null)
         {
             playerTransform = player.transform;
             detectController = player.GetComponent<DetectController>();
+            // Capture la position initiale du joueur (fallback si GameManager n'a pas d'info)
+            playerStartPosition = playerTransform.position;
         }
         else
         {
             Debug.LogError("Aucun objet avec le tag 'Player' trouvé!");
+        }
+
+        // Initialize sprite alpha/visibility if assigned
+        if (gaugeLightSprite != null)
+        {
+            SetSpriteAlpha(gaugeLightSprite, 0f);
+            gaugeLightSprite.enabled = false;
+        }
+        if (gaugeDarkSprite != null)
+        {
+            SetSpriteAlpha(gaugeDarkSprite, 0f);
+            gaugeDarkSprite.enabled = false;
         }
     }
 
@@ -93,14 +124,19 @@ public class GuardNew : MonoBehaviour
         if (isDetectingPlayer)
         {
             print("player suspicious");
+            // accumulate gauge while detecting
             currentGauge += gaugeIncreaseSpeed * Time.deltaTime;
-            if (currentGauge >= maxGauge)
+            currentGauge = Mathf.Min(currentGauge, maxGauge);
+
+            // trigger once when reaching max
+            if (currentGauge >= maxGauge && !gaugeTriggered)
             {
-                GameOver();
+                StartCoroutine(HandleCaught());
             }
         }
         else
         {
+            // decay gauge when not detecting
             currentGauge = Mathf.Max(0, currentGauge - gaugeIncreaseSpeed * 0.3f * Time.deltaTime);
         }
         UpdateGaugeVisual();
@@ -140,11 +176,72 @@ public class GuardNew : MonoBehaviour
         }
     }
 
-    void GameOver()
+    void GetsCaught()
     {
-        Debug.Log("Game Over - Joueur détecté par le garde!");
-        currentGauge = maxGauge;
-        // Ajoute ici ton code de game over
+        if (!gaugeTriggered)
+        {
+            StartCoroutine(HandleCaught());
+        }
+    }
+    
+    IEnumerator HandleCaught()
+    {
+        gaugeTriggered = true;
+        Debug.Log("Joueur détecté par le garde!");
+        
+        // Teleport player back to their initial position (playerStartPosition captured at Start)
+        // Prefer centralized GameManager method if available (keeps logic single place).
+        if (GameManager.Instance != null)
+        {
+            TeleportPlayerToStart();
+            if (Timer.Instance != null)
+                Timer.Instance.RemoveTime(penaltySeconds);
+        }
+        else
+        {
+            // no GameManager -> handle locally and try Timer singleton
+            TeleportPlayerToStart();
+            if (Timer.Instance != null)
+                Timer.Instance.RemoveTime(penaltySeconds);
+            else
+                Debug.LogWarning("GuardNew: No GameManager and no Timer.Instance found. Penalty not applied.");
+        }
+        // Reset guard's gauge (customize if you want a partial drain instead)
+        currentGauge = 0f;
+
+        // short cooldown to avoid immediate retriggering
+        yield return new WaitForSeconds(respawnCooldown);
+
+        gaugeTriggered = false;
+    }
+
+    private void TeleportPlayerToStart()
+    {
+        if (playerTransform == null)
+        {
+            Debug.LogWarning("GuardNew: No playerTransform to teleport.");
+            return;
+        }
+
+        // Teleport handling for CharacterController and Rigidbody
+        var cc = playerTransform.GetComponent<CharacterController>();
+        if (cc != null)
+        {
+            cc.enabled = false;
+            playerTransform.position = playerStartPosition;
+            cc.enabled = true;
+        }
+        else
+        {
+            playerTransform.position = playerStartPosition;
+        }
+
+        var playerRb = playerTransform.GetComponent<Rigidbody>();
+        if (playerRb != null)
+        {
+            playerRb.linearVelocity = Vector3.zero;
+            playerRb.angularVelocity = Vector3.zero;
+        }
     }
 
     private void OnDrawGizmosSelected()
@@ -155,30 +252,56 @@ public class GuardNew : MonoBehaviour
 
     public float GetGaugePercentage()
     {
-        return currentGauge / maxGauge;
+        return Mathf.Clamp01(currentGauge / maxGauge);
     }
 
     void UpdateGaugeVisual()
     {
-        if (gaugeSprite != null)
+        // If the new crossfade sprites are assigned, use them
+        if (gaugeLightSprite == null || gaugeDarkSprite == null)
+            return;
+
+        // Visible only when currentGauge > 0
+        bool visible = currentGauge > 0f;
+        if (!visible)
         {
-            // Affiche la jauge seulement si elle est > 0
-            gaugeSprite.enabled = (currentGauge > 0);
-            
-            if (currentGauge > 0)
-            {
-                // Position au-dessus du garde
-                gaugeSprite.transform.position = transform.position + gaugeOffset;
-                
-                // Change la largeur selon le pourcentage
-                float percentage = currentGauge / maxGauge;
-                Vector3 scale = gaugeSprite.transform.localScale;
-                scale.x = percentage;
-                gaugeSprite.transform.localScale = scale;
-                
-                // Change la couleur (vert → rouge)
-                gaugeSprite.color = Color.Lerp(Color.green, Color.red, percentage);
-            }
+            // ensure sprites are disabled and fully transparent
+            SetSpriteAlpha(gaugeLightSprite, 0f);
+            SetSpriteAlpha(gaugeDarkSprite, 0f);
+            gaugeLightSprite.enabled = false;
+            gaugeDarkSprite.enabled = false;
+            return;
         }
-}
+
+        // Position sprites above the guard
+        gaugeLightSprite.transform.position = transform.position + gaugeOffset;
+        gaugeDarkSprite.transform.position = transform.position + gaugeOffset;
+
+        // Make sure dark overlays light (sortingOrder or z)
+        if (gaugeDarkSprite.sortingOrder <= gaugeLightSprite.sortingOrder)
+            gaugeDarkSprite.sortingOrder = gaugeLightSprite.sortingOrder + 1;
+
+        // Enable renderers when visible
+        gaugeLightSprite.enabled = true;
+        gaugeDarkSprite.enabled = true;
+
+        float target = Mathf.Clamp01(currentGauge / maxGauge);
+
+        // Smooth the alpha change for nicer visuals
+        float currentDarkAlpha = gaugeDarkSprite.color.a;
+        float newDarkAlpha = Mathf.Lerp(currentDarkAlpha, target, 1f - Mathf.Exp(-fadeSmoothing * Time.deltaTime * 60f));
+        float newLightAlpha = 1f - newDarkAlpha;
+
+        SetSpriteAlpha(gaugeDarkSprite, newDarkAlpha);
+        SetSpriteAlpha(gaugeLightSprite, newLightAlpha);
+    }
+
+    // Helper to set alpha while preserving RGB
+    private void SetSpriteAlpha(SpriteRenderer sr, float alpha)
+    {
+        if (sr == null) return;
+        Color c = sr.color;
+        c.a = Mathf.Clamp01(alpha);
+        sr.color = c;
+    }
 }
