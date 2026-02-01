@@ -8,10 +8,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 962027843825276433, guid: 5f4c9daf82e034b42adf461110c9c654, type: 3}
+      propertyPath: outline
+      value: 
+      objectReference: {fileID: 21300000, guid: 22e662fa4cca90847afa4e807353fe22, type: 3}
     - target: {fileID: 3234325864817118356, guid: 5f4c9daf82e034b42adf461110c9c654, type: 3}
       propertyPath: m_Name
       value: NPC Small 2 Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 5147060735116407723, guid: 5f4c9daf82e034b42adf461110c9c654, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: d065479e28055da489aa801e03d7f33e, type: 3}
     - target: {fileID: 7380929412735724796, guid: 5f4c9daf82e034b42adf461110c9c654, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.04
