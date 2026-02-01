@@ -16,6 +16,10 @@ public class GuardNew : MonoBehaviour
     [SerializeField] private float gaugeIncreaseSpeed = 20f;
     [SerializeField] private float maxGauge = 100f;
 
+    [Header("Gauge Visual")]
+[SerializeField] private SpriteRenderer gaugeSprite;
+[SerializeField] private Vector3 gaugeOffset = new Vector3(0, 2, 0); // Position au-dessus du garde
+
     private int currentWaypoint = 0;
     private bool isWalking = true;
     private float pauseTimer = 0f;
@@ -99,6 +103,7 @@ public class GuardNew : MonoBehaviour
         {
             currentGauge = Mathf.Max(0, currentGauge - gaugeIncreaseSpeed * 0.3f * Time.deltaTime);
         }
+        UpdateGaugeVisual();
     }
 
     void CheckDetection()
@@ -152,4 +157,28 @@ public class GuardNew : MonoBehaviour
     {
         return currentGauge / maxGauge;
     }
+
+    void UpdateGaugeVisual()
+    {
+        if (gaugeSprite != null)
+        {
+            // Affiche la jauge seulement si elle est > 0
+            gaugeSprite.enabled = (currentGauge > 0);
+            
+            if (currentGauge > 0)
+            {
+                // Position au-dessus du garde
+                gaugeSprite.transform.position = transform.position + gaugeOffset;
+                
+                // Change la largeur selon le pourcentage
+                float percentage = currentGauge / maxGauge;
+                Vector3 scale = gaugeSprite.transform.localScale;
+                scale.x = percentage;
+                gaugeSprite.transform.localScale = scale;
+                
+                // Change la couleur (vert → rouge)
+                gaugeSprite.color = Color.Lerp(Color.green, Color.red, percentage);
+            }
+        }
+}
 }
