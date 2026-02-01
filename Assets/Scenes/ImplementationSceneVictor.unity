@@ -981,11 +981,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 1279245325}
   speed: 2
-  startPosition: {x: -12, y: 0, z: -12}
+  waypoints:
+  - {x: -10, y: 0, z: -10}
+  - {x: 10, y: 0, z: -10}
+  - {x: 10, y: 0, z: 10}
+  - {x: -10, y: 0, z: 10}
   minPauseTime: 0
   maxPauseTime: 0
-  minWalkTime: 3
-  maxWalkTime: 15
 --- !u!65 &1279245329
 BoxCollider:
   m_ObjectHideFlags: 0
