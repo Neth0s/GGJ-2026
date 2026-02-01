@@ -131,7 +131,6 @@ public class GuardNew : MonoBehaviour
 
         if (isDetectingPlayer)
         {
-            print("player suspicious");
             if (!isSoundEffectTriggered)
             {
                 MusicManager.Instance.PlayGuardSuspiciousSound();

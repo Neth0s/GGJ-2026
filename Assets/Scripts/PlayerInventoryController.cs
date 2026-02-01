@@ -58,6 +58,7 @@ public class PlayerInventoryController : MonoBehaviour
             Debug.Log("WARNING : Cannot add mask to inventory : inventory full");
             return;
         }
+        print("Adding to player inventory : " + mask.name);
         _masksInInventory.Add(mask);
     }
 
