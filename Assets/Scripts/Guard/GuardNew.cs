@@ -73,11 +73,13 @@ public class GuardNew : MonoBehaviour
         {
             SetSpriteAlpha(gaugeLightSprite, 0f);
             gaugeLightSprite.enabled = false;
+            gaugeLightSprite.gameObject.SetActive(false);
         }
         if (gaugeDarkSprite != null)
         {
             SetSpriteAlpha(gaugeDarkSprite, 0f);
             gaugeDarkSprite.enabled = false;
+            gaugeDarkSprite.gameObject.SetActive(false);
         }
     }
 
@@ -270,6 +272,8 @@ public class GuardNew : MonoBehaviour
             SetSpriteAlpha(gaugeDarkSprite, 0f);
             gaugeLightSprite.enabled = false;
             gaugeDarkSprite.enabled = false;
+            gaugeLightSprite.gameObject.SetActive(false);
+            gaugeDarkSprite.gameObject.SetActive(false);
             return;
         }
 
@@ -284,6 +288,8 @@ public class GuardNew : MonoBehaviour
         // Enable renderers when visible
         gaugeLightSprite.enabled = true;
         gaugeDarkSprite.enabled = true;
+        gaugeLightSprite.gameObject.SetActive(true);
+        gaugeDarkSprite.gameObject.SetActive(true);
 
         float target = Mathf.Clamp01(currentGauge / maxGauge);
 
