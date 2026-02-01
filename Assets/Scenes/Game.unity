@@ -278,7 +278,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 3}
+  m_Size: {x: 1, y: 2, z: 3}
   m_Center: {x: 0, y: 1, z: 0}
 --- !u!1001 &28677143
 PrefabInstance:
@@ -853,7 +853,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 5, y: 1, z: 1}
+  m_Size: {x: 5, y: 2, z: 1}
   m_Center: {x: 0, y: 1, z: 0}
 --- !u!1001 &55988937
 PrefabInstance:
@@ -1247,6 +1247,10 @@ PrefabInstance:
     - target: {fileID: 1993370804192675819, guid: b12d691e7dbd0d1478a6e78da23f5096, type: 3}
       propertyPath: m_Name
       value: LargeStoneBlock (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4740769183170357012, guid: b12d691e7dbd0d1478a6e78da23f5096, type: 3}
+      propertyPath: m_Size.z
+      value: 0.05
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1906,6 +1910,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LargeStoneBlock (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 4740769183170357012, guid: b12d691e7dbd0d1478a6e78da23f5096, type: 3}
+      propertyPath: m_Size.z
+      value: 0.05
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2300,7 +2308,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.010245096, y: 0.010863545, z: 0.011936221}
+  m_Size: {x: 0.010245096, y: 0.010863545, z: 0.05}
   m_Center: {x: 0.00048903766, y: -1.4830318e-13, z: 1.7773868e-18}
 --- !u!1001 &166123439
 PrefabInstance:
@@ -2900,6 +2908,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: LargeStoneBlock (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4740769183170357012, guid: b12d691e7dbd0d1478a6e78da23f5096, type: 3}
+      propertyPath: m_Size.x
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 4740769183170357012, guid: b12d691e7dbd0d1478a6e78da23f5096, type: 3}
+      propertyPath: m_Size.y
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 4740769183170357012, guid: b12d691e7dbd0d1478a6e78da23f5096, type: 3}
+      propertyPath: m_Size.z
+      value: 0.05
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3192,7 +3212,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.010245096, y: 0.010863545, z: 0.011936221}
+  m_Size: {x: 0.010245096, y: 0.010863545, z: 0.05}
   m_Center: {x: 0.00048903766, y: -1.4830318e-13, z: 1.7773868e-18}
 --- !u!1 &241361392 stripped
 GameObject:
@@ -3419,6 +3439,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: LargeStoneBlock
       objectReference: {fileID: 0}
+    - target: {fileID: 4740769183170357012, guid: b12d691e7dbd0d1478a6e78da23f5096, type: 3}
+      propertyPath: m_Size.x
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 4740769183170357012, guid: b12d691e7dbd0d1478a6e78da23f5096, type: 3}
+      propertyPath: m_Size.y
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 4740769183170357012, guid: b12d691e7dbd0d1478a6e78da23f5096, type: 3}
+      propertyPath: m_Size.z
+      value: 0.05
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3480,6 +3512,10 @@ PrefabInstance:
     - target: {fileID: 1993370804192675819, guid: b12d691e7dbd0d1478a6e78da23f5096, type: 3}
       propertyPath: m_Name
       value: LargeStoneBlock (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4740769183170357012, guid: b12d691e7dbd0d1478a6e78da23f5096, type: 3}
+      propertyPath: m_Size.z
+      value: 0.05
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3674,10 +3710,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 127133259803215852, guid: cdd873e51a6880e468d33c67deaa9bcf, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1136302010}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4664246196673917449, guid: cdd873e51a6880e468d33c67deaa9bcf, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cdd873e51a6880e468d33c67deaa9bcf, type: 3}
 --- !u!4 &295739251 stripped
 Transform:
@@ -3860,6 +3893,18 @@ PrefabInstance:
     - target: {fileID: 1993370804192675819, guid: b12d691e7dbd0d1478a6e78da23f5096, type: 3}
       propertyPath: m_Name
       value: LargeStoneBlock (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4740769183170357012, guid: b12d691e7dbd0d1478a6e78da23f5096, type: 3}
+      propertyPath: m_Size.x
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 4740769183170357012, guid: b12d691e7dbd0d1478a6e78da23f5096, type: 3}
+      propertyPath: m_Size.y
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 4740769183170357012, guid: b12d691e7dbd0d1478a6e78da23f5096, type: 3}
+      propertyPath: m_Size.z
+      value: 0.05
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4272,6 +4317,10 @@ PrefabInstance:
     - target: {fileID: 1993370804192675819, guid: b12d691e7dbd0d1478a6e78da23f5096, type: 3}
       propertyPath: m_Name
       value: LargeStoneBlock (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4740769183170357012, guid: b12d691e7dbd0d1478a6e78da23f5096, type: 3}
+      propertyPath: m_Size.z
+      value: 0.05
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5350,10 +5399,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7575064973799233603, guid: d04b331c7c34c6740bea2fb707e53a86, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d04b331c7c34c6740bea2fb707e53a86, type: 3}
 --- !u!4 &437834825 stripped
 Transform:
@@ -5960,6 +6006,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LargeStoneBlock (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 4740769183170357012, guid: b12d691e7dbd0d1478a6e78da23f5096, type: 3}
+      propertyPath: m_Size.z
+      value: 0.05
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6021,7 +6071,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 7, y: 1, z: 1}
+  m_Size: {x: 7, y: 2, z: 1}
   m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &522171936
 GameObject:
@@ -6190,10 +6240,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5020896035280366912, guid: 687c4c9d760ea5e49b8914759b278d80, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 687c4c9d760ea5e49b8914759b278d80, type: 3}
 --- !u!1001 &530642291
 PrefabInstance:
@@ -6676,6 +6723,10 @@ PrefabInstance:
     - target: {fileID: 1993370804192675819, guid: b12d691e7dbd0d1478a6e78da23f5096, type: 3}
       propertyPath: m_Name
       value: LargeStoneBlock
+      objectReference: {fileID: 0}
+    - target: {fileID: 4740769183170357012, guid: b12d691e7dbd0d1478a6e78da23f5096, type: 3}
+      propertyPath: m_Size.z
+      value: 0.05
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8233,7 +8284,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 9, y: 1, z: 1}
+  m_Size: {x: 11, y: 2, z: 1}
   m_Center: {x: 0, y: 1, z: 0}
 --- !u!1001 &712812491
 PrefabInstance:
@@ -8644,7 +8695,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.010245096, y: 0.010863545, z: 0.011936221}
+  m_Size: {x: 0.01, y: 0.01, z: 0.05}
   m_Center: {x: 0.00048903766, y: -1.4830318e-13, z: 1.7773868e-18}
 --- !u!1001 &760979510
 PrefabInstance:
@@ -8757,7 +8808,7 @@ Transform:
   m_GameObject: {fileID: 763922966}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9.75, y: 0, z: -18.5}
+  m_LocalPosition: {x: 9.87, y: 0, z: -18.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8782,7 +8833,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 5}
+  m_Size: {x: 1, y: 2, z: 6}
   m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &765520262 stripped
 GameObject:
@@ -8946,6 +8997,10 @@ PrefabInstance:
     - target: {fileID: 1993370804192675819, guid: b12d691e7dbd0d1478a6e78da23f5096, type: 3}
       propertyPath: m_Name
       value: LargeStoneBlock (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4740769183170357012, guid: b12d691e7dbd0d1478a6e78da23f5096, type: 3}
+      propertyPath: m_Size.z
+      value: 0.05
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9419,6 +9474,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: LargeStoneBlock (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 4740769183170357012, guid: b12d691e7dbd0d1478a6e78da23f5096, type: 3}
+      propertyPath: m_Size.x
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 4740769183170357012, guid: b12d691e7dbd0d1478a6e78da23f5096, type: 3}
+      propertyPath: m_Size.y
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 4740769183170357012, guid: b12d691e7dbd0d1478a6e78da23f5096, type: 3}
+      propertyPath: m_Size.z
+      value: 0.05
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9588,6 +9655,18 @@ PrefabInstance:
     - target: {fileID: 1993370804192675819, guid: b12d691e7dbd0d1478a6e78da23f5096, type: 3}
       propertyPath: m_Name
       value: LargeStoneBlock
+      objectReference: {fileID: 0}
+    - target: {fileID: 4740769183170357012, guid: b12d691e7dbd0d1478a6e78da23f5096, type: 3}
+      propertyPath: m_Size.x
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 4740769183170357012, guid: b12d691e7dbd0d1478a6e78da23f5096, type: 3}
+      propertyPath: m_Size.y
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 4740769183170357012, guid: b12d691e7dbd0d1478a6e78da23f5096, type: 3}
+      propertyPath: m_Size.z
+      value: 0.05
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10520,6 +10599,18 @@ PrefabInstance:
     - target: {fileID: 1993370804192675819, guid: b12d691e7dbd0d1478a6e78da23f5096, type: 3}
       propertyPath: m_Name
       value: LargeStoneBlock (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4740769183170357012, guid: b12d691e7dbd0d1478a6e78da23f5096, type: 3}
+      propertyPath: m_Size.x
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 4740769183170357012, guid: b12d691e7dbd0d1478a6e78da23f5096, type: 3}
+      propertyPath: m_Size.y
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 4740769183170357012, guid: b12d691e7dbd0d1478a6e78da23f5096, type: 3}
+      propertyPath: m_Size.z
+      value: 0.05
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -12764,6 +12855,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LargeStoneBlock
       objectReference: {fileID: 0}
+    - target: {fileID: 4740769183170357012, guid: b12d691e7dbd0d1478a6e78da23f5096, type: 3}
+      propertyPath: m_Size.z
+      value: 0.05
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -13882,7 +13977,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 3}
+  m_Size: {x: 1, y: 2, z: 3}
   m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &1244917083
 GameObject:
@@ -14945,6 +15040,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: LargeStoneBlock (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 4740769183170357012, guid: b12d691e7dbd0d1478a6e78da23f5096, type: 3}
+      propertyPath: m_Size.x
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 4740769183170357012, guid: b12d691e7dbd0d1478a6e78da23f5096, type: 3}
+      propertyPath: m_Size.y
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 4740769183170357012, guid: b12d691e7dbd0d1478a6e78da23f5096, type: 3}
+      propertyPath: m_Size.z
+      value: 0.05
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -15882,10 +15989,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4664246196673917449, guid: cdd873e51a6880e468d33c67deaa9bcf, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cdd873e51a6880e468d33c67deaa9bcf, type: 3}
 --- !u!4 &1403454432 stripped
 Transform:
@@ -16203,10 +16307,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2907382827275054502, guid: d04b331c7c34c6740bea2fb707e53a86, type: 3}
       insertIndex: 1
       addedObject: {fileID: 1179230756}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7575064973799233603, guid: d04b331c7c34c6740bea2fb707e53a86, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d04b331c7c34c6740bea2fb707e53a86, type: 3}
 --- !u!4 &1459419641 stripped
 Transform:
@@ -16486,6 +16587,10 @@ PrefabInstance:
     - target: {fileID: 1993370804192675819, guid: b12d691e7dbd0d1478a6e78da23f5096, type: 3}
       propertyPath: m_Name
       value: LargeStoneBlock (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4740769183170357012, guid: b12d691e7dbd0d1478a6e78da23f5096, type: 3}
+      propertyPath: m_Size.z
+      value: 0.05
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -17156,7 +17261,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.010245096, y: 0.010863545, z: 0.011936221}
+  m_Size: {x: 0.01, y: 0.01, z: 0.05}
   m_Center: {x: 0.00048903766, y: -1.4830318e-13, z: 1.7773868e-18}
 --- !u!1001 &1570220001
 PrefabInstance:
@@ -17213,6 +17318,18 @@ PrefabInstance:
     - target: {fileID: 1993370804192675819, guid: b12d691e7dbd0d1478a6e78da23f5096, type: 3}
       propertyPath: m_Name
       value: LargeStoneBlock (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4740769183170357012, guid: b12d691e7dbd0d1478a6e78da23f5096, type: 3}
+      propertyPath: m_Size.x
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 4740769183170357012, guid: b12d691e7dbd0d1478a6e78da23f5096, type: 3}
+      propertyPath: m_Size.y
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 4740769183170357012, guid: b12d691e7dbd0d1478a6e78da23f5096, type: 3}
+      propertyPath: m_Size.z
+      value: 0.05
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -17824,10 +17941,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5020896035280366912, guid: 687c4c9d760ea5e49b8914759b278d80, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 687c4c9d760ea5e49b8914759b278d80, type: 3}
 --- !u!4 &1637705471 stripped
 Transform:
@@ -18804,7 +18918,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.010245096, y: 0.010863545, z: 0.011936221}
+  m_Size: {x: 0.010245096, y: 0.010863545, z: 0.05}
   m_Center: {x: 0.00048903766, y: -1.4830318e-13, z: 1.7773868e-18}
 --- !u!1 &1730682901
 GameObject:
@@ -18932,7 +19046,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.010245096, y: 0.010863545, z: 0.011936221}
+  m_Size: {x: 0.010245096, y: 0.010863545, z: 0.05}
   m_Center: {x: 0.00048903766, y: -1.4830318e-13, z: 1.7773868e-18}
 --- !u!1001 &1735231214
 PrefabInstance:
@@ -19543,6 +19657,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: LargeStoneBlock (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 4740769183170357012, guid: b12d691e7dbd0d1478a6e78da23f5096, type: 3}
+      propertyPath: m_Size.x
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 4740769183170357012, guid: b12d691e7dbd0d1478a6e78da23f5096, type: 3}
+      propertyPath: m_Size.y
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 4740769183170357012, guid: b12d691e7dbd0d1478a6e78da23f5096, type: 3}
+      propertyPath: m_Size.z
+      value: 0.05
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -19917,6 +20043,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LargeStoneBlock (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 4740769183170357012, guid: b12d691e7dbd0d1478a6e78da23f5096, type: 3}
+      propertyPath: m_Size.z
+      value: 0.05
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -20016,7 +20146,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.010245096, y: 0.010863545, z: 0.011936221}
+  m_Size: {x: 0.010245096, y: 0.010863545, z: 0.05}
   m_Center: {x: 0.00048903766, y: -1.4830318e-13, z: 1.7773868e-18}
 --- !u!4 &1803217025 stripped
 Transform:
@@ -20473,6 +20603,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LargeStoneBlock (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 4740769183170357012, guid: b12d691e7dbd0d1478a6e78da23f5096, type: 3}
+      propertyPath: m_Size.z
+      value: 0.05
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -20700,7 +20834,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.010245096, y: 0.010863545, z: 0.011936221}
+  m_Size: {x: 0.010245096, y: 0.010863545, z: 0.05}
   m_Center: {x: 0.00048903766, y: -1.4830318e-13, z: 1.7773868e-18}
 --- !u!1 &1868618528
 GameObject:
@@ -20904,7 +21038,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.010245096, y: 0.010863545, z: 0.011936221}
+  m_Size: {x: 0.01, y: 0.01, z: 0.05}
   m_Center: {x: 0.00048903766, y: -1.4830318e-13, z: 1.7773868e-18}
 --- !u!1001 &1878250055
 PrefabInstance:
@@ -20981,10 +21115,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 348147596739467429, guid: 687c4c9d760ea5e49b8914759b278d80, type: 3}
       insertIndex: 2
       addedObject: {fileID: 907399521}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5020896035280366912, guid: 687c4c9d760ea5e49b8914759b278d80, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 687c4c9d760ea5e49b8914759b278d80, type: 3}
 --- !u!4 &1878250056 stripped
 Transform:
@@ -21724,10 +21855,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 127133259803215852, guid: cdd873e51a6880e468d33c67deaa9bcf, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2101655215}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4664246196673917449, guid: cdd873e51a6880e468d33c67deaa9bcf, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cdd873e51a6880e468d33c67deaa9bcf, type: 3}
 --- !u!4 &1936270349 stripped
 Transform:
@@ -22232,7 +22360,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.010245096, y: 0.010863545, z: 0.011936221}
+  m_Size: {x: 0.01, y: 0.01, z: 0.05}
   m_Center: {x: 0.00048903766, y: -1.4830318e-13, z: 1.7773868e-18}
 --- !u!1001 &1979592693
 PrefabInstance:
@@ -22374,6 +22502,10 @@ PrefabInstance:
     - target: {fileID: 1993370804192675819, guid: b12d691e7dbd0d1478a6e78da23f5096, type: 3}
       propertyPath: m_Name
       value: LargeStoneBlock (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4740769183170357012, guid: b12d691e7dbd0d1478a6e78da23f5096, type: 3}
+      propertyPath: m_Size.z
+      value: 0.05
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -22787,7 +22919,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.010245096, y: 0.010863545, z: 0.011936221}
+  m_Size: {x: 0.01, y: 0.01, z: 0.05}
   m_Center: {x: 0.00048903766, y: -1.4830318e-13, z: 1.7773868e-18}
 --- !u!1001 &2062354487
 PrefabInstance:
@@ -23106,6 +23238,10 @@ PrefabInstance:
     - target: {fileID: 1993370804192675819, guid: b12d691e7dbd0d1478a6e78da23f5096, type: 3}
       propertyPath: m_Name
       value: LargeStoneBlock (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4740769183170357012, guid: b12d691e7dbd0d1478a6e78da23f5096, type: 3}
+      propertyPath: m_Size.z
+      value: 0.05
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -23677,6 +23813,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LargeStoneBlock
       objectReference: {fileID: 0}
+    - target: {fileID: 4740769183170357012, guid: b12d691e7dbd0d1478a6e78da23f5096, type: 3}
+      propertyPath: m_Size.z
+      value: 0.05
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -24182,6 +24322,10 @@ PrefabInstance:
     - target: {fileID: 3436564655869655066, guid: 0789f5daf1ecda34998cc3b9f65022c5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4518162589504912481, guid: 0789f5daf1ecda34998cc3b9f65022c5, type: 3}
+      propertyPath: m_Size.z
+      value: 0.05
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
