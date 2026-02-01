@@ -115,5 +115,6 @@ public class MerchantUIController : MonoBehaviour
         print("Selected mask for purchase : " + selectedMask.name);
         PlayerInventoryController.Instance.AddMaskToInventory(selectedMask);
         UIManager.Instance.DisplayMerchantUI(false);
+        GameObject.FindGameObjectWithTag("Player").GetComponent<InvestigationPlayer>().DeactivateMerchantInteraction();
     }
 }
