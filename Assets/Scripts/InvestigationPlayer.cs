@@ -1,5 +1,6 @@
 using NUnit.Framework;
 using System.Collections.Generic;
+using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -16,6 +17,10 @@ public class InvestigationPlayer : MonoBehaviour
     private Rigidbody rb;
     private PlayerInputs playerInputs;
     private DetectController detectController;
+
+    private Animator animator;
+    private bool isWalking = false;
+    private SpriteRenderer[] sprites;
 
     public List<string> indices = new List<string>();
 
@@ -55,6 +60,9 @@ public class InvestigationPlayer : MonoBehaviour
 
         interactIcon.SetActive(false);
         _accusationInteractIcon.SetActive(false);
+
+        animator = GetComponentInChildren<Animator>();
+        sprites = GetComponentsInChildren<SpriteRenderer>();
     }
 
     private void Update()
@@ -106,10 +114,33 @@ public class InvestigationPlayer : MonoBehaviour
 
     private void Move()
     {
+        MoveAnimation();
         rb.MovePosition(rb.position
             + transform.forward * moveDirection.y * MoveSpeed * Time.deltaTime
-            + transform.right * moveDirection.x * MoveSpeed * Time.deltaTime);
+            + transform.right * moveDirection.x * MoveSpeed * Time.deltaTime);       
     }
+
+
+    private void MoveAnimation()
+    {
+        if (isWalking && moveDirection.magnitude == 0)
+        {
+            isWalking = false;
+            animator.SetBool("WalkBool", false);
+        }
+        else if (!isWalking && moveDirection.magnitude > 0)
+        {
+            isWalking = true;
+            animator.SetBool("WalkBool", true);
+        }
+        foreach(var sprite in sprites)
+        {
+            int rotation = moveDirection.x < 0 ? 0 : 180;
+            sprite.transform.localRotation = Quaternion.Euler(0, rotation, 0);
+        }
+    }
+
+
 
     public void EnableInteraction(GroupController group)
     {
