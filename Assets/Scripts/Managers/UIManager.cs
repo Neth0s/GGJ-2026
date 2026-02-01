@@ -33,4 +33,11 @@ public class UIManager : MonoBehaviour
               
     }
 
+
+    public void DisplayIndice(bool display)
+    {
+        //chooseMaskPanel.SetActive(display);
+        //if (display) chooseMaskPanel.GetComponent<MaskChoiceController>().InitializeUI();
+
+    }
 }

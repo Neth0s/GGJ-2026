@@ -1,6 +1,6 @@
-using System;
+using NUnit.Framework;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 public class InvestigationPlayer : MonoBehaviour
@@ -17,6 +17,8 @@ public class InvestigationPlayer : MonoBehaviour
     private PlayerInputs playerInputs;
     private DetectController detectController;
 
+    public List<string> indices = new List<string>();
+
     private Vector2 moveDirection;
 
     [Header("Interaction data")]
@@ -24,6 +26,7 @@ public class InvestigationPlayer : MonoBehaviour
     [SerializeField] private GameObject _accusationInteractIcon;
     private bool isInDialog = false;
     private bool isChoosingMask = false;
+    private bool isLookingForIndice = false;
     GroupController currentGroup; 
 
     private NPCController _currentNPC;
@@ -56,24 +59,20 @@ public class InvestigationPlayer : MonoBehaviour
     private void Update()
     {
         moveDirection = moveAction.ReadValue<Vector2>();
-        if (seeIndiceAction.triggered)
+        if (seeIndiceAction.triggered && !isInDialog && !isChoosingMask)
         {
-            print("omg indice");
+            DisplayIndicesUI();
         }
 
-        if (chooseMaskAction.triggered && !isInDialog)
+        if (chooseMaskAction.triggered && !isInDialog && !isLookingForIndice)
         {
             DisplayChangeMaskUI();
         }
-        if (isChoosingMask) return; //skip interaction
+        if (isChoosingMask || isLookingForIndice) return; //skip interaction
 
-        if (interactAction.triggered && currentGroup) { Interact(); }
+        if (interactAction.triggered && currentGroup) { InteractGroup(); }
 
-        if (accuseAction.triggered) 
-        { 
-            print("accuse");
-            InteractAccusation(); 
-        }
+        if (accuseAction.triggered && _currentNPC)  {  InteractAccusation(); }
 
         
     }
@@ -82,12 +81,18 @@ public class InvestigationPlayer : MonoBehaviour
     {
         isChoosingMask = !isChoosingMask;
         UIManager.Instance.DisplayChooseMask(isChoosingMask);
+    }
 
+    private void DisplayIndicesUI()
+    {
+        isLookingForIndice = !isLookingForIndice;
+        //UIManager.Instance.DisplayIndice(isLookingForIndice);
+        //UIManager.Instance.DisplayChooseMask(isLookingForIndice);
     }
 
     private void FixedUpdate()
     {
-        if (!isInDialog && !isChoosingMask) Move();
+        if (!isInDialog && !isChoosingMask && !isLookingForIndice) Move();
     }
 
     private void Move()
@@ -120,9 +125,13 @@ public class InvestigationPlayer : MonoBehaviour
         _accusationInteractIcon.SetActive(false);
     }
 
-    private void Interact()
+    private void InteractGroup()
     {
         isInDialog = currentGroup.DisplayBubble();
+        if (!indices.Contains(currentGroup.GetGroupIndice()))
+        {
+            indices.Add(currentGroup.GetGroupIndice());
+        }
     }
 
     private void InteractAccusation()

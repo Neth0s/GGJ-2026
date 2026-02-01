@@ -107,4 +107,9 @@ public class GroupController : MonoBehaviour
     {
         return _data.MaskRequirementsLower;
     }
+
+    public string GetGroupIndice()
+    {
+        return _data.indice;
+    }
 }

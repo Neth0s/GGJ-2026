@@ -328,11 +328,11 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""f7d4ef72-73b9-45a9-b4be-adcec07eb08d"",
-                    ""path"": ""<Keyboard>/w"",
+                    ""id"": ""db1e71a2-f85f-427c-a75b-53a876567e69"",
+                    ""path"": ""<Keyboard>/z"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": "";Keyboard&Mouse"",
+                    ""groups"": """",
                     ""action"": ""SeeIndice"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false

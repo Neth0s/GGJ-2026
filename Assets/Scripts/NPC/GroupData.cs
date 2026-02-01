@@ -9,7 +9,7 @@ public class GroupData : ScriptableObject
 {
 
     [SerializeField] public List<string> dialogs = new List<string>();
-    [SerializeField] string indice;
+    [SerializeField] public string indice;
 
     [SerializeField] public List<MaskProperty> MaskRequirementsUpper = new List<MaskProperty>();
     [SerializeField] public List<MaskProperty> MaskRequirementsLower = new List<MaskProperty>();
