@@ -17,8 +17,8 @@ MonoBehaviour:
   - "Vous cherchez quelqu\u2019un ?"
   - "Hmm \xE7a me dit quelque chose.."
   - "J\u2019ai cru l\u2019avoir aper\xE7u rapidement, mais je n\u2019ai pas eu le
-    temps de voir grand chose"
-  - "Tout ce que je sais c\u2019est que le bas de son masque n\u2019est pas rouge"
+    temps de voir grand chose."
+  - "Tout ce que je sais c\u2019est que le bas de son masque n\u2019est pas rouge."
   indice: Le bas de son masque n'est pas rouge
   MaskRequirementsUpper:
   - {fileID: 11400000, guid: 75a6f38f88c14844c9a4a50c52c781f1, type: 2}

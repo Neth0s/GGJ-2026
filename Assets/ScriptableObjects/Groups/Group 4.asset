@@ -15,7 +15,8 @@ MonoBehaviour:
   dialogs:
   - "Quelle belle journ\xE9e !"
   - "Comment ? Une personne viendrait ruiner tout \xE7a ?"
-  - "Mais oui, je me souviens avoir vu une personne qui d\xE9gageait de mauvaisesondes."
+  - "Mais oui, je me souviens avoir vu une personne qui d\xE9gageait de mauvaises
+    ondes."
   - "Je l'ai imm\xE9diatement remarqu\xE9e parce son masque n'\xE9tait pas d'ici."
   - "Le haut comme le bas du masque m'\xE9taient \xE9trangers..."
   indice: "Aucune partie de son masque n'est v\xE9nitienne"

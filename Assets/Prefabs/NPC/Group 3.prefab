@@ -140,7 +140,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _data: {fileID: 11400000, guid: dd5af8f8a4e828949a67744db649ddbf, type: 2}
   bubbleDialog: {fileID: 2148531350575816891}
-  currentDialogIndex: 0
 --- !u!65 &4561715191853828720
 BoxCollider:
   m_ObjectHideFlags: 0
