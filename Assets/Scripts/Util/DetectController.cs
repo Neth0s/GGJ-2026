@@ -19,7 +19,7 @@ public class DetectController : MonoBehaviour
     public bool masksAreOK = false;
 
     private PlayerMaskController _playerMaskController;
-    private InvestigationPlayer player;
+    private Player player;
     private DarkController _playerDarkController;
     #endregion
 
@@ -32,7 +32,7 @@ public class DetectController : MonoBehaviour
     {
         _playerMaskController = GetComponent<PlayerMaskController>();
         _playerDarkController = GetComponent<DarkController>();
-        player = GetComponent<InvestigationPlayer>();
+        player = GetComponent<Player>();
     }
 
     private void Update()

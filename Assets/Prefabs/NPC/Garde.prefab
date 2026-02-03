@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4549389588684383096}
   - component: {fileID: 6535307809095480199}
   m_Layer: 0
-  m_Name: Guard_New
+  m_Name: Garde
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

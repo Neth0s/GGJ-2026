@@ -9,17 +9,18 @@ public class UIManager : MonoBehaviour
 
     #region VARIABLES
     [Header("UI Variables")]
-    [SerializeField] private GameObject chooseMaskPanel;
-    [SerializeField] private GameObject chooseMaskButtonUI;
     [SerializeField] private GameObject indicePanel;
+    [SerializeField] private MaskChoiceController maskPanel;
+    [SerializeField] private MerchantUIController merchantPanel;
+    [Space(10)]
+    [SerializeField] private GameObject maskButton;
+    [SerializeField] private GameObject indicesButton;
+    [Space(10)]
     [SerializeField] private TextMeshProUGUI indiceText;
-    [SerializeField] private GameObject indicePanelButtonUI;
-
-    [SerializeField] private MerchantUIController _merchantUIController;
     #endregion
 
     #region GETTERS AND SETTERS
-    public MerchantUIController GetMerchantUIController() { return _merchantUIController; }
+    public MerchantUIController GetMerchantUIController() { return merchantPanel; }
     #endregion
 
     private void Awake()
@@ -34,54 +35,58 @@ public class UIManager : MonoBehaviour
             instance = this;
         }
         DontDestroyOnLoad(this.gameObject);
-        chooseMaskButtonUI.SetActive(false);
-        indicePanelButtonUI.SetActive(false);
     }
 
     private void Start()
     {
-        chooseMaskPanel.SetActive(false);
-        _merchantUIController.gameObject.SetActive(false);  
+        maskPanel.gameObject.SetActive(false);
+        merchantPanel.gameObject.SetActive(false);
+
+        maskButton.SetActive(false);
+        indicesButton.SetActive(false);
     }
 
     /// <summary>
-    /// Function to change the display status of the two buttons of the UI
+    /// Changes the display status of the two buttons of the UI
     /// </summary>
     /// <param name="status"></param>
     public void DisplayButtonsUI(bool status)
     {
-        chooseMaskButtonUI.SetActive(status);
-        indicePanelButtonUI.SetActive(status);
+        maskButton.SetActive(status);
+        indicesButton.SetActive(status);
     }
 
-    public void DisplayChooseMask(bool display)
+    public void DisplayMaskPanel(bool display)
     {
-        chooseMaskPanel.SetActive(display);
-        indicePanelButtonUI.SetActive(!display);
-        chooseMaskButtonUI.SetActive(!display);
-        if (display) chooseMaskPanel.GetComponent<MaskChoiceController>().InitializeUI();
+        maskPanel.gameObject.SetActive(display);
+        indicesButton.SetActive(!display);
+        maskButton.SetActive(!display);
+
+        if (display) maskPanel.InitializeUI();
               
     }
 
-    public void DisplayIndice(bool display, List<string> indices)
+    public void DisplayIndices(bool display, List<string> indices)
     {
         indicePanel.SetActive(display);
-        indicePanelButtonUI.SetActive(!display);
-        chooseMaskButtonUI.SetActive(!display);
-        if (display) {
-            string textToDisplay = "Indices :" + '\n';
+        indicesButton.SetActive(!display);
+        maskButton.SetActive(!display);
+
+        if (display)
+        {
+            string textToDisplay = string.Empty;
+
             foreach (string indice in indices)
             {
-                textToDisplay += '-' + indice + '\n';
+                textToDisplay += "- " + indice + '\n';
             }
             indiceText.text = textToDisplay;
         }
-        
     }
 
     public void DisplayMerchantUI(bool display)
     {
-        _merchantUIController.gameObject.SetActive(display);
-        if (display) _merchantUIController.InitializeUI();
+        merchantPanel.gameObject.SetActive(display);
+        if (display) merchantPanel.InitializeUI();
     }
 }

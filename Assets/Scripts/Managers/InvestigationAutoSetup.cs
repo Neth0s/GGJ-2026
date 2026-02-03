@@ -23,7 +23,7 @@ public class InvestigationAutoSetup : MonoBehaviour
         }
 
         // 2. Find Player (InvestigationPlayer)
-        InvestigationPlayer player = Object.FindFirstObjectByType<InvestigationPlayer>();
+        Player player = Object.FindFirstObjectByType<Player>();
         if (player == null)
         {
             Debug.LogError("Setup Error: No InvestigationPlayer found in scene!");

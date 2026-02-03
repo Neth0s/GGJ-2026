@@ -1,89 +1,30 @@
-# 🎭 GGJ-2026 — *Cavale au Carnaval*
+GGJ-2026 — *Cavale au Carnaval*
 
-Bienvenue dans le repository officiel du jeu **Cavale au Carnaval**, développé dans le cadre de la **Global Game Jam 2026**.
+Bienvenue dans le repository de **Cavale au Carnaval**, développé dans le cadre de la **Global Game Jam 2026**.
 
-> 🕵️‍♂️ Enquête, déduction et carnaval vénitien : saurez-vous démasquer Fantomasque avant qu’elle ne disparaisse dans la foule ?
+## À propos du jeu
 
----
+Fantomasque, votre éternelle rivale et maîtresse de l’imposture a les yeux rivés sur le carnaval de Venise. Vous ignorez encore ce qui a pu piquer son intérêt, mais il y a une chose dont vous pouvez être sûre : sa présence au carnaval ne signifie rien de bon. Fidèle à elle-même, vous savez qu’elle se fera passer pour une personne ordinaire, dissimulée au milieu de cet attroupement festif. Retrouvez la avant qu’il ne soit trop tard !
 
-## 🎮 À propos du jeu
+Dans ce jeu d'enquête, interrogez les personnes présentes pour obtenir des informations sur Fantomasque, mais faites attention à ne pas vous éparpiller : accuser les mauvaises personnes vous fera perdre du temps !
 
-**Cavale au Carnaval** est un jeu d’énigme.
 
-Vous incarnez une enquêtrice lancée à la poursuite de **Fantomasque**, votre rivale de toujours, qui s’est fondue dans la foule masquée du carnaval de Venise.
+## Gameplay
 
-### 🧩 Gameplay
-- Interroger les personnages pour récolter des indices  
-- Observer attentivement les comportements et les dialogues  
-- Éviter les fausses accusations  
-- Prendre des décisions sous contrainte de temps  
+Pour pouvoir interroger les personnages et récolter des indices, vous allez devoir changez le masque que vous portez pour vous intégrer à la foule, au risque de vous faire rejeter du carnaval si vous n'y parvenez pas. Identifiez les points communs entre les masques des personnages pour savoir lequel mettre et mener votre enquête à bien.
 
-Le jeu met l’accent sur :
-- 🧠 la réflexion  
-- 👀 l’observation  
-- ⏱ la gestion du temps et du risque  
+## Version jouable :  
 
-👉 Version jouable :  
 https://biscuitprime.itch.io/caval
 
----
 
-## 📦 Contenu du dépôt
+## Équipe & Crédits
 
-Ce dépôt contient :
-
-- 🧩 **Le projet Unity complet**
-  - Scripts (C#)
-  - Assets (2D / 3D / audio)
-  - Shaders et ressources
-- ⚙️ **ProjectSettings** Unity
-- 🗂 Fichiers de configuration
-- 📝 Notes et éléments liés au développement du jeu
-
----
-
-## 🛠 Développement
-
-### 📌 Prérequis
-
-- **Unity** (version à vérifier dans `ProjectSettings/ProjectVersion.txt`)
-- Un éditeur de code :
-  - Visual Studio
-  - Visual Studio Code
- 
----
-
-## 👥 Équipe & Crédits
-**Cavale au Carnaval** a été développé par :
-
-### 🎮 Game Design & Direction
-**Clémence “Groseille” MS** — Chef de projet & Game Design
-
-**Guillaume “Guitou” Branche** — Musique & Game Design
-
-### 💻 Développement
-**Henri “Biscuit Prime” Nomico**
-
-**Prométhée “Akasuna” Toneatti**
-
-**Victor “0xu” Xu**
-
-### 🎨 Art 2D / 3D
-Fleur “Evee” Vivares
-
-Aimeric “Soupalasoup” Parise
-
----
-
-## 🎯 Objectif du dépôt
-Ce repository a pour but de :
-
-- Centraliser le code source du jeu
-
-- Faciliter la collaboration post-jam
-
-- Permettre l’amélioration continue du projet
-
-- Servir de base pour une version plus aboutie du jeu
-
+**Clémence MS (Groseille)** — Chef de projet & Game Design
+**Guillaume Branche (Guitou)** — Musique & Game Design
+**Henri Nomico (Biscuit Prime)** - Programmation
+**Prométhée Toneatti (Akasuna)** - Programmation
+**Victor Xu (0xu)** - Programmation
+**Fleur Vivares (Evee)** - Artiste 2D
+**Aimeric Parise (Soupalasoup)** - Artiste 3D et 2D
 

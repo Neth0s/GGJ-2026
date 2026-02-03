@@ -18,7 +18,7 @@ public class GuardController : MonoBehaviour
     [SerializeField] private float suspicionDecreaseRate = 2.0f;
 
     [Header("References")]
-    [SerializeField] private InvestigationPlayer player; 
+    [SerializeField] private Player player; 
     [SerializeField] private List<GroupController> patrolGroups = new List<GroupController>(); 
 
     private int _targetGroupIndex = 0;
@@ -28,7 +28,7 @@ public class GuardController : MonoBehaviour
 
     private NavMeshAgent _agent;
 
-    public void Setup(InvestigationPlayer playerRef, List<GroupController> groups)
+    public void Setup(Player playerRef, List<GroupController> groups)
     {
         player = playerRef;
         patrolGroups = groups;

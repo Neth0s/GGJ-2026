@@ -2,40 +2,42 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class InvestigationPlayer : MonoBehaviour
+[RequireComponent(typeof(Rigidbody))]
+public class Player : MonoBehaviour
 {
+    [SerializeField] private float MoveSpeed = 5.0f;
 
-    public float MoveSpeed = 5.0f;
+    [Header("Interaction data")]
+    [SerializeField] private GameObject interactIcon;
+    [SerializeField] private GameObject acusationIcon;
 
+    //Input actions
+    private PlayerInputs playerInputs;
     private InputAction moveAction;
     private InputAction interactAction;
     private InputAction accuseAction;
     private InputAction chooseMaskAction;
-    private InputAction seeIndiceAction;
+    private InputAction indiceAction;
     private InputAction escapeAction;
+    
+    //Components
     private Rigidbody rb;
-    private PlayerInputs playerInputs;
-    private DetectController detectController;
-
-    private Animator animator;
-    private bool isWalking = false;
     private SpriteRenderer[] sprites;
-    private bool isFacingRight = false;
+    private Animator animator;
 
-    public List<string> indices = new List<string>();
+    private GroupController currentGroup;
+    private NPCController currentNPC;
+    private MerchantController currentMerchant;
+
+    //Variables
+    private bool isWalking = false;
+    private bool isFacingRight = false;
+    private bool isInDialog = false;
+    private bool maskPanelOpen = false;
+    private bool indicesPanelOpen = false;
 
     private Vector2 moveDirection;
-
-    [Header("Interaction data")]
-    [SerializeField] private GameObject interactIcon;
-    [SerializeField] private GameObject _accusationInteractIcon;
-    private bool isInDialog = false;
-    private bool isChoosingMask = false;
-    private bool isLookingForIndice = false;
-    GroupController currentGroup; 
-
-    private NPCController _currentNPC;
-    private MerchantController _currentMerchant;
+    private readonly List<string> indices = new();
 
     private void OnEnable()
     {
@@ -43,7 +45,7 @@ public class InvestigationPlayer : MonoBehaviour
         interactAction = playerInputs.Player.Interact;
         accuseAction = playerInputs.Player.Accuse;
         chooseMaskAction = playerInputs.Player.ChooseMask;
-        seeIndiceAction = playerInputs.Player.SeeIndice;
+        indiceAction = playerInputs.Player.SeeIndice;
         escapeAction = playerInputs.Player.EscapeUI;
 
         playerInputs.Player.Enable();
@@ -58,10 +60,9 @@ public class InvestigationPlayer : MonoBehaviour
     {
         playerInputs = new PlayerInputs();
         rb = GetComponent<Rigidbody>();
-        detectController = GetComponent<DetectController>();
 
         interactIcon.SetActive(false);
-        _accusationInteractIcon.SetActive(false);
+        acusationIcon.SetActive(false);
 
         animator = GetComponentInChildren<Animator>();
         sprites = GetComponentsInChildren<SpriteRenderer>();
@@ -73,62 +74,56 @@ public class InvestigationPlayer : MonoBehaviour
 
         if (escapeAction.triggered)
         {
-            if(isChoosingMask) DisplayChangeMaskUI();
-            if(isLookingForIndice) DisplayIndicesUI();
+            if(maskPanelOpen) DisplayChangeMaskUI();
+            if(indicesPanelOpen) DisplayIndicesUI();
         }
 
-        if (seeIndiceAction.triggered && !isInDialog && !isChoosingMask)
+        if (indiceAction.triggered && !isInDialog && !maskPanelOpen)
         {
             DisplayIndicesUI();
         }
 
-        if (chooseMaskAction.triggered && !isInDialog && !isLookingForIndice)
+        if (chooseMaskAction.triggered && !isInDialog && !indicesPanelOpen)
         {
             DisplayChangeMaskUI();
         }
-        if (isChoosingMask || isLookingForIndice) return; //skip interaction
 
-        if (interactAction.triggered && currentGroup) { InteractGroup(); }
+        //Prevent interactions if panels are open
+        if (maskPanelOpen || indicesPanelOpen) return;
 
-        if (accuseAction.triggered && _currentNPC)  {  InteractAccusation(); }
-
-
-        if(interactAction.triggered && _currentMerchant)
+        if (interactAction.triggered)
         {
-            if (!isInDialog)
-            {
-                InteractMerchant();
-            }
+            if (currentGroup) InteractGroup();
+            if (currentMerchant && !isInDialog) InteractMerchant();
         }
 
-        
-    }
-
-    private void DisplayChangeMaskUI()
-    {
-        isChoosingMask = !isChoosingMask;
-        UIManager.Instance.DisplayChooseMask(isChoosingMask);
-    }
-
-    private void DisplayIndicesUI()
-    {
-        isLookingForIndice = !isLookingForIndice;
-        UIManager.Instance.DisplayIndice(isLookingForIndice, indices);
+        if (accuseAction.triggered && currentNPC) Accusation();
     }
 
     private void FixedUpdate()
     {
-        if (!isInDialog && !isChoosingMask && !isLookingForIndice) Move();
+        if (!isInDialog && !maskPanelOpen && !indicesPanelOpen) Move();
+    }
+
+    private void DisplayChangeMaskUI()
+    {
+        maskPanelOpen = !maskPanelOpen;
+        UIManager.Instance.DisplayMaskPanel(maskPanelOpen);
+    }
+
+    private void DisplayIndicesUI()
+    {
+        indicesPanelOpen = !indicesPanelOpen;
+        UIManager.Instance.DisplayIndices(indicesPanelOpen, indices);
     }
 
     private void Move()
     {
         MoveAnimation();
         rb.MovePosition(rb.position
-            + transform.forward * moveDirection.y * MoveSpeed * Time.deltaTime
-            + transform.right * moveDirection.x * MoveSpeed * Time.deltaTime);       
+            + moveDirection.y * MoveSpeed * Time.deltaTime * transform.forward
+            + moveDirection.x * MoveSpeed * Time.deltaTime * transform.right);       
     }
-
 
     private void MoveAnimation()
     {
@@ -159,10 +154,7 @@ public class InvestigationPlayer : MonoBehaviour
                 sprite.transform.localRotation = Quaternion.Euler(0, 180, 0);
             }
         }
-
     }
-
-
 
     public void EnableInteraction(GroupController group)
     {
@@ -172,76 +164,71 @@ public class InvestigationPlayer : MonoBehaviour
 
     public void EnableInteraction(NPCController npc)
     {
-        _accusationInteractIcon.SetActive(true);
-        _currentNPC = npc;
+        acusationIcon.SetActive(true);
+        currentNPC = npc;
     }
+
     public void EnableInteraction(MerchantController merchant)
     {
         interactIcon.SetActive(true);
-        _currentMerchant = merchant;
+        currentMerchant = merchant;
     }
 
     public void DisableInteraction()
     {
         interactIcon.SetActive(false);
         currentGroup = null;
-        _currentNPC = null;
+        currentNPC = null;
     }
     public void DisableMerchantInteraction()
     {
         interactIcon.SetActive(false);
-        _currentMerchant= null;
+        currentMerchant= null;
     }
 
     public void DisableAccusationInteraction()
     {
-        _accusationInteractIcon.SetActive(false);
+        acusationIcon.SetActive(false);
     }
 
     private void InteractGroup()
     {
         isInDialog = currentGroup.DisplayBubble();
-        if (!indices.Contains(currentGroup.GetGroupIndice()))
+        string indice = currentGroup.GetGroupIndice();
+
+        if (!indices.Contains(indice) && !string.IsNullOrEmpty(indice))
         {
-            indices.Add(currentGroup.GetGroupIndice());
+            indices.Add(indice);
         }
     }
 
-    private void InteractAccusation()
+    private void Accusation()
     {
-        isInDialog = currentGroup.DisplayBubbleAccusation(_currentNPC);
+        isInDialog = currentGroup.DisplayBubbleAccusation(currentNPC);
     }
 
-    //vraiment très moche
-    public void GetTeleported()
+    public void ResetPlayer()
     {
         isInDialog = false;
+        indicesPanelOpen = false;
+        maskPanelOpen = false;
         if (currentGroup) currentGroup.ForceStopDialog();
-        isLookingForIndice = false;
-        isChoosingMask = false;
-        UIManager.Instance.DisplayChooseMask(false);
-        UIManager.Instance.DisplayIndice(false,indices);
+
+        UIManager.Instance.DisplayMaskPanel(false);
+        UIManager.Instance.DisplayIndices(false, indices);
     }
 
-
     #region MERCHANT RELATED
-    /// <summary>
-    /// Will trigger the merchant's interaction
-    /// </summary>
     private void InteractMerchant()
     {
         UIManager.Instance.DisplayMerchantUI(true);
         isInDialog = true;
-        //isInDialog = _currentMerchant.StartMerchantInteraction(this);
     }
 
-    /// <summary>
-    /// Will deactivate the merchant's interaction
-    /// </summary>
-    public void DeactivateMerchantInteraction()
+    public void LeaveMerchant()
     {
         UIManager.Instance.DisplayMerchantUI(false);
-        _currentMerchant = null;
+        currentMerchant = null;
         isInDialog = false;
     }
     #endregion

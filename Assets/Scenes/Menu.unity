@@ -1959,8 +1959,8 @@ MonoBehaviour:
     sur Fantomasque, mais faites attention \xE0 ne pas vous \xE9parpiller : accuser
     les mauvaises personnes vous fera perdre du temps !"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: d775c19f1cbed7d439c3a32ef9a78859, type: 2}
+  m_sharedMaterial: {fileID: -1209905219369534961, guid: d775c19f1cbed7d439c3a32ef9a78859, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3130,9 +3130,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Play
-
-'
+  m_text: Jouer
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e8d86b66c719bd14b9688cbc1afbf025, type: 2}
   m_sharedMaterial: {fileID: -893070515123797291, guid: e8d86b66c719bd14b9688cbc1afbf025, type: 2}
@@ -3159,8 +3157,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 80
-  m_fontSizeBase: 80
+  m_fontSize: 72
+  m_fontSizeBase: 72
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 0
@@ -3169,7 +3167,7 @@ MonoBehaviour:
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
-  m_characterSpacing: -8
+  m_characterSpacing: -6
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -3330,7 +3328,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: CONTINUE
+  m_text: CONTINUER
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e8d86b66c719bd14b9688cbc1afbf025, type: 2}
   m_sharedMaterial: {fileID: -893070515123797291, guid: e8d86b66c719bd14b9688cbc1afbf025, type: 2}

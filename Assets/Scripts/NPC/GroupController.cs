@@ -1,26 +1,19 @@
-
-using NUnit.Framework;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-/// <summary>
-/// Script of the Group
-/// </summary>
 [RequireComponent(typeof(AppearController))]
 public class GroupController : MonoBehaviour
 {
     #region VARIABLES
     [Header("Group Data")]
     [SerializeField] private GroupData _data;
-
-    //dialog
     [SerializeField] private GameObject bubbleDialog;
+
     private TextMeshPro textBubble;
-    public int currentDialogIndex = 0;
+    private int currentDialogIndex = 0;
 
     private bool _isAccusing = false;
-
     private bool _hasWon = false;
 
     //Appear controller

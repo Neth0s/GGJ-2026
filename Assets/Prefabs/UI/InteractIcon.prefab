@@ -121,7 +121,7 @@ GameObject:
   - component: {fileID: 9123423645374284954}
   - component: {fileID: 2363828988588836754}
   m_Layer: 0
-  m_Name: InterractIcon
+  m_Name: InteractIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
