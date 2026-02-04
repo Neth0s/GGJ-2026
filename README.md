@@ -42,7 +42,7 @@ https://biscuitprime.itch.io/caval
 
 
 
-**Clémence MS (Groseille)** — Chef de projet \& Game Design
+**Clémence MS (Groseille)** — Cheffe de projet \& Game Design
 **Guillaume Branche (Guitou)** — Musique \& Game Design
 **Henri Nomico (Biscuit Prime)** - Programmation
 **Prométhée Toneatti (Akasuna)** - Programmation
