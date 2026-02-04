@@ -37,6 +37,7 @@ public class Player : MonoBehaviour
     private bool indicesPanelOpen = false;
 
     private Vector2 moveDirection;
+    private Vector2 startPosition;
     private readonly List<string> indices = new();
 
     private void OnEnable()
@@ -60,6 +61,7 @@ public class Player : MonoBehaviour
     {
         playerInputs = new PlayerInputs();
         rb = GetComponent<Rigidbody>();
+        startPosition = transform.position;
 
         interactIcon.SetActive(false);
         acusationIcon.SetActive(false);

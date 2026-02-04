@@ -2392,7 +2392,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 162472447302593392, guid: 7cb60b4929621444f9bdacefc0beb7c4, type: 3}
       propertyPath: m_Name
-      value: Guard_3
+      value: Guard 3
       objectReference: {fileID: 0}
     - target: {fileID: 3501924518585477868, guid: 7cb60b4929621444f9bdacefc0beb7c4, type: 3}
       propertyPath: _guardIsImmobile
@@ -2404,7 +2404,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3501924518585477868, guid: 7cb60b4929621444f9bdacefc0beb7c4, type: 3}
       propertyPath: waypoints.Array.data[0].x
-      value: 17.02
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 3501924518585477868, guid: 7cb60b4929621444f9bdacefc0beb7c4, type: 3}
       propertyPath: waypoints.Array.data[0].y
@@ -2412,11 +2412,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3501924518585477868, guid: 7cb60b4929621444f9bdacefc0beb7c4, type: 3}
       propertyPath: waypoints.Array.data[0].z
-      value: -19.24
+      value: -3.9
       objectReference: {fileID: 0}
     - target: {fileID: 3501924518585477868, guid: 7cb60b4929621444f9bdacefc0beb7c4, type: 3}
       propertyPath: waypoints.Array.data[1].x
-      value: 17.02
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 3501924518585477868, guid: 7cb60b4929621444f9bdacefc0beb7c4, type: 3}
       propertyPath: waypoints.Array.data[1].y
@@ -2424,11 +2424,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3501924518585477868, guid: 7cb60b4929621444f9bdacefc0beb7c4, type: 3}
       propertyPath: waypoints.Array.data[1].z
-      value: -3.9
+      value: -16.5
       objectReference: {fileID: 0}
     - target: {fileID: 8013934486135390199, guid: 7cb60b4929621444f9bdacefc0beb7c4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 17.02
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 8013934486135390199, guid: 7cb60b4929621444f9bdacefc0beb7c4, type: 3}
       propertyPath: m_LocalPosition.y
@@ -14015,7 +14015,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 162472447302593392, guid: 7cb60b4929621444f9bdacefc0beb7c4, type: 3}
       propertyPath: m_Name
-      value: Guard_1
+      value: Guard 1
       objectReference: {fileID: 0}
     - target: {fileID: 162472447302593392, guid: 7cb60b4929621444f9bdacefc0beb7c4, type: 3}
       propertyPath: m_IsActive
@@ -14023,11 +14023,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3501924518585477868, guid: 7cb60b4929621444f9bdacefc0beb7c4, type: 3}
       propertyPath: waypoints.Array.size
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3501924518585477868, guid: 7cb60b4929621444f9bdacefc0beb7c4, type: 3}
       propertyPath: waypoints.Array.data[0].x
-      value: -2.15
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 3501924518585477868, guid: 7cb60b4929621444f9bdacefc0beb7c4, type: 3}
       propertyPath: waypoints.Array.data[0].y
@@ -14035,11 +14035,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3501924518585477868, guid: 7cb60b4929621444f9bdacefc0beb7c4, type: 3}
       propertyPath: waypoints.Array.data[0].z
-      value: -13.73
+      value: -9
       objectReference: {fileID: 0}
     - target: {fileID: 3501924518585477868, guid: 7cb60b4929621444f9bdacefc0beb7c4, type: 3}
       propertyPath: waypoints.Array.data[1].x
-      value: -21.11
+      value: -21.5
       objectReference: {fileID: 0}
     - target: {fileID: 3501924518585477868, guid: 7cb60b4929621444f9bdacefc0beb7c4, type: 3}
       propertyPath: waypoints.Array.data[1].y
@@ -14047,11 +14047,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3501924518585477868, guid: 7cb60b4929621444f9bdacefc0beb7c4, type: 3}
       propertyPath: waypoints.Array.data[1].z
-      value: -13.73
+      value: -9
       objectReference: {fileID: 0}
     - target: {fileID: 3501924518585477868, guid: 7cb60b4929621444f9bdacefc0beb7c4, type: 3}
       propertyPath: waypoints.Array.data[2].x
-      value: -21.11
+      value: -21.5
       objectReference: {fileID: 0}
     - target: {fileID: 3501924518585477868, guid: 7cb60b4929621444f9bdacefc0beb7c4, type: 3}
       propertyPath: waypoints.Array.data[2].y
@@ -14059,11 +14059,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3501924518585477868, guid: 7cb60b4929621444f9bdacefc0beb7c4, type: 3}
       propertyPath: waypoints.Array.data[2].z
-      value: 3.36
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3501924518585477868, guid: 7cb60b4929621444f9bdacefc0beb7c4, type: 3}
       propertyPath: waypoints.Array.data[3].x
-      value: -3.83
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 3501924518585477868, guid: 7cb60b4929621444f9bdacefc0beb7c4, type: 3}
       propertyPath: waypoints.Array.data[3].y
@@ -14071,23 +14071,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3501924518585477868, guid: 7cb60b4929621444f9bdacefc0beb7c4, type: 3}
       propertyPath: waypoints.Array.data[3].z
-      value: 3.36
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3501924518585477868, guid: 7cb60b4929621444f9bdacefc0beb7c4, type: 3}
       propertyPath: waypoints.Array.data[4].x
-      value: -2.15
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3501924518585477868, guid: 7cb60b4929621444f9bdacefc0beb7c4, type: 3}
       propertyPath: waypoints.Array.data[4].y
-      value: 1.6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3501924518585477868, guid: 7cb60b4929621444f9bdacefc0beb7c4, type: 3}
       propertyPath: waypoints.Array.data[4].z
-      value: -13.73
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8013934486135390199, guid: 7cb60b4929621444f9bdacefc0beb7c4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.15
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 8013934486135390199, guid: 7cb60b4929621444f9bdacefc0beb7c4, type: 3}
       propertyPath: m_LocalPosition.y
@@ -14095,7 +14095,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8013934486135390199, guid: 7cb60b4929621444f9bdacefc0beb7c4, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -13.73
+      value: -9
       objectReference: {fileID: 0}
     - target: {fileID: 8013934486135390199, guid: 7cb60b4929621444f9bdacefc0beb7c4, type: 3}
       propertyPath: m_LocalRotation.w
@@ -18941,7 +18941,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 162472447302593392, guid: 7cb60b4929621444f9bdacefc0beb7c4, type: 3}
       propertyPath: m_Name
-      value: Guard_2
+      value: Guard 2
       objectReference: {fileID: 0}
     - target: {fileID: 162472447302593392, guid: 7cb60b4929621444f9bdacefc0beb7c4, type: 3}
       propertyPath: m_IsActive
@@ -18953,7 +18953,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3501924518585477868, guid: 7cb60b4929621444f9bdacefc0beb7c4, type: 3}
       propertyPath: waypoints.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3501924518585477868, guid: 7cb60b4929621444f9bdacefc0beb7c4, type: 3}
       propertyPath: waypoints.Array.data[0].x
@@ -18969,7 +18969,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8013934486135390199, guid: 7cb60b4929621444f9bdacefc0beb7c4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.74
+      value: -7
       objectReference: {fileID: 0}
     - target: {fileID: 8013934486135390199, guid: 7cb60b4929621444f9bdacefc0beb7c4, type: 3}
       propertyPath: m_LocalPosition.y
@@ -18977,7 +18977,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8013934486135390199, guid: 7cb60b4929621444f9bdacefc0beb7c4, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -23.16
+      value: -21
       objectReference: {fileID: 0}
     - target: {fileID: 8013934486135390199, guid: 7cb60b4929621444f9bdacefc0beb7c4, type: 3}
       propertyPath: m_LocalRotation.w

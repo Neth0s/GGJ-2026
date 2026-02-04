@@ -82,7 +82,7 @@ public class PlayerMaskController : MonoBehaviour
             }
             if (!isInMaskPart)
             {
-                Debug.Log("Failed on upper mask part property: " + groupProp);
+                //Debug.Log("Failed on upper mask part property: " + groupProp);
                 return false;
             }
         }
@@ -100,7 +100,7 @@ public class PlayerMaskController : MonoBehaviour
             }
             if (!isInMaskPart)
             {
-                Debug.Log("Failed on lower mask part property: " + groupProp);
+                //Debug.Log("Failed on lower mask part property: " + groupProp);
                 return false;
             }
         }

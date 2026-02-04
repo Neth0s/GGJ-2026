@@ -3,24 +3,30 @@ using UnityEngine;
 
 public class PigeonParticle : MonoBehaviour
 {
-    ParticleSystem ps;
+    [SerializeField] private float resetCooldown = 10f;
+
+    [Header("References")]
     [SerializeField] GameObject[] pigeonSprites;
-    float timeBeforeComeback = 10f;
+    [SerializeField] private AudioClip pigeonsAudioClip;
+
+    private ParticleSystem ps;
+    private AudioSource audioSource;
     bool canFlyAway;
-    public AudioSource audioSource;
-    public AudioClip pigeonsAudioClip;
 
     private void Start()
     {
         ps = GetComponent<ParticleSystem>();
+        audioSource = GetComponent<AudioSource>();
+
         canFlyAway = true;
     }
 
     private void OnTriggerEnter(Collider other)
     {
-       if(canFlyAway && other.gameObject.transform.parent && other.gameObject.transform.parent.tag == "Player")
+       if(canFlyAway && other.gameObject.CompareTag("Player"))
        {
             ps.Play();
+
             if(!audioSource.isPlaying)
             {
                 audioSource.PlayOneShot(pigeonsAudioClip, 1);
@@ -29,12 +35,13 @@ public class PigeonParticle : MonoBehaviour
             {
                 p.SetActive(false);
             }
+
             canFlyAway = false;
-            StartCoroutine(waitForSeconds(timeBeforeComeback));
+            StartCoroutine(WaitForSeconds(resetCooldown));
        }
     }
 
-    IEnumerator waitForSeconds(float seconds)
+    IEnumerator WaitForSeconds(float seconds)
     {
         yield return new WaitForSeconds(seconds);
         Resetup();
@@ -50,7 +57,4 @@ public class PigeonParticle : MonoBehaviour
         ps.gameObject.SetActive(true);
         canFlyAway = true;
     }
-
-
-
 }

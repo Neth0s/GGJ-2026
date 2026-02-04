@@ -9,23 +9,23 @@ using UnityEngine;
 public class DetectController : MonoBehaviour
 {
     #region VARIABLES
-    [Header("Detect Parameters")]
     [SerializeField] private float _detectRadius = 1f;
 
-    [Header("Detected elements")]
-    [SerializeField] private NPCController _currentlySelectedNPC = null; //CAN BE NULL
-    [SerializeField] private GroupController _currentlySelectedGroup = null; //CAN BE NULL
-    [SerializeField] private MerchantController _currentlySelectedMerchant = null; //CAN BE NULL
-    public bool masksAreOK = false;
+    private NPCController _currentlySelectedNPC = null; //CAN BE NULL
+    private GroupController _currentlySelectedGroup = null; //CAN BE NULL
+    private MerchantController _currentlySelectedMerchant = null; //CAN BE NULL
 
     private PlayerMaskController _playerMaskController;
-    private Player player;
     private DarkController _playerDarkController;
+    private Player player;
+
+    private bool masksAreOK = false;
     #endregion
 
     #region GETTERS AND SETTERS
     public NPCController GetCurrentlySelectedNPC() { return _currentlySelectedNPC; }
     public GroupController GetCurrentlySelectedGroup() { return _currentlySelectedGroup; }
+    public bool MasksAreOK => masksAreOK;
     #endregion
 
     private void Awake()
@@ -74,7 +74,7 @@ public class DetectController : MonoBehaviour
             {
                 masksAreOK = _playerMaskController.ComparePlayerGroupMask(_currentlySelectedGroup.GetUpperMaskRequirements(), _currentlySelectedGroup.GetLowerMaskRequirements());
                 
-                print("Do you fit in group with mask : " + masksAreOK);
+                //print("Do you fit in group with mask : " + masksAreOK);
                 if (masksAreOK)
                 {
                     _playerDarkController.Darken();

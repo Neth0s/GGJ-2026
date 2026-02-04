@@ -24,7 +24,7 @@ public class GroupController : MonoBehaviour
 
     public void TriggerGroupSelection()
     {
-        print("Group "+gameObject.name+" is selected !");    
+        //TODO: Visual effect when group is selected
     }
 
     private void Awake()
