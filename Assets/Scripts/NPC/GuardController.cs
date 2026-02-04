@@ -127,7 +127,7 @@ public class GuardController : MonoBehaviour
                 StartCoroutine(HandleCaught());
             }   
         }
-        else
+        else if (detectionTimer > 0)
         {
             detectionTimer -= Time.deltaTime;
             soundEffectTriggered = false;
