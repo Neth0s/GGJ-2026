@@ -6,18 +6,18 @@ public class PigeonParticle : MonoBehaviour
     [SerializeField] private float resetCooldown = 10f;
 
     [Header("References")]
-    [SerializeField] GameObject[] pigeonSprites;
+    [SerializeField] private GameObject[] idlepigeonSprites;
     [SerializeField] private AudioClip pigeonsAudioClip;
+    [SerializeField] private ParticleSystem psForward;
+    [SerializeField] private ParticleSystem psBackward;
 
-    private ParticleSystem ps;
     private AudioSource audioSource;
-    bool canFlyAway;
+    private bool canFlyAway;
+    private bool waitForComeback;
 
     private void Start()
     {
-        ps = GetComponent<ParticleSystem>();
         audioSource = GetComponent<AudioSource>();
-
         canFlyAway = true;
     }
 
@@ -25,13 +25,13 @@ public class PigeonParticle : MonoBehaviour
     {
        if(canFlyAway && other.gameObject.CompareTag("Player"))
        {
-            ps.Play();
+            psForward.Play();
 
             if(!audioSource.isPlaying)
             {
                 audioSource.PlayOneShot(pigeonsAudioClip, 1);
             }
-            foreach (GameObject p in pigeonSprites)
+            foreach (GameObject p in idlepigeonSprites)
             {
                 p.SetActive(false);
             }
@@ -44,17 +44,34 @@ public class PigeonParticle : MonoBehaviour
     IEnumerator WaitForSeconds(float seconds)
     {
         yield return new WaitForSeconds(seconds);
-        Resetup();
+        LaunchBackwardParticles();
     }
 
-    void Resetup()
+    private void Update()
     {
-        foreach (GameObject p in pigeonSprites)
+        if(waitForComeback && !psBackward.IsAlive())
+        {
+            Resetup();
+            waitForComeback = false;
+            psBackward.Clear();
+        }
+    }
+
+    private void LaunchBackwardParticles()
+    {
+        psBackward.Play();
+        waitForComeback = true;
+    }
+
+
+    private void Resetup()
+    {
+
+        foreach (GameObject p in idlepigeonSprites)
         {
             p.SetActive(true);
         }
-        ps.gameObject.SetActive(false);
-        ps.gameObject.SetActive(true);
+        psForward.Clear();
         canFlyAway = true;
     }
 }
