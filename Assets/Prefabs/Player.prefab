@@ -294,7 +294,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e93fdf0be7288944929f36ec24fb940, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _detectRadius: 1.5
+  _detectRadius: 0
 --- !u!114 &4902257885775778048
 MonoBehaviour:
   m_ObjectHideFlags: 0

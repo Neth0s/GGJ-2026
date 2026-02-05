@@ -5,33 +5,33 @@ using UnityEngine;
 /// This script will govern the detection by the player towards NPCs and other shits like that
 /// </summary>
 [RequireComponent(typeof(PlayerMaskController))]
-[RequireComponent(typeof(DarkController))]
+[RequireComponent(typeof(SpriteDarkener))]
 public class DetectController : MonoBehaviour
 {
     #region VARIABLES
     [SerializeField] private float _detectRadius = 1f;
 
-    private NPCController _currentlySelectedNPC = null; //CAN BE NULL
-    private GroupController _currentlySelectedGroup = null; //CAN BE NULL
-    private MerchantController _currentlySelectedMerchant = null; //CAN BE NULL
+    private NPCController _currentNPC = null; //CAN BE NULL
+    private GroupController _currentGroup = null; //CAN BE NULL
+    private MerchantController _currentMerchant = null; //CAN BE NULL
 
-    private PlayerMaskController _playerMaskController;
-    private DarkController _playerDarkController;
+    private PlayerMaskController _playerMask;
+    private SpriteDarkener _playerDark;
     private Player player;
 
     private bool masksAreOK = false;
     #endregion
 
     #region GETTERS AND SETTERS
-    public NPCController GetCurrentlySelectedNPC() { return _currentlySelectedNPC; }
-    public GroupController GetCurrentlySelectedGroup() { return _currentlySelectedGroup; }
+    public NPCController GetCurrentNPC() { return _currentNPC; }
+    public GroupController GetCurrentGroup() { return _currentGroup; }
     public bool MasksAreOK => masksAreOK;
     #endregion
 
     private void Awake()
     {
-        _playerMaskController = GetComponent<PlayerMaskController>();
-        _playerDarkController = GetComponent<DarkController>();
+        _playerMask = GetComponent<PlayerMaskController>();
+        _playerDark = GetComponent<SpriteDarkener>();
         player = GetComponent<Player>();
     }
 
@@ -45,60 +45,53 @@ public class DetectController : MonoBehaviour
     /// </summary>
     private void StartDetectScan()
     {
-        
         NPCController closestNPC = GetClosestNPC();
-        if (closestNPC != _currentlySelectedNPC) 
+        if (closestNPC != _currentNPC) 
         {
-            //We take into account null
-            _currentlySelectedNPC?.AbandonHighlight();
-            _currentlySelectedNPC = closestNPC;
-            closestNPC?.TriggerHightlight();
-            if (closestNPC)
+            if (_currentNPC != null) _currentNPC.Deselect();
+
+            _currentNPC = closestNPC;
+            if (closestNPC != null)
             {
-                player.EnableInteraction(closestNPC);
+                closestNPC.Select();
+                player.EnableAccusation(closestNPC);
             }
-            else
-            {
-                player.DisableAccusationInteraction();
-            }
+            else player.DisableAccusation();
         }
 
         GroupController groupController = ObtainGroupController();
-        if(_currentlySelectedGroup != groupController)
+
+        if(_currentGroup != groupController)
         {
-            _currentlySelectedGroup?.GetAppearController().Hide(); //we're forced to put it here cause otherwise we'll lose the last group
-            _currentlySelectedGroup = groupController; //Group CAN be null
-            _currentlySelectedGroup?.TriggerGroupSelection();
-            //TODO : regroup following ifs
-            if (_currentlySelectedGroup != null)
+            if (_currentGroup != null) _currentGroup.DeselectGroup();
+            _currentGroup = groupController; //Group CAN be null
+
+            if (_currentGroup != null)
             {
-                masksAreOK = _playerMaskController.ComparePlayerGroupMask(_currentlySelectedGroup.GetUpperMaskRequirements(), _currentlySelectedGroup.GetLowerMaskRequirements());
+                player.EnableInteraction(_currentGroup);
+
+                List<MaskProperty> upperMaskReq = _currentGroup.GetUpperMaskRequirements();
+                List<MaskProperty> lowerMaskReq = _currentGroup.GetLowerMaskRequirements();
+                masksAreOK = _playerMask.ComparePlayerGroupMask(upperMaskReq, lowerMaskReq);
                 
-                //print("Do you fit in group with mask : " + masksAreOK);
-                if (masksAreOK)
-                {
-                    _playerDarkController.Darken();
-                }
-                
-                _currentlySelectedGroup.GetAppearController().Appear();
+                if (masksAreOK) _playerDark.Darken();
+                _currentGroup.SelectGroup(masksAreOK);
             }
             else 
             { 
                 masksAreOK = false;
-                _playerDarkController.Brighten();
+                player.DisableInteraction();
+                _playerDark.Brighten();
             }
-
-            if (_currentlySelectedGroup) player.EnableInteraction(_currentlySelectedGroup);
-            else player.DisableInteraction();
         }
 
         MerchantController merchantController = ObtainMerchantController();
-        if (_currentlySelectedMerchant != merchantController)
+        if (_currentMerchant != merchantController)
         {
-            _currentlySelectedMerchant = merchantController;
-            if (_currentlySelectedMerchant != null)
+            _currentMerchant = merchantController;
+            if (_currentMerchant != null)
             {
-                player.EnableInteraction(_currentlySelectedMerchant);
+                player.EnableInteraction(_currentMerchant);
             }
             else
             {
@@ -115,7 +108,8 @@ public class DetectController : MonoBehaviour
     private List<NPCController> ObtainListNPCControllersInRange()
     {
         Collider[] collidersDetected = Physics.OverlapSphere(gameObject.transform.position, _detectRadius);
-        List<NPCController> npcControllerList = new List<NPCController>();
+        List<NPCController> npcControllerList = new();
+
         foreach (Collider collider in collidersDetected)
         {
             if (collider.gameObject.GetComponent<NPCController>() != null)
@@ -127,7 +121,7 @@ public class DetectController : MonoBehaviour
     }
 
     /// <summary>
-    /// Function that returns the closest NPC Controller detected by the player
+    /// Function that returns the closest NPC Controller detected by the player, can return null
     /// </summary>
     /// <returns></returns>
     private NPCController GetClosestNPC()

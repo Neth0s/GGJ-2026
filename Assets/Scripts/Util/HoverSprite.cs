@@ -1,15 +1,17 @@
 using System.Collections;
 using UnityEngine;
 
-public class AppearController : MonoBehaviour
+public class HoverSprite : MonoBehaviour
 {
     #region VARIABLES
     [SerializeField] private SpriteRenderer _spriteRenderer;
-    private Coroutine _currentCoroutine = null;
-    private Color _initialColor;
 
-    [SerializeField] private float _alphaFactor = 0.02f;
-    [SerializeField] private float _maxAlpha = 1.0f;
+    [SerializeField] private float alphaSpeed = 0.02f;
+    [SerializeField] private float alphaHover = 0.5f;
+    [SerializeField] private float alphaSelected = 1.0f;
+
+    private Color _initialColor;
+    private Coroutine _currentCoroutine = null;
     #endregion
 
     private void Awake()
@@ -26,13 +28,10 @@ public class AppearController : MonoBehaviour
         }
     }
 
-    public void Appear()
+    public void Appear(bool selected)
     {
         _spriteRenderer.color = _initialColor;
-        if (_currentCoroutine == null)
-        {
-            _currentCoroutine = StartCoroutine(AppearCoroutine());
-        }
+        _currentCoroutine ??= StartCoroutine(AppearCoroutine(selected));
     }
 
     public void Hide()
@@ -44,13 +43,15 @@ public class AppearController : MonoBehaviour
         _spriteRenderer.color = newColor;
     }
 
-    private IEnumerator AppearCoroutine()
+    private IEnumerator AppearCoroutine(bool selected)
     {
-        while (_spriteRenderer.color.a <= _maxAlpha)
+        float targetAlpha = selected ? alphaSelected : alphaHover;
+
+        while (_spriteRenderer.color.a <= targetAlpha)
         {
-            float alphaElt = _spriteRenderer.color.a + _alphaFactor;
+            float alpha = _spriteRenderer.color.a + alphaSpeed;
             Color newColor = _spriteRenderer.color;
-            newColor.a = alphaElt;
+            newColor.a = alpha;
             _spriteRenderer.color = newColor;
             yield return new WaitForFixedUpdate();
         }

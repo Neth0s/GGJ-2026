@@ -163,7 +163,7 @@ public class GuardController : MonoBehaviour
         }
         else
         {
-            GroupController currentGroup = detectController.GetCurrentlySelectedGroup();
+            GroupController currentGroup = detectController.GetCurrentGroup();
             isDetectingPlayer = (currentGroup != null);
         }
 

@@ -52,7 +52,7 @@ MonoBehaviour:
   guardSource: {fileID: 1609033020077406351}
   musicClip: {fileID: 8300000, guid: 5d7b073b9369d324bb5cccd35fac18e0, type: 3}
   accusedClip: {fileID: 8300000, guid: 583e1fd01f5e0694cae3e347d985b4c0, type: 3}
-  guardSuspicious: {fileID: 8300000, guid: 2ac52cdef051d1f4ab6cc843ee9cf8f6, type: 3}
+  guardSuspicious: {fileID: 8300000, guid: b330980371deab8449f1272c161d4ede, type: 3}
   guardCatch: {fileID: 8300000, guid: 8096c55e9d5d5fc4f93a27edbeacb47b, type: 3}
 --- !u!82 &4916534386606320811
 AudioSource:

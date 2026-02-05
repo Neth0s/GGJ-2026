@@ -1,20 +1,16 @@
 using System.Collections;
 using UnityEngine;
 
-/// <summary>
-/// This script will handle the darkening of a sprite element
-/// </summary>
-public class DarkController : MonoBehaviour
+public class SpriteDarkener : MonoBehaviour
 {
     #region VARIABLES
     [SerializeField, Tooltip("Sprite to darken")] private SpriteRenderer _spriteRenderer;
 
-    private Color _initialColor;
-
-    [SerializeField] private float _colorFactor = 0.02f;
+    [SerializeField] private float _darkenSpeed = 0.02f;
     [SerializeField] private float _colorMin = 0.7f;
 
-    private Coroutine _currentCoroutine=null;
+    private Color _initialColor;
+    private Coroutine _currentCoroutine = null;
     #endregion
 
     private void Awake()
@@ -33,10 +29,7 @@ public class DarkController : MonoBehaviour
     public void Darken()
     {
         _spriteRenderer.color = _initialColor;
-        if (_currentCoroutine == null)
-        {
-            _currentCoroutine = StartCoroutine(DarkenCoroutine());
-        }
+        _currentCoroutine ??= StartCoroutine(DarkenCoroutine());
     }
 
     public void Brighten()
@@ -50,8 +43,8 @@ public class DarkController : MonoBehaviour
     {
         while (_spriteRenderer.color.r > _colorMin)
         {
-            float colorElt = _spriteRenderer.color.r - _colorFactor;
-            Color newColor = new Color(colorElt, colorElt, colorElt);
+            float luminosity = _spriteRenderer.color.r - _darkenSpeed;
+            Color newColor = new(luminosity, luminosity, luminosity);
             _spriteRenderer.color = newColor;
             yield return new WaitForFixedUpdate();
         }

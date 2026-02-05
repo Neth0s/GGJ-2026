@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-[RequireComponent(typeof(AppearController))]
+[RequireComponent(typeof(HoverSprite))]
 public class GroupController : MonoBehaviour
 {
     #region VARIABLES
@@ -17,21 +17,26 @@ public class GroupController : MonoBehaviour
     private bool _hasWon = false;
 
     //Appear controller
-    private AppearController _zoneAppearController;
+    private HoverSprite _zoneAppearController;
     #endregion
 
-    public AppearController GetAppearController() { return _zoneAppearController; }
+    public HoverSprite GetAppearController() { return _zoneAppearController; }
 
-    public void TriggerGroupSelection()
+    public void SelectGroup(bool maskOk)
     {
-        //TODO: Visual effect when group is selected
+        GetAppearController().Appear(maskOk);
+    }
+
+    public void DeselectGroup()
+    {
+        GetAppearController().Hide();
     }
 
     private void Awake()
     {
         bubbleDialog.SetActive(false);
         textBubble = bubbleDialog.GetComponentInChildren<TextMeshPro>();
-        _zoneAppearController = GetComponent<AppearController>();
+        _zoneAppearController = GetComponent<HoverSprite>();
     }
 
     public bool DisplayBubble()

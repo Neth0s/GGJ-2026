@@ -97,8 +97,8 @@ GameObject:
   m_Component:
   - component: {fileID: 348147596739467429}
   - component: {fileID: 2031261717497619958}
-  - component: {fileID: 4561715191853828720}
   - component: {fileID: 2687655107264584982}
+  - component: {fileID: 4561715191853828720}
   m_Layer: 0
   m_Name: Group 3
   m_TagString: Untagged
@@ -140,6 +140,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _data: {fileID: 11400000, guid: dd5af8f8a4e828949a67744db649ddbf, type: 2}
   bubbleDialog: {fileID: 2148531350575816891}
+--- !u!114 &2687655107264584982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8258747188049477908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82ce1974d8afac743ba9787ba7a9e263, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spriteRenderer: {fileID: 8470094553309256072}
+  alphaSpeed: 0.05
+  alphaHover: 0.3
+  alphaSelected: 0.6
 --- !u!65 &4561715191853828720
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -161,21 +177,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 5.5, y: 5.5, z: 5.5}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2687655107264584982
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8258747188049477908}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82ce1974d8afac743ba9787ba7a9e263, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _spriteRenderer: {fileID: 8470094553309256072}
-  _alphaFactor: 0.02
-  _maxAlpha: 0.3
 --- !u!1001 &1276210028630020844
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -24,7 +24,12 @@ public class NPCController : MonoBehaviour
     {
         _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         if (_spriteRenderer == null) return;
+        
+        CreateHighlight();
+    }
 
+    private void CreateHighlight()
+    {
         _highlight = new GameObject("Highlight Object");
         _highlight.transform.parent = this.transform;
 
@@ -39,36 +44,18 @@ public class NPCController : MonoBehaviour
         _highlight.SetActive(false);
     }
 
-    /// <summary>
-    /// Function that will trigger the highlight
-    /// </summary>
-    public void TriggerHightlight()
+    public void Select()
     {
-        //TODO : Highlight to change (visual)
-        //_meshRenderer.material = _highlightMaterial;
-        _highlight?.SetActive(true);
+        _highlight.SetActive(true);
     }
 
-    /// <summary>
-    /// Function that will hide the highlight
-    /// </summary>
-    public void AbandonHighlight()
+    public void Deselect()
     {
-        //TODO : Highlight to change (visual)
-        //_meshRenderer.material = _defaultMaterial;
-        _highlight?.SetActive(false);
+        _highlight.SetActive(false);
     }
 
-    /// <summary>
-    /// Will tell if the NPC is a bad guy or not
-    /// </summary>
-    /// <returns></returns>
     public bool IsNPCBadGuy()
     {
-        if (_data.IsBadGuy)
-        {
-            return true;
-        }
-        return false;
+        return _data.IsBadGuy;
     }
 }

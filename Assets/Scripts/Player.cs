@@ -176,7 +176,7 @@ public class Player : MonoBehaviour
         currentGroup = group;
     }
 
-    public void EnableInteraction(NPCController npc)
+    public void EnableAccusation(NPCController npc)
     {
         acusationIcon.SetActive(true);
         currentNPC = npc;
@@ -200,7 +200,7 @@ public class Player : MonoBehaviour
         currentMerchant= null;
     }
 
-    public void DisableAccusationInteraction()
+    public void DisableAccusation()
     {
         acusationIcon.SetActive(false);
     }
