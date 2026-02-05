@@ -38,7 +38,10 @@ public class Player : MonoBehaviour
 
     private Vector2 moveDirection;
     private Vector3 startPosition;
+    private Vector3 topMaskPos;
+    private Vector3 botMaskPos;
     private float startXRotation;
+
     private readonly List<string> indices = new();
 
     private void OnEnable()
@@ -69,7 +72,10 @@ public class Player : MonoBehaviour
 
         animator = GetComponentInChildren<Animator>();
         sprites = GetComponentsInChildren<SpriteRenderer>();
+
         startXRotation = sprites[0].transform.localRotation.eulerAngles.x;
+        topMaskPos = sprites[1].transform.localPosition;
+        botMaskPos = sprites[2].transform.localPosition;
     }
 
     private void Update()
@@ -146,6 +152,11 @@ public class Player : MonoBehaviour
         {
             isFacingRight = false;
             sprites[0].transform.localRotation = Quaternion.Euler(startXRotation, 0, 0);
+            sprites[1].transform.localRotation = Quaternion.Euler(0, 0, 0);
+            sprites[2].transform.localRotation = Quaternion.Euler(0, 0, 0);
+
+            sprites[1].transform.localPosition = topMaskPos;
+            sprites[2].transform.localPosition = botMaskPos;
         }
         if (!isFacingRight && moveDirection.x > 0)
         {
@@ -153,6 +164,9 @@ public class Player : MonoBehaviour
             sprites[0].transform.localRotation = Quaternion.Euler(-startXRotation, 180, 0);
             sprites[1].transform.localRotation = Quaternion.Euler(0, 180, 0);
             sprites[2].transform.localRotation = Quaternion.Euler(0, 180, 0);
+
+            sprites[1].transform.localPosition = new Vector3(topMaskPos.x, topMaskPos.y, - topMaskPos.z);
+            sprites[2].transform.localPosition = new Vector3(botMaskPos.x, botMaskPos.y, - botMaskPos.z);
         }
     }
 
