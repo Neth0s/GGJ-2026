@@ -149,7 +149,7 @@ public class GuardController : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             isDetectingPlayer = false;
-            animator.SetBool("WalkBool", true);
+            animator.SetBool("WalkBool", !immobileGuard);
         }
     }
 
@@ -169,7 +169,7 @@ public class GuardController : MonoBehaviour
 
         if (isDetectingPlayer != previousDetectingState)
         {
-            animator.SetBool("WalkBool", !isDetectingPlayer);
+            animator.SetBool("WalkBool", !isDetectingPlayer && !immobileGuard);
         }
     }
     
