@@ -38,6 +38,7 @@ public class Player : MonoBehaviour
 
     private Vector2 moveDirection;
     private Vector3 startPosition;
+    private float startXRotation;
     private readonly List<string> indices = new();
 
     private void OnEnable()
@@ -68,6 +69,7 @@ public class Player : MonoBehaviour
 
         animator = GetComponentInChildren<Animator>();
         sprites = GetComponentsInChildren<SpriteRenderer>();
+        startXRotation = sprites[0].transform.localRotation.eulerAngles.x;
     }
 
     private void Update()
@@ -143,18 +145,14 @@ public class Player : MonoBehaviour
         if(isFacingRight && moveDirection.x < 0)
         {
             isFacingRight = false;
-            foreach (var sprite in sprites)
-            {
-                sprite.transform.localRotation = Quaternion.Euler(0, 0,0);
-            }
+            sprites[0].transform.localRotation = Quaternion.Euler(startXRotation, 0, 0);
         }
         if (!isFacingRight && moveDirection.x > 0)
         {
             isFacingRight = true;
-            foreach (var sprite in sprites)
-            {
-                sprite.transform.localRotation = Quaternion.Euler(0, 180, 0);
-            }
+            sprites[0].transform.localRotation = Quaternion.Euler(-startXRotation, 180, 0);
+            sprites[1].transform.localRotation = Quaternion.Euler(0, 180, 0);
+            sprites[2].transform.localRotation = Quaternion.Euler(0, 180, 0);
         }
     }
 

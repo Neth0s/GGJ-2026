@@ -2308,7 +2308,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.010245096, y: 0.010863545, z: 0.05}
+  m_Size: {x: 0.02, y: 0.01, z: 0.05}
   m_Center: {x: 0.00048903766, y: -1.4830318e-13, z: 1.7773868e-18}
 --- !u!1001 &166123439
 PrefabInstance:
@@ -3514,6 +3514,14 @@ PrefabInstance:
       value: LargeStoneBlock (4)
       objectReference: {fileID: 0}
     - target: {fileID: 4740769183170357012, guid: b12d691e7dbd0d1478a6e78da23f5096, type: 3}
+      propertyPath: m_Size.x
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 4740769183170357012, guid: b12d691e7dbd0d1478a6e78da23f5096, type: 3}
+      propertyPath: m_Size.y
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 4740769183170357012, guid: b12d691e7dbd0d1478a6e78da23f5096, type: 3}
       propertyPath: m_Size.z
       value: 0.05
       objectReference: {fileID: 0}
@@ -4317,6 +4325,14 @@ PrefabInstance:
     - target: {fileID: 1993370804192675819, guid: b12d691e7dbd0d1478a6e78da23f5096, type: 3}
       propertyPath: m_Name
       value: LargeStoneBlock (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4740769183170357012, guid: b12d691e7dbd0d1478a6e78da23f5096, type: 3}
+      propertyPath: m_Size.x
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 4740769183170357012, guid: b12d691e7dbd0d1478a6e78da23f5096, type: 3}
+      propertyPath: m_Size.y
+      value: 0.03
       objectReference: {fileID: 0}
     - target: {fileID: 4740769183170357012, guid: b12d691e7dbd0d1478a6e78da23f5096, type: 3}
       propertyPath: m_Size.z
@@ -6007,6 +6023,14 @@ PrefabInstance:
       value: LargeStoneBlock (3)
       objectReference: {fileID: 0}
     - target: {fileID: 4740769183170357012, guid: b12d691e7dbd0d1478a6e78da23f5096, type: 3}
+      propertyPath: m_Size.x
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 4740769183170357012, guid: b12d691e7dbd0d1478a6e78da23f5096, type: 3}
+      propertyPath: m_Size.y
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 4740769183170357012, guid: b12d691e7dbd0d1478a6e78da23f5096, type: 3}
       propertyPath: m_Size.z
       value: 0.05
       objectReference: {fileID: 0}
@@ -6435,6 +6459,14 @@ PrefabInstance:
     - target: {fileID: 1993370804192675819, guid: b12d691e7dbd0d1478a6e78da23f5096, type: 3}
       propertyPath: m_Name
       value: LargeStoneBlock
+      objectReference: {fileID: 0}
+    - target: {fileID: 4740769183170357012, guid: b12d691e7dbd0d1478a6e78da23f5096, type: 3}
+      propertyPath: m_Size.x
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 4740769183170357012, guid: b12d691e7dbd0d1478a6e78da23f5096, type: 3}
+      propertyPath: m_Size.y
+      value: 0.03
       objectReference: {fileID: 0}
     - target: {fileID: 4740769183170357012, guid: b12d691e7dbd0d1478a6e78da23f5096, type: 3}
       propertyPath: m_Size.z
@@ -18758,7 +18790,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.010245096, y: 0.010863545, z: 0.05}
+  m_Size: {x: 0.02, y: 0.01, z: 0.05}
   m_Center: {x: 0.00048903766, y: -1.4830318e-13, z: 1.7773868e-18}
 --- !u!1001 &1735231214
 PrefabInstance:
@@ -19756,6 +19788,14 @@ PrefabInstance:
       value: LargeStoneBlock (2)
       objectReference: {fileID: 0}
     - target: {fileID: 4740769183170357012, guid: b12d691e7dbd0d1478a6e78da23f5096, type: 3}
+      propertyPath: m_Size.x
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 4740769183170357012, guid: b12d691e7dbd0d1478a6e78da23f5096, type: 3}
+      propertyPath: m_Size.y
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 4740769183170357012, guid: b12d691e7dbd0d1478a6e78da23f5096, type: 3}
       propertyPath: m_Size.z
       value: 0.05
       objectReference: {fileID: 0}
@@ -19858,7 +19898,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.010245096, y: 0.010863545, z: 0.05}
+  m_Size: {x: 0.02, y: 0.01, z: 0.05}
   m_Center: {x: 0.00048903766, y: -1.4830318e-13, z: 1.7773868e-18}
 --- !u!4 &1803217025 stripped
 Transform:
@@ -20316,6 +20356,14 @@ PrefabInstance:
       value: LargeStoneBlock (2)
       objectReference: {fileID: 0}
     - target: {fileID: 4740769183170357012, guid: b12d691e7dbd0d1478a6e78da23f5096, type: 3}
+      propertyPath: m_Size.x
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 4740769183170357012, guid: b12d691e7dbd0d1478a6e78da23f5096, type: 3}
+      propertyPath: m_Size.y
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 4740769183170357012, guid: b12d691e7dbd0d1478a6e78da23f5096, type: 3}
       propertyPath: m_Size.z
       value: 0.05
       objectReference: {fileID: 0}
@@ -20546,7 +20594,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.010245096, y: 0.010863545, z: 0.05}
+  m_Size: {x: 0.02, y: 0.01, z: 0.05}
   m_Center: {x: 0.00048903766, y: -1.4830318e-13, z: 1.7773868e-18}
 --- !u!1 &1868618528
 GameObject:
@@ -22216,6 +22264,14 @@ PrefabInstance:
       value: LargeStoneBlock (1)
       objectReference: {fileID: 0}
     - target: {fileID: 4740769183170357012, guid: b12d691e7dbd0d1478a6e78da23f5096, type: 3}
+      propertyPath: m_Size.x
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 4740769183170357012, guid: b12d691e7dbd0d1478a6e78da23f5096, type: 3}
+      propertyPath: m_Size.y
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 4740769183170357012, guid: b12d691e7dbd0d1478a6e78da23f5096, type: 3}
       propertyPath: m_Size.z
       value: 0.05
       objectReference: {fileID: 0}
@@ -23524,6 +23580,14 @@ PrefabInstance:
     - target: {fileID: 1993370804192675819, guid: b12d691e7dbd0d1478a6e78da23f5096, type: 3}
       propertyPath: m_Name
       value: LargeStoneBlock
+      objectReference: {fileID: 0}
+    - target: {fileID: 4740769183170357012, guid: b12d691e7dbd0d1478a6e78da23f5096, type: 3}
+      propertyPath: m_Size.x
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 4740769183170357012, guid: b12d691e7dbd0d1478a6e78da23f5096, type: 3}
+      propertyPath: m_Size.y
+      value: 0.03
       objectReference: {fileID: 0}
     - target: {fileID: 4740769183170357012, guid: b12d691e7dbd0d1478a6e78da23f5096, type: 3}
       propertyPath: m_Size.z
