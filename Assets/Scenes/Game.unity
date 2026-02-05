@@ -5340,6 +5340,14 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 89fc86d3a0535e444957e3b2f482b43d, type: 3}
+    - target: {fileID: 2361357600619833066, guid: d04b331c7c34c6740bea2fb707e53a86, type: 3}
+      propertyPath: m_CastShadows
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2361357600619833066, guid: d04b331c7c34c6740bea2fb707e53a86, type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2907382827275054502, guid: d04b331c7c34c6740bea2fb707e53a86, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.14
