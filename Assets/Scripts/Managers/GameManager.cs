@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -11,25 +10,23 @@ public class GameManager : MonoBehaviour
     {
         if (instance != null && instance != this)
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
             return;
         }
-        else
-        {
-            instance = this;
-        }
-        DontDestroyOnLoad(this.gameObject);
+        else instance = this;
+
+        DontDestroyOnLoad(gameObject);
     }
 
-    public void LooseGame()
+    public void LoseGame()
     {
         SceneManager.LoadScene("Defeat");
+        UIManager.Instance.DisplayButtonsUI(false);
     }
     
     public void WinGame()
     {
         SceneManager.LoadScene("Victory");
+        UIManager.Instance.DisplayButtonsUI(false);
     }
-
-    
 }

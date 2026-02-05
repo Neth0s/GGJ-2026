@@ -33,14 +33,12 @@ public class UIManager : MonoBehaviour
     {
         if (instance != null && instance != this)
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
             return;
         }
-        else
-        {
-            instance = this;
-        }
-        DontDestroyOnLoad(this.gameObject);
+        else instance = this;
+
+        DontDestroyOnLoad(gameObject);
     }
 
     private void Start()

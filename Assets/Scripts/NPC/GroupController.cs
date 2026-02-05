@@ -63,10 +63,8 @@ public class GroupController : MonoBehaviour
         {
             _isAccusing = false;
             bubbleDialog.SetActive(false);
-            if (_hasWon)
-            {
-                GameManager.Instance.WinGame();
-            }
+
+            if (_hasWon) GameManager.Instance.WinGame();
             return false;
         }
         else
@@ -82,6 +80,7 @@ public class GroupController : MonoBehaviour
                 textBubble.text = GameParameters.ACCUSATIONS_INCORRECT[Random.Range(0, GameParameters.ACCUSATIONS_INCORRECT.Length)];
                 Timer.Instance.RemoveTime(GameParameters.DEFAULT_TIME_FAIL_ACCUSATION);
             }
+
             _isAccusing = true;
             bubbleDialog.SetActive(true);
             return true;

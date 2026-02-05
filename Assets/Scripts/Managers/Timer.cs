@@ -36,7 +36,7 @@ public class Timer : MonoBehaviour
         currentTime -= Time.deltaTime;
         if (currentTime <= 0.0f)
         {
-            GameManager.Instance.LooseGame();
+            GameManager.Instance.LoseGame();
         }
         textTimer.text = TransformTimeToClockTime(currentTime);
     }
