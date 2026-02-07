@@ -7,10 +7,10 @@ using UnityEngine.UI;
 /// The player's inventory is always populated with 3 MaskObjects at maximum
 /// The player can TRADE one of its mask with the merchant
 /// </summary>
-public class PlayerInventoryController : MonoBehaviour
+public class PlayerInventory : MonoBehaviour
 {
     #region SINGLETON DESIGN PATTERN
-    public static PlayerInventoryController Instance;
+    public static PlayerInventory Instance;
 
     private void Awake()
     {
@@ -23,13 +23,13 @@ public class PlayerInventoryController : MonoBehaviour
     [SerializeField] private List<MaskObject> _masksInInventory = new List<MaskObject>();
     #endregion
 
-    public List<MaskObject> GetListMasksInInventory()
+    public List<MaskObject> GetMasksInInventory()
     {
         return _masksInInventory; 
     }
     public List<MaskPart> GetListUpperPartsFromInventory()
     {
-        List<MaskPart> upperPartsList = new List<MaskPart>();
+        List<MaskPart> upperPartsList = new();
         foreach (MaskObject maskObject in _masksInInventory)
         {
             upperPartsList.Add(maskObject.GetUpperPart());
@@ -38,7 +38,7 @@ public class PlayerInventoryController : MonoBehaviour
     }
     public List<MaskPart> GetListLowerPartsFromInventory()
     {
-        List<MaskPart> lowerPartsList = new List<MaskPart>();
+        List<MaskPart> lowerPartsList = new();
         foreach (MaskObject maskObject in _masksInInventory)
         {
             lowerPartsList.Add(maskObject.GetLowerPart());
@@ -55,10 +55,9 @@ public class PlayerInventoryController : MonoBehaviour
     {
         if (_masksInInventory.Count >= GameParameters.MAXIMUM_MASK_INVENTORY)
         {
-            Debug.Log("WARNING : Cannot add mask to inventory : inventory full");
+            Debug.LogWarning("WARNING : Cannot add mask to inventory : inventory full");
             return;
         }
-        print("Adding to player inventory : " + mask.name);
         _masksInInventory.Add(mask);
     }
 

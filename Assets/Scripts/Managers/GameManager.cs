@@ -21,12 +21,10 @@ public class GameManager : MonoBehaviour
     public void LoseGame()
     {
         SceneManager.LoadScene("Defeat");
-        UIManager.Instance.DisplayButtonsUI(false);
     }
     
     public void WinGame()
     {
         SceneManager.LoadScene("Victory");
-        UIManager.Instance.DisplayButtonsUI(false);
     }
 }

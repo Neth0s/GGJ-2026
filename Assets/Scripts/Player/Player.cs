@@ -230,7 +230,6 @@ public class Player : MonoBehaviour
     public void LeaveMerchant()
     {
         UIManager.Instance.DisplayMerchantUI(false);
-        currentMerchant = null;
         isInDialog = false;
     }
     #endregion

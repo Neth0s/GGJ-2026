@@ -17,7 +17,7 @@ public class MerchantUIController : MonoBehaviour
     [SerializeField] private GameObject _merchantChoicePage;
     [SerializeField] private List<MaskButtonMerchant> _merchantButtons = new List<MaskButtonMerchant>();
 
-    private PlayerInventoryController _playerInventory;
+    private PlayerInventory _playerInventory;
     #endregion
 
     private void Awake()
@@ -63,7 +63,7 @@ public class MerchantUIController : MonoBehaviour
     {
         //First we begin by setting, behind the scenes, the various buttons :
         // The player choice buttons :
-        List<MaskObject> playerInventoryMasks = PlayerInventoryController.Instance.GetListMasksInInventory();
+        List<MaskObject> playerInventoryMasks = PlayerInventory.Instance.GetMasksInInventory();
         for (int ite = 0; ite < _playerInventoryButtons.Count; ite++)
         {
             _playerInventoryButtons[ite].UpdateMask(playerInventoryMasks[ite]);
@@ -89,8 +89,9 @@ public class MerchantUIController : MonoBehaviour
     /// <returns></returns>
     private List<MaskObject> ObtainListMasksNotInPlayerInventory()
     {
-        List<MaskObject> playerInventoryMasks = PlayerInventoryController.Instance.GetListMasksInInventory();
-        List<MaskObject> listReturn = new List<MaskObject>(_merchantInventory);
+        List<MaskObject> playerInventoryMasks = PlayerInventory.Instance.GetMasksInInventory();
+        List<MaskObject> listReturn = new (_merchantInventory);
+        
         foreach(var mask in playerInventoryMasks)
         {
             listReturn.Remove(mask);
@@ -105,7 +106,7 @@ public class MerchantUIController : MonoBehaviour
     public void OnPlayerInventoryButtonSelected(MaskObject selectedMask)
     {
         print("Selected mask for deletion : " + selectedMask.name);
-        PlayerInventoryController.Instance.RemoveMaskFromInventory(selectedMask);
+        PlayerInventory.Instance.RemoveMaskFromInventory(selectedMask);
         ActivatePlayerChoicePage(false);
     }
 
@@ -116,7 +117,7 @@ public class MerchantUIController : MonoBehaviour
     public void OnMerchantInventoryButtonSelected(MaskObject selectedMask)
     {
         print("Selected mask for purchase : " + selectedMask.name);
-        PlayerInventoryController.Instance.AddMaskToInventory(selectedMask);
+        PlayerInventory.Instance.AddMaskToInventory(selectedMask);
         UIManager.Instance.DisplayMerchantUI(false);
         GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().LeaveMerchant();
     }

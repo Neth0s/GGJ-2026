@@ -25,7 +25,7 @@ public class MaskChoiceController : MonoBehaviour
     private int currentIndexLowerPart;
 
     private PlayerMaskController playerMaskController;
-    private PlayerInventoryController _playerInventoryController;
+    private PlayerInventory _playerInventoryController;
     #endregion
 
     /// <summary>
@@ -33,7 +33,7 @@ public class MaskChoiceController : MonoBehaviour
     /// </summary>
     private void RecoverDataFromPlayerInventory()
     {
-        _playerInventoryController = PlayerInventoryController.Instance;
+        _playerInventoryController = PlayerInventory.Instance;
         upperParts = _playerInventoryController.GetListUpperPartsFromInventory();
         lowerParts = _playerInventoryController.GetListLowerPartsFromInventory();
     }
@@ -63,8 +63,8 @@ public class MaskChoiceController : MonoBehaviour
     /// </summary>
     private void UpdatePlayerInventoryDisplay()
     {
-        _playerInventoryController = PlayerInventoryController.Instance;
-        List<MaskObject> maskList = _playerInventoryController.GetListMasksInInventory();
+        _playerInventoryController = PlayerInventory.Instance;
+        List<MaskObject> maskList = _playerInventoryController.GetMasksInInventory();
         if (maskList.Count != _playerInventoryDisplays.Count) { Debug.LogError("ERROR : this shouldn't happen right now."); }
         for(int ite=0; ite<maskList.Count; ite++)
         {

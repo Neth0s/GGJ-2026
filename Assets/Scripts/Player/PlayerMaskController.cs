@@ -23,7 +23,7 @@ public class PlayerMaskController : MonoBehaviour
     [SerializeField] public SpriteRenderer playerVisualMaskUpper;
     [SerializeField] public SpriteRenderer playerVisualMaskLower;
 
-    private PlayerInventoryController _playerInventoryController;
+    private PlayerInventory _playerInventoryController;
     #endregion
 
     private void Start()
@@ -36,8 +36,8 @@ public class PlayerMaskController : MonoBehaviour
     /// </summary>
     private void SelectStartingMask()
     {
-        _playerInventoryController = GetComponent<PlayerInventoryController>();
-        List<MaskObject> maskList = _playerInventoryController.GetListMasksInInventory();
+        _playerInventoryController = GetComponent<PlayerInventory>();
+        List<MaskObject> maskList = _playerInventoryController.GetMasksInInventory();
         if (maskList != null && maskList.Count > 0)
         {
             MaskPart lowerPart = maskList[0].GetLowerPart();

@@ -37,17 +37,12 @@ public class UIManager : MonoBehaviour
             return;
         }
         else instance = this;
-
-        DontDestroyOnLoad(gameObject);
     }
 
     private void Start()
     {
         maskPanel.gameObject.SetActive(false);
         merchantPanel.gameObject.SetActive(false);
-
-        maskButton.SetActive(false);
-        indicesButton.SetActive(false);
     }
 
     /// <summary>
