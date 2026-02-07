@@ -29,9 +29,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private UnityEngine.Events.UnityEvent sceneEvents;
     #endregion
 
-    #region GETTERS AND SETTERS
-    public MerchantUIController GetMerchantUIController() { return merchantPanel; }
-    #endregion
+    public float PlayerResetDuration => fadeOutDuration;
 
     private void Awake()
     {
@@ -116,8 +114,11 @@ public class UIManager : MonoBehaviour
 
     private IEnumerator FadeOutCoroutine(Transform player, Vector3 resetPosition)
     {
+        DisplayMaskPanel(false);
+        DisplayIndices(false, null);
+
         float alpha = 0f;
-        float increment = 2 / fadeOutDuration;
+        float increment = 3 / fadeOutDuration;
         Color c = blackScreen.color;
 
         while (alpha < 1)
@@ -128,6 +129,7 @@ public class UIManager : MonoBehaviour
         }
 
         player.localPosition = resetPosition;
+        yield return new WaitForSeconds(fadeOutDuration / 3);
 
         while (alpha > 0)
         {
@@ -135,8 +137,5 @@ public class UIManager : MonoBehaviour
             blackScreen.color = new Color(c.r, c.g, c.b, alpha);
             yield return new WaitForEndOfFrame();
         }
-
-        DisplayMaskPanel(false);
-        DisplayIndices(false, null);
     }
 }

@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -6,6 +7,8 @@ using UnityEngine.InputSystem;
 public class Player : MonoBehaviour
 {
     [SerializeField] private float MoveSpeed = 5.0f;
+    [SerializeField] private bool canMove;
+    [SerializeField] private bool canAccuse;
 
     [Header("Interaction data")]
     [SerializeField] private GameObject interactIcon;
@@ -104,12 +107,12 @@ public class Player : MonoBehaviour
             if (currentMerchant && !isInDialog) InteractMerchant();
         }
 
-        if (accuseAction.triggered && currentNPC) Accusation();
+        if (canAccuse && accuseAction.triggered && currentNPC) Accusation();
     }
 
     private void FixedUpdate()
     {
-        if (!isInDialog && !maskPanelOpen && !indicesPanelOpen) Move();
+        if (canMove && !isInDialog && !maskPanelOpen && !indicesPanelOpen) Move();
     }
 
     private void DisplayChangeMaskUI()
@@ -226,6 +229,18 @@ public class Player : MonoBehaviour
 
         if (currentGroup) currentGroup.ForceStopDialog();
         UIManager.Instance.FadeOut(transform, startPosition);
+        StartCoroutine(LockPlayer());
+    }
+
+    private IEnumerator LockPlayer()
+    {
+        canMove = false;
+        canAccuse = false;
+
+        yield return new WaitForSeconds(UIManager.Instance.PlayerResetDuration);
+
+        canMove = true;
+        canAccuse = true;
     }
 
     #region MERCHANT RELATED

@@ -280,6 +280,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoveSpeed: 7
+  canMove: 1
+  canAccuse: 1
   interactIcon: {fileID: 8939190389451797303}
   acusationIcon: {fileID: 554574881222009437}
 --- !u!114 &5757962488437206913

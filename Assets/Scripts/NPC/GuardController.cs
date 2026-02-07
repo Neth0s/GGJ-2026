@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,7 +6,7 @@ public class GuardController : MonoBehaviour
 {
     [Header("Movement")]
     [SerializeField] private float speed;
-    [SerializeField] private float pauseTime;
+    [SerializeField] private float pauseDuration;
     [SerializeField] private Vector3[] waypoints;
 
     [Header("Detection")]
@@ -16,7 +15,7 @@ public class GuardController : MonoBehaviour
     [Tooltip("Penalty time (in seconds) subtracted from Timer when player is caught")]
     [SerializeField] private float penaltySeconds = 20f;
     [Tooltip("Cooldown time (in seconds) after catching player")]
-    [SerializeField] private float respawnCooldown = 0.5f;   // prevents immediate re-trigger
+    [SerializeField] private float triggerCooldown = 2f;   // prevents immediate re-trigger
 
     [Header("Display")]
     [SerializeField] private GameObject guardSprite;
@@ -37,7 +36,7 @@ public class GuardController : MonoBehaviour
 
     private bool isWalking = true;
     private bool immobileGuard = true;
-
+    private bool inCooldown = false;
     private bool isDetectingPlayer = false;
     private bool soundEffectTriggered = false;
 
@@ -73,9 +72,9 @@ public class GuardController : MonoBehaviour
 
     void Update()
     {
-        if (!immobileGuard)
+        if (!immobileGuard && !isDetectingPlayer && !inCooldown)
         {
-            if (isWalking && !isDetectingPlayer)
+            if (isWalking)
             {
                 Vector3 target = waypoints[currentWaypoint];
                 Vector3 direction = (target - transform.position).normalized;
@@ -102,10 +101,10 @@ public class GuardController : MonoBehaviour
                     animator.SetBool("WalkBool", false);
                 }
             }
-            else if (!isWalking && !isDetectingPlayer)
+            else
             {
                 pauseTimer += Time.deltaTime;
-                if (pauseTimer >= pauseTime)
+                if (pauseTimer >= pauseDuration)
                 {
                     currentWaypoint = (currentWaypoint + 1) % waypoints.Length;
                     isWalking = true;
@@ -114,7 +113,17 @@ public class GuardController : MonoBehaviour
             }
         }
 
-        if (isDetectingPlayer)
+        if (inCooldown)
+        {
+
+            pauseTimer += Time.deltaTime;
+            if (pauseTimer >= triggerCooldown)
+            {
+                inCooldown = false;
+                detectionTimer = 0f;
+            }
+        }
+        else if (isDetectingPlayer)
         {
             detectionTimer += Time.deltaTime;
 
@@ -125,10 +134,7 @@ public class GuardController : MonoBehaviour
                 soundEffectTriggered = true;
             }
 
-            if (detectionTimer >= detectionTime)
-            {
-                StartCoroutine(HandleCaught());
-            }   
+            if (detectionTimer >= detectionTime) HandleCaught();
         }
         else if (detectionTimer > 0)
         {
@@ -176,9 +182,9 @@ public class GuardController : MonoBehaviour
         }
     }
     
-    IEnumerator HandleCaught()
+    private void HandleCaught()
     {
-        detectionTimer = 0f;
+        inCooldown = true;
         MusicManager.Instance.PlayGuardCatchSound();
 
         if (Timer.Instance != null)
@@ -190,8 +196,6 @@ public class GuardController : MonoBehaviour
         {
             Debug.LogError("Timer not found");
         }
-
-        yield return new WaitForSeconds(respawnCooldown);
     }
 
     void UpdateDetectionIcons()
