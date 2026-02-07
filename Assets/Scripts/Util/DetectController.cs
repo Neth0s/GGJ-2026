@@ -85,7 +85,7 @@ public class DetectController : MonoBehaviour
             }
         }
 
-        MerchantController merchantController = ObtainMerchantController();
+        MerchantController merchantController = GetMerchantController();
         if (_currentMerchant != merchantController)
         {
             _currentMerchant = merchantController;
@@ -95,7 +95,7 @@ public class DetectController : MonoBehaviour
             }
             else
             {
-                player.DisableInteraction();
+                player.DisableMerchantInteraction();
             }
         }
     }
@@ -105,7 +105,7 @@ public class DetectController : MonoBehaviour
     /// Obtain the list of NPC Controllers in range of the detect radius
     /// </summary>
     /// <returns>List of NPC Controllers</returns>
-    private List<NPCController> ObtainListNPCControllersInRange()
+    private List<NPCController> GetNPCsInRange()
     {
         Collider[] collidersDetected = Physics.OverlapSphere(gameObject.transform.position, _detectRadius);
         List<NPCController> npcControllerList = new();
@@ -126,7 +126,7 @@ public class DetectController : MonoBehaviour
     /// <returns></returns>
     private NPCController GetClosestNPC()
     {
-        List<NPCController> npcDetected = ObtainListNPCControllersInRange();
+        List<NPCController> npcDetected = GetNPCsInRange();
         if (npcDetected.Count < 1) //handle case where no NPCs are found
         {
             return null;
@@ -166,7 +166,7 @@ public class DetectController : MonoBehaviour
     /// Function that will return the merchant controller if found
     /// </summary>
     /// <returns></returns>
-    private MerchantController ObtainMerchantController()
+    private MerchantController GetMerchantController()
     {
         Collider[] collidersDetected = Physics.OverlapSphere(gameObject.transform.position, _detectRadius);
         foreach (var collider in collidersDetected)

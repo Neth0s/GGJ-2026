@@ -10,33 +10,30 @@ public class GroupController : MonoBehaviour
     [SerializeField] private GroupData _data;
     [SerializeField] private GameObject bubbleDialog;
 
+    private HoverSprite _hoverSprite;
     private TextMeshPro textBubble;
     private int currentDialogIndex = 0;
 
     private bool _isAccusing = false;
     private bool _hasWon = false;
 
-    //Appear controller
-    private HoverSprite _zoneAppearController;
     #endregion
-
-    public HoverSprite GetAppearController() { return _zoneAppearController; }
 
     public void SelectGroup(bool maskOk)
     {
-        GetAppearController().Appear(maskOk);
+        _hoverSprite.Appear(maskOk);
     }
 
     public void DeselectGroup()
     {
-        GetAppearController().Hide();
+        _hoverSprite.Hide();
     }
 
     private void Awake()
     {
         bubbleDialog.SetActive(false);
         textBubble = bubbleDialog.GetComponentInChildren<TextMeshPro>();
-        _zoneAppearController = GetComponent<HoverSprite>();
+        _hoverSprite = GetComponent<HoverSprite>();
     }
 
     public bool DisplayBubble()

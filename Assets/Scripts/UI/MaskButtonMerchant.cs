@@ -12,6 +12,7 @@ public class MaskButtonMerchant : MonoBehaviour
 
     [SerializeField] private MerchantUIController _merchantUIController;
     #endregion
+
     private void Awake()
     {
         if (_merchantUIController == null)
@@ -20,10 +21,6 @@ public class MaskButtonMerchant : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Will update the mask with inputted data, also visually
-    /// </summary>
-    /// <param name="mask"></param>
     public void UpdateMask(MaskObject mask)
     {
         _maskObject = mask;
@@ -31,21 +28,13 @@ public class MaskButtonMerchant : MonoBehaviour
         lowerImage.sprite = _maskObject.GetLowerPart().MaskSprite;
     }
 
-    /// <summary>
-    /// Function called by button
-    /// </summary>
     public void OnPlayerInventoryButtonClicked()
     {
-        print("Player inventory button clicked");
         _merchantUIController.OnPlayerInventoryButtonSelected(_maskObject);
     }
 
-    /// <summary>
-    /// Function called by button
-    /// </summary>
     public void OnMerchantInventoryButtonClicked()
     {
-        print("Merchant button clicked");
         _merchantUIController.OnMerchantInventoryButtonSelected(_maskObject);
     }
 }

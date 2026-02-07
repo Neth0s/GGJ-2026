@@ -172,6 +172,7 @@ public class Player : MonoBehaviour
     {
         interactIcon.SetActive(true);
         currentMerchant = merchant;
+        currentMerchant.SelectMerchant();
     }
 
     public void DisableInteraction()
@@ -180,10 +181,12 @@ public class Player : MonoBehaviour
         currentGroup = null;
         currentNPC = null;
     }
+
     public void DisableMerchantInteraction()
     {
         interactIcon.SetActive(false);
-        currentMerchant= null;
+        currentMerchant.DeselectMerchant();
+        currentMerchant = null;
     }
 
     public void DisableAccusation()

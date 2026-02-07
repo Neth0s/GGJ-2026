@@ -16,16 +16,8 @@ public class HoverSprite : MonoBehaviour
 
     private void Awake()
     {
-        if (_spriteRenderer == null)
-        {
-            Debug.LogError("ERROR : " + gameObject.name + " must have a sprite renderer in Appear Controller");
-            _initialColor.a = 0f;
-        }
-        else
-        {
-            _initialColor = _spriteRenderer.color;
-            _initialColor.a = _spriteRenderer.color.a;
-        }
+        _initialColor = _spriteRenderer.color;
+        _initialColor.a = _spriteRenderer.color.a;
     }
 
     public void Appear(bool selected)
