@@ -35,6 +35,7 @@ public class Player : MonoBehaviour
     private bool isInDialog = false;
     private bool maskPanelOpen = false;
     private bool indicesPanelOpen = false;
+    private bool pauseMenuOpen = false;
 
     private Vector2 moveDirection;
     private Vector3 startPosition;
@@ -79,8 +80,9 @@ public class Player : MonoBehaviour
 
         if (escapeAction.triggered)
         {
-            if(maskPanelOpen) DisplayChangeMaskUI();
-            if(indicesPanelOpen) DisplayIndicesUI();
+            if (maskPanelOpen) DisplayChangeMaskUI();
+            else if (indicesPanelOpen) DisplayIndicesUI();
+            else TogglePauseMenu();
         }
 
         if (indiceAction.triggered && !isInDialog && !maskPanelOpen)
@@ -120,6 +122,12 @@ public class Player : MonoBehaviour
     {
         indicesPanelOpen = !indicesPanelOpen;
         UIManager.Instance.DisplayIndices(indicesPanelOpen, indices);
+    }
+
+    private void TogglePauseMenu()
+    {
+        pauseMenuOpen = !pauseMenuOpen;
+        UIManager.Instance.DisplayPauseMenu(pauseMenuOpen);
     }
 
     private void Move()

@@ -17,12 +17,16 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject indicePanel;
     [SerializeField] private MaskChoiceController maskPanel;
     [SerializeField] private MerchantUIController merchantPanel;
+    [SerializeField] private GameObject pauseMenu;
     [SerializeField] private Image blackScreen;
     [Space(10)]
     [SerializeField] private GameObject maskButton;
     [SerializeField] private GameObject indicesButton;
     [Space(10)]
     [SerializeField] private TextMeshProUGUI indiceText;
+
+    [Header("UI Events")]
+    [SerializeField] private UnityEngine.Events.UnityEvent sceneEvents;
     #endregion
 
     #region GETTERS AND SETTERS
@@ -43,6 +47,8 @@ public class UIManager : MonoBehaviour
     {
         maskPanel.gameObject.SetActive(false);
         merchantPanel.gameObject.SetActive(false);
+
+        sceneEvents.Invoke();
     }
 
     /// <summary>
@@ -53,6 +59,20 @@ public class UIManager : MonoBehaviour
     {
         maskButton.SetActive(status);
         indicesButton.SetActive(status);
+    }
+
+    public void DisplayPauseMenu(bool display)
+    {
+        Timer.Instance.PauseTimer(display);
+        Time.timeScale = display ? 0 : 1;
+
+        pauseMenu.SetActive(display);
+        DisplayButtonsUI(!display);
+    }
+
+    public void QuitGame()
+    {
+        GameManager.Instance.ReturnToMenu();
     }
 
     public void DisplayMaskPanel(bool display)

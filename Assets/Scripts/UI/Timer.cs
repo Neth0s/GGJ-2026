@@ -1,4 +1,3 @@
-using System.Collections;
 using TMPro;
 using UnityEngine;
 
@@ -20,41 +19,36 @@ public class Timer : MonoBehaviour
     [Header("Timer Loss Elements")]
     [SerializeField] private GameObject _timerLoss;
     [SerializeField] private TextMeshProUGUI _textTimerLoss;
-    private Coroutine _timerLossCoroutine;
     
     private float currentTime;
-    private int minutes;
-    private int seconds;
+    private bool isTimerRunning = false;
 
     private void Start()
     {
         currentTime = timerDuration;
+        isTimerRunning = true;
     }
 
     private void Update()
     {
-        currentTime -= Time.deltaTime;
-        if (currentTime <= 0.0f)
-        {
-            GameManager.Instance.LoseGame();
-        }
+        if (isTimerRunning) currentTime -= Time.deltaTime;
         textTimer.text = TransformTimeToClockTime(currentTime);
+
+        if (currentTime <= 0.0f) GameManager.Instance.LoseGame();
     }
+
+    public void PauseTimer(bool value) => isTimerRunning = !value;
 
     public void AddTime(float time)
     {
         currentTime = Mathf.Max(timerDuration, currentTime + time);
     }
 
-    /// <summary>
-    /// Remove time from the timer
-    /// </summary>
-    /// <param name="time"></param>
     public void RemoveTime(float time)
     {
-        currentTime=currentTime - time;
+        currentTime = currentTime - time;
         _timerLoss.GetComponent<Animator>().Play("TimerLoss");
-        _textTimerLoss.text = "- "+TransformTimeToClockTime(time);
+        _textTimerLoss.text = "- " + TransformTimeToClockTime(time);
     }
 
     /// <summary>

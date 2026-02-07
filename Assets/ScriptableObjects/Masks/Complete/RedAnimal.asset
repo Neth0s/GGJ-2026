@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1c32ab01762e14a4e9ee2ec9b5f3208d, type: 3}
-  m_Name: BlueTrib
+  m_Name: RedAnimal
   m_EditorClassIdentifier: 
-  _upperPart: {fileID: 11400000, guid: fe6012cedfdb1144196ffdb0f5b9c57c, type: 2}
-  _lowerPart: {fileID: 11400000, guid: eb6bb38c6e9a2f747a3f9e71e3ef2379, type: 2}
+  _upperPart: {fileID: 11400000, guid: fcf9cb1980f9e48468d7473b0fc72bcb, type: 2}
+  _lowerPart: {fileID: 11400000, guid: 36f10c97f4df8b647993902f56cc071a, type: 2}

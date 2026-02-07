@@ -27,4 +27,9 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene("Victory");
     }
+
+    public void ReturnToMenu()
+    {
+        SceneManager.LoadScene("Menu");
+    }
 }
