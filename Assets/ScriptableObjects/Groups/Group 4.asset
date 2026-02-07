@@ -18,7 +18,7 @@ MonoBehaviour:
   - "Mais oui, je me souviens avoir vu une personne qui d\xE9gageait de mauvaises
     ondes."
   - "Je l'ai imm\xE9diatement remarqu\xE9e parce son masque n'\xE9tait pas d'ici."
-  - "Le haut comme le bas du masque m'\xE9taient \xE9trangers..."
+  - "<Le haut comme le bas du masque m'\xE9taient \xE9trangers...>"
   indice: "Aucune partie de son masque n'est v\xE9nitienne"
   MaskRequirementsUpper:
   - {fileID: 11400000, guid: 8a58247a1dc67c14faf9f488f9d2924d, type: 2}

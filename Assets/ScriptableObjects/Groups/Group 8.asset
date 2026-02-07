@@ -18,7 +18,7 @@ MonoBehaviour:
   - "Oui, je me souviens de quelqu'un qui ressemble \xE0 cette description. "
   - "Je n'ai plus tous les d\xE9tails en t\xEAte, mais son masque \xE9tait particulier
     :"
-  - Le haut et le bas n'avaient pas l'air d'aller ensemble.
+  - <Le haut et le bas n'avaient pas l'air d'aller ensemble.>
   - "Une v\xE9ritable faute de go\xFBt si vous voulez mon avis..."
   indice: Son masque n'est pas uniforme
   MaskRequirementsUpper:

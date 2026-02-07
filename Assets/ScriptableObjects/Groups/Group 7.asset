@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogs:
   - Oui ?
-  - Une grande personne un peu louche ?
+  - <Une grande personne> un peu louche ?
   - "Non \xE7a ne nous dit rien, d\xE9sol\xE9..."
   indice: Elle est grande
   MaskRequirementsUpper:

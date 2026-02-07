@@ -16,8 +16,8 @@ MonoBehaviour:
   - "Qu\xE9 pasa?"
   - Un fauteur de trouble, ici ?
   - Maintenant que vous le dites...
-  - Je crois avoir vu passer quelqu'un en tenue d'arlequin, elle m'avait l'air un
-    peu louche.
+  - Je crois avoir vu passer quelqu'un en <tenue d'arlequin>, elle m'avait l'air
+    un peu louche.
   - Pourvu qu'elle ne perturbe pas ce carnaval !
   indice: Elle porte une tenue d'arlequin
   MaskRequirementsUpper:

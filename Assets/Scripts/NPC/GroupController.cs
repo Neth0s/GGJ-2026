@@ -40,9 +40,13 @@ public class GroupController : MonoBehaviour
     {
         bubbleDialog.SetActive(true);
 
+        //Text between < and > corresponds to clues that will be displayed in red
         if (currentDialogIndex < _data.dialogs.Count)
         {           
-            textBubble.text = _data.dialogs[currentDialogIndex];
+            textBubble.text = _data.dialogs[currentDialogIndex]
+                .Replace("<", "<color=red*")
+                .Replace(">", @"</color*")
+                .Replace("*", ">");
             currentDialogIndex++;
             return true;
         }

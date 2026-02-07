@@ -15,8 +15,8 @@ MonoBehaviour:
   dialogs:
   - Besoin d'aide ?
   - "Je vois\u2026"
-  - "Je pense qu\u2019une experte en dissimulation ne se cacherait pas dans un groupe
-    de notre taille."
+  - "Je pense qu\u2019une experte en dissimulation ne se cacherait <pas dans un groupe
+    de notre taille>."
   - "Elle serait bien trop expos\xE9e !"
   indice: Elle n'est pas dans un groupe de taille 2
   MaskRequirementsUpper:
