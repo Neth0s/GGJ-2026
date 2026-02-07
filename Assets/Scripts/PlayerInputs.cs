@@ -120,7 +120,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""ChooseMask"",
+                    ""name"": ""Mask"",
                     ""type"": ""Button"",
                     ""id"": ""38f493c8-1734-45db-911d-71e912a51358"",
                     ""expectedControlType"": """",
@@ -129,7 +129,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""SeeIndice"",
+                    ""name"": ""Clues"",
                     ""type"": ""Button"",
                     ""id"": ""f843953b-a08b-48f9-b34f-ff260be110af"",
                     ""expectedControlType"": """",
@@ -138,7 +138,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""EscapeUI"",
+                    ""name"": ""Escape"",
                     ""type"": ""Button"",
                     ""id"": ""eae91bc3-4270-42fe-b609-266fdfdb0a31"",
                     ""expectedControlType"": """",
@@ -331,7 +331,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""ChooseMask"",
+                    ""action"": ""Mask"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -342,7 +342,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""SeeIndice"",
+                    ""action"": ""Clues"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -353,7 +353,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""EscapeUI"",
+                    ""action"": ""Escape"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -964,9 +964,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
         m_Player_Accuse = m_Player.FindAction("Accuse", throwIfNotFound: true);
-        m_Player_ChooseMask = m_Player.FindAction("ChooseMask", throwIfNotFound: true);
-        m_Player_SeeIndice = m_Player.FindAction("SeeIndice", throwIfNotFound: true);
-        m_Player_EscapeUI = m_Player.FindAction("EscapeUI", throwIfNotFound: true);
+        m_Player_Mask = m_Player.FindAction("Mask", throwIfNotFound: true);
+        m_Player_Clues = m_Player.FindAction("Clues", throwIfNotFound: true);
+        m_Player_Escape = m_Player.FindAction("Escape", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1064,9 +1064,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_Interact;
     private readonly InputAction m_Player_Accuse;
-    private readonly InputAction m_Player_ChooseMask;
-    private readonly InputAction m_Player_SeeIndice;
-    private readonly InputAction m_Player_EscapeUI;
+    private readonly InputAction m_Player_Mask;
+    private readonly InputAction m_Player_Clues;
+    private readonly InputAction m_Player_Escape;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -1091,17 +1091,17 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         /// </summary>
         public InputAction @Accuse => m_Wrapper.m_Player_Accuse;
         /// <summary>
-        /// Provides access to the underlying input action "Player/ChooseMask".
+        /// Provides access to the underlying input action "Player/Mask".
         /// </summary>
-        public InputAction @ChooseMask => m_Wrapper.m_Player_ChooseMask;
+        public InputAction @Mask => m_Wrapper.m_Player_Mask;
         /// <summary>
-        /// Provides access to the underlying input action "Player/SeeIndice".
+        /// Provides access to the underlying input action "Player/Clues".
         /// </summary>
-        public InputAction @SeeIndice => m_Wrapper.m_Player_SeeIndice;
+        public InputAction @Clues => m_Wrapper.m_Player_Clues;
         /// <summary>
-        /// Provides access to the underlying input action "Player/EscapeUI".
+        /// Provides access to the underlying input action "Player/Escape".
         /// </summary>
-        public InputAction @EscapeUI => m_Wrapper.m_Player_EscapeUI;
+        public InputAction @Escape => m_Wrapper.m_Player_Escape;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -1137,15 +1137,15 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @Accuse.started += instance.OnAccuse;
             @Accuse.performed += instance.OnAccuse;
             @Accuse.canceled += instance.OnAccuse;
-            @ChooseMask.started += instance.OnChooseMask;
-            @ChooseMask.performed += instance.OnChooseMask;
-            @ChooseMask.canceled += instance.OnChooseMask;
-            @SeeIndice.started += instance.OnSeeIndice;
-            @SeeIndice.performed += instance.OnSeeIndice;
-            @SeeIndice.canceled += instance.OnSeeIndice;
-            @EscapeUI.started += instance.OnEscapeUI;
-            @EscapeUI.performed += instance.OnEscapeUI;
-            @EscapeUI.canceled += instance.OnEscapeUI;
+            @Mask.started += instance.OnMask;
+            @Mask.performed += instance.OnMask;
+            @Mask.canceled += instance.OnMask;
+            @Clues.started += instance.OnClues;
+            @Clues.performed += instance.OnClues;
+            @Clues.canceled += instance.OnClues;
+            @Escape.started += instance.OnEscape;
+            @Escape.performed += instance.OnEscape;
+            @Escape.canceled += instance.OnEscape;
         }
 
         /// <summary>
@@ -1166,15 +1166,15 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @Accuse.started -= instance.OnAccuse;
             @Accuse.performed -= instance.OnAccuse;
             @Accuse.canceled -= instance.OnAccuse;
-            @ChooseMask.started -= instance.OnChooseMask;
-            @ChooseMask.performed -= instance.OnChooseMask;
-            @ChooseMask.canceled -= instance.OnChooseMask;
-            @SeeIndice.started -= instance.OnSeeIndice;
-            @SeeIndice.performed -= instance.OnSeeIndice;
-            @SeeIndice.canceled -= instance.OnSeeIndice;
-            @EscapeUI.started -= instance.OnEscapeUI;
-            @EscapeUI.performed -= instance.OnEscapeUI;
-            @EscapeUI.canceled -= instance.OnEscapeUI;
+            @Mask.started -= instance.OnMask;
+            @Mask.performed -= instance.OnMask;
+            @Mask.canceled -= instance.OnMask;
+            @Clues.started -= instance.OnClues;
+            @Clues.performed -= instance.OnClues;
+            @Clues.canceled -= instance.OnClues;
+            @Escape.started -= instance.OnEscape;
+            @Escape.performed -= instance.OnEscape;
+            @Escape.canceled -= instance.OnEscape;
         }
 
         /// <summary>
@@ -1508,26 +1508,26 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnAccuse(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "ChooseMask" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "Mask" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnChooseMask(InputAction.CallbackContext context);
+        void OnMask(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "SeeIndice" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "Clues" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnSeeIndice(InputAction.CallbackContext context);
+        void OnClues(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "EscapeUI" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "Escape" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnEscapeUI(InputAction.CallbackContext context);
+        void OnEscape(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "UI" which allows adding and removing callbacks.

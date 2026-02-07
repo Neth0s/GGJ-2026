@@ -34,7 +34,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "ChooseMask",
+                    "name": "Mask",
                     "type": "Button",
                     "id": "38f493c8-1734-45db-911d-71e912a51358",
                     "expectedControlType": "",
@@ -43,7 +43,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "SeeIndice",
+                    "name": "Clues",
                     "type": "Button",
                     "id": "f843953b-a08b-48f9-b34f-ff260be110af",
                     "expectedControlType": "",
@@ -52,7 +52,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "EscapeUI",
+                    "name": "Escape",
                     "type": "Button",
                     "id": "eae91bc3-4270-42fe-b609-266fdfdb0a31",
                     "expectedControlType": "",
@@ -245,7 +245,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "ChooseMask",
+                    "action": "Mask",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -256,7 +256,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "SeeIndice",
+                    "action": "Clues",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -267,7 +267,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "EscapeUI",
+                    "action": "Escape",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

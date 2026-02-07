@@ -33,6 +33,7 @@ public class GuardController : MonoBehaviour
     private int currentWaypoint = 0;
     private float pauseTimer = 0f;
     private float detectionTimer = 0f;
+    private float spriteScale;
 
     private bool isWalking = true;
     private bool immobileGuard = true;
@@ -44,6 +45,7 @@ public class GuardController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         animator = GetComponentInChildren<Animator>();
+        spriteScale = guardSprite.transform.localScale.x;
     }
 
     private void Start()
@@ -83,11 +85,12 @@ public class GuardController : MonoBehaviour
                 // Flip guard to face movement direction
                 if (direction.x > 0 || direction.z > 0)
                 {
-                    guardSprite.transform.localRotation = Quaternion.Euler(-22, 180, 0);
+                    guardSprite.transform.localScale = new Vector3(-spriteScale, spriteScale, spriteScale);
                 }
                 else
                 {
-                    guardSprite.transform.localRotation = Quaternion.Euler(22, 0, 0);
+                    guardSprite.transform.localScale = spriteScale * Vector3.one;
+
                 }
 
                 //Snap to waypoint and pause
