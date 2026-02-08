@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,7 +16,10 @@ public class GuardController : MonoBehaviour
     [Tooltip("Penalty time (in seconds) subtracted from Timer when player is caught")]
     [SerializeField] private float penaltySeconds = 20f;
     [Tooltip("Cooldown time (in seconds) after catching player")]
-    [SerializeField] private float triggerCooldown = 2f;   // prevents immediate re-trigger
+    [SerializeField] private float triggerCooldown = 1f;   // prevents immediate re-trigger
+    [Tooltip("Mask requirements even when player is not in a group")]
+    [SerializeField] private List<MaskProperty> baseUpRequirements;
+    [SerializeField] private List<MaskProperty> baseLowRequirements;
 
     [Header("Display")]
     [SerializeField] private GameObject guardSprite;
@@ -35,6 +39,7 @@ public class GuardController : MonoBehaviour
     private float spriteScale;
 
     private bool isWalking = true;
+    private bool hasRequirement = false;
     private bool immobileGuard = true;
     private bool inCooldown = false;
     private bool isDetectingPlayer = false;
@@ -45,6 +50,7 @@ public class GuardController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         animator = GetComponentInChildren<Animator>();
         spriteScale = guardSprite.transform.localScale.x;
+        hasRequirement = baseUpRequirements.Count + baseLowRequirements.Count > 0;
     }
 
     private void Start()
@@ -172,6 +178,11 @@ public class GuardController : MonoBehaviour
         }
         else
         {
+            if (hasRequirement)
+            {
+
+            }
+
             GroupController currentGroup = detectController.GetCurrentGroup();
             isDetectingPlayer = (currentGroup != null);
         }

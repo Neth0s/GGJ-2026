@@ -73,14 +73,19 @@ public class UIManager : MonoBehaviour
         GameManager.Instance.ReturnToMenu();
     }
 
-    public void DisplayMaskPanel(bool display)
+    public void OpenMaskPanel(MaskController maskController)
+    {
+        maskPanel.InitializeUI(maskController);
+        DisplayMaskPanel(true);
+    }
+
+    public void CloseMaskPanel() => DisplayMaskPanel(false);
+
+    private void DisplayMaskPanel(bool display)
     {
         maskPanel.gameObject.SetActive(display);
         indicesButton.SetActive(!display);
         maskButton.SetActive(!display);
-
-        if (display) maskPanel.InitializeUI();
-              
     }
 
     public void DisplayIndices(bool display, List<string> indices)
@@ -101,10 +106,15 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void DisplayMerchantUI(bool display)
+    public void OpenMerchantUI(MaskController player, MerchantController merchant)
     {
-        merchantPanel.gameObject.SetActive(display);
-        if (display) merchantPanel.InitializeUI();
+        merchantPanel.InitializeUI(player, merchant);
+        merchantPanel.gameObject.SetActive(true);
+    }
+
+    public void CloseMerchantUI()
+    {
+        merchantPanel.gameObject.SetActive(false);
     }
 
     public void FadeOut(Transform player, Vector3 resetPosition)

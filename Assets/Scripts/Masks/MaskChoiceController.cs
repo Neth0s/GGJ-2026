@@ -4,71 +4,58 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 /// <summary>
-/// This script will govern the "make a mask" window 
+/// Governs the window allowing the player to change masks
 /// </summary>
 public class MaskChoiceController : MonoBehaviour
 {
     #region VARIABLES
-    [Header("Mask Choice elements")]
-    [SerializeField] private List<MaskPart> upperParts = new List<MaskPart>(); //to change -> get this list on player inventory
+    [Header("Mask Choice Elements")]
     [SerializeField] private Image upperImage;
-    [SerializeField] private List<MaskPart> lowerParts = new List<MaskPart>(); //to change -> get this list on player inventory
     [SerializeField] private Image lowerImage;
     [SerializeField] private GameObject _startButton;
 
-    [Header("Player inventory display elements")]
-    [SerializeField] private List<MaskUIElementController> _playerInventoryDisplays = new List<MaskUIElementController>();
+    [Header("Player Inventory Display")]
+    [SerializeField] private List<MaskUIElementController> _playerInventoryDisplay = new(); //TODO : make this dynamic in case the player can have more than 3 masks
 
     private MaskPart currentDisplayUpperPart;
-    private int currentIndexUpperPart;
     private MaskPart currentDisplayLowerPart;
+
+    private int currentIndexUpperPart;
     private int currentIndexLowerPart;
 
-    private PlayerMaskController playerMaskController;
-    private PlayerInventory _playerInventoryController;
+    private MaskController _maskController;
+    private List<MaskObject> _inventory;
+    private List<MaskPart> _upperParts;
+    private List<MaskPart> _lowerParts;
     #endregion
-
-    /// <summary>
-    /// Function that will recover the data from the player inventory
-    /// </summary>
-    private void RecoverDataFromPlayerInventory()
-    {
-        _playerInventoryController = PlayerInventory.Instance;
-        upperParts = _playerInventoryController.GetListUpperPartsFromInventory();
-        lowerParts = _playerInventoryController.GetListLowerPartsFromInventory();
-    }
 
     /// <summary>
     /// This function will be called when UI must be initialized.
     /// </summary>
-    public void InitializeUI()
+    public void InitializeUI(MaskController maskController)
     {
-        playerMaskController = GameObject.FindWithTag("Player").GetComponent<PlayerMaskController>(); //rip in peace le code
-        RecoverDataFromPlayerInventory(); //we recover (and update) the code 
-        UpdatePlayerInventoryDisplay(); //we update the player inventory on the page
-
+        _maskController = maskController;
+        _inventory = _maskController.MasksInventory;
+        _upperParts = _maskController.GetUpperPartsInventory();
+        _lowerParts = _maskController.GetLowerPartsInventory();
+        
+        UpdateInventoryDisplay();
         EventSystem.current.SetSelectedGameObject(_startButton);
 
-        currentDisplayUpperPart = playerMaskController.currentMask.GetUpperPart();
+        currentDisplayUpperPart = _maskController.CurrentMask.UpperPart();
         upperImage.sprite = currentDisplayUpperPart.MaskSprite;
-        currentIndexUpperPart = upperParts.IndexOf(currentDisplayUpperPart);
+        currentIndexUpperPart = _upperParts.IndexOf(currentDisplayUpperPart);
 
-        currentDisplayLowerPart = playerMaskController.currentMask.GetLowerPart();
+        currentDisplayLowerPart = _maskController.CurrentMask.LowerPart();
         lowerImage.sprite = currentDisplayLowerPart.MaskSprite;
-        currentIndexUpperPart = upperParts.IndexOf(currentDisplayLowerPart);
+        currentIndexUpperPart = _lowerParts.IndexOf(currentDisplayLowerPart);
     }
 
-    /// <summary>
-    /// Will update the visuals of the player's inventory
-    /// </summary>
-    private void UpdatePlayerInventoryDisplay()
+    private void UpdateInventoryDisplay()
     {
-        _playerInventoryController = PlayerInventory.Instance;
-        List<MaskObject> maskList = _playerInventoryController.GetMasksInInventory();
-        if (maskList.Count != _playerInventoryDisplays.Count) { Debug.LogError("ERROR : this shouldn't happen right now."); }
-        for(int ite=0; ite<maskList.Count; ite++)
+        for(int i = 0; i < _inventory.Count; i++)
         {
-            _playerInventoryDisplays[ite].UpdateMaskVisual(maskList[ite]);
+            _playerInventoryDisplay[i].UpdateMaskVisual(_inventory[i]);
         }
     }
 
@@ -76,49 +63,45 @@ public class MaskChoiceController : MonoBehaviour
     public void UpperLeftButton()
     {
         if (currentIndexUpperPart > 0) currentIndexUpperPart--;
-        else currentIndexUpperPart = upperParts.Count - 1;
+        else currentIndexUpperPart = _upperParts.Count - 1;
 
-        MaskPart newUpperPart = upperParts[currentIndexUpperPart];
+        MaskPart newUpperPart = _upperParts[currentIndexUpperPart];
         upperImage.sprite = newUpperPart.MaskSprite;
 
-        playerMaskController.ChangeCurrentMask(playerMaskController.currentMask.GetLowerPart(), newUpperPart);
+        _maskController.ChangeCurrentMask(_maskController.CurrentMask.LowerPart(), newUpperPart);
     }
 
     public void UpperRightButton()
     {
-       
-
-        if (currentIndexUpperPart < upperParts.Count - 1) currentIndexUpperPart++;
+        if (currentIndexUpperPart < _upperParts.Count - 1) currentIndexUpperPart++;
         else currentIndexUpperPart = 0;
 
-        MaskPart newUpperPart = upperParts[currentIndexUpperPart];
+        MaskPart newUpperPart = _upperParts[currentIndexUpperPart];
         upperImage.sprite = newUpperPart.MaskSprite;
 
-        playerMaskController.ChangeCurrentMask(playerMaskController.currentMask.GetLowerPart(), newUpperPart);
-
+        _maskController.ChangeCurrentMask(_maskController.CurrentMask.LowerPart(), newUpperPart);
     }
 
     public void LowerLeftButton()
     {
         if (currentIndexLowerPart > 0) currentIndexLowerPart--;
-        else currentIndexLowerPart = lowerParts.Count - 1;
+        else currentIndexLowerPart = _lowerParts.Count - 1;
 
-        MaskPart newLowerPart = lowerParts[currentIndexLowerPart];
+        MaskPart newLowerPart = _lowerParts[currentIndexLowerPart];
         lowerImage.sprite = newLowerPart.MaskSprite;
 
-        playerMaskController.ChangeCurrentMask(newLowerPart, playerMaskController.currentMask.GetUpperPart());
+        _maskController.ChangeCurrentMask(newLowerPart, _maskController.CurrentMask.UpperPart());
     }
 
     public void LowerRightButton()
     {
-        if (currentIndexLowerPart < lowerParts.Count - 1) currentIndexLowerPart++;
+        if (currentIndexLowerPart < _lowerParts.Count - 1) currentIndexLowerPart++;
         else currentIndexLowerPart = 0;
 
-        MaskPart newLowerPart = lowerParts[currentIndexLowerPart];
+        MaskPart newLowerPart = _lowerParts[currentIndexLowerPart];
         lowerImage.sprite = newLowerPart.MaskSprite;
 
-        playerMaskController.ChangeCurrentMask(newLowerPart, playerMaskController.currentMask.GetUpperPart());
-
+        _maskController.ChangeCurrentMask(newLowerPart, _maskController.CurrentMask.UpperPart());
     }
     #endregion
 }

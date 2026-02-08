@@ -84,10 +84,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7841424323414005192}
+  - component: {fileID: 1662059535290139204}
   - component: {fileID: 5715534661334538640}
   - component: {fileID: 5772116507419530782}
   - component: {fileID: 4676449357816833565}
-  - component: {fileID: 1662059535290139204}
   m_Layer: 0
   m_Name: MaskButton
   m_TagString: Untagged
@@ -116,6 +116,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1662059535290139204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6312450636924566318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1069a15192718d749b4b3c90b427d83a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upperImage: {fileID: 1769158470867974232}
+  lowerImage: {fileID: 6128684868357778086}
 --- !u!222 &5715534661334538640
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -200,7 +214,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1662059535290139204}
         m_TargetAssemblyTypeName: MaskButtonMerchant, Assembly-CSharp
-        m_MethodName: OnMerchantInventoryButtonClicked
+        m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -210,22 +224,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &1662059535290139204
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6312450636924566318}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1069a15192718d749b4b3c90b427d83a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _maskObject: {fileID: 0}
-  upperImage: {fileID: 1769158470867974232}
-  lowerImage: {fileID: 6128684868357778086}
-  _merchantUIController: {fileID: 0}
 --- !u!1 &8309081748061848798
 GameObject:
   m_ObjectHideFlags: 0

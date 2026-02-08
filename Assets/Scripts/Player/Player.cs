@@ -27,6 +27,7 @@ public class Player : MonoBehaviour
     private Rigidbody rb;
     private SpriteRenderer sprite;
     private Animator animator;
+    private MaskController maskController;
 
     private GroupController currentGroup;
     private NPCController currentNPC;
@@ -75,6 +76,8 @@ public class Player : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
         sprite = GetComponentsInChildren<SpriteRenderer>()[0];
         spriteScale = sprite.transform.localScale.x;
+
+        maskController = GetComponent<MaskController>();
     }
 
     private void Update()
@@ -118,7 +121,9 @@ public class Player : MonoBehaviour
     private void DisplayChangeMaskUI()
     {
         maskPanelOpen = !maskPanelOpen;
-        UIManager.Instance.DisplayMaskPanel(maskPanelOpen);
+
+        if (maskPanelOpen) UIManager.Instance.OpenMaskPanel(maskController);
+        else UIManager.Instance.CloseMaskPanel();
     }
 
     private void DisplayIndicesUI()
@@ -246,13 +251,12 @@ public class Player : MonoBehaviour
     #region MERCHANT RELATED
     private void InteractMerchant()
     {
-        UIManager.Instance.DisplayMerchantUI(true);
         isInDialog = true;
+        UIManager.Instance.OpenMerchantUI(maskController, currentMerchant);
     }
 
     public void LeaveMerchant()
     {
-        UIManager.Instance.DisplayMerchantUI(false);
         isInDialog = false;
     }
     #endregion

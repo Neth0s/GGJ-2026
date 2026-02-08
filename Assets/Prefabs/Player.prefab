@@ -234,10 +234,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8512145793622240432}
   - component: {fileID: 1024376903396874863}
-  - component: {fileID: 5757962488437206913}
   - component: {fileID: 4902257885775778048}
+  - component: {fileID: 5757962488437206913}
   - component: {fileID: 8250662942810543125}
-  - component: {fileID: 5660701106806805050}
   - component: {fileID: 1808654732899523482}
   - component: {fileID: 721272366759085965}
   - component: {fileID: 382147458866492163}
@@ -284,6 +283,25 @@ MonoBehaviour:
   canAccuse: 1
   interactIcon: {fileID: 8939190389451797303}
   acusationIcon: {fileID: 554574881222009437}
+--- !u!114 &4902257885775778048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5844357712523291346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 727b4f04151b635459c798e0ad87e81e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentMask: {fileID: 11400000, guid: c101fb4a85731df45bb70502b8b4c4cd, type: 2}
+  VisualMaskUpper: {fileID: 2649319941526339221}
+  VisualMaskLower: {fileID: 5139889103082681816}
+  maskInventory:
+  - {fileID: 11400000, guid: fa5d05fa82c39354d9ec6630c4377f45, type: 2}
+  - {fileID: 11400000, guid: 100fd8173850a2e49a9be87d6fbf9e05, type: 2}
+  - {fileID: 11400000, guid: 43c3814c5be5c2b4ebabcd5477f2731c, type: 2}
 --- !u!114 &5757962488437206913
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -297,21 +315,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _detectRadius: 0
---- !u!114 &4902257885775778048
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5844357712523291346}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7316204b259d154d97077a35975bb1e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentMask: {fileID: 11400000, guid: c101fb4a85731df45bb70502b8b4c4cd, type: 2}
-  playerVisualMaskUpper: {fileID: 2649319941526339221}
-  playerVisualMaskLower: {fileID: 5139889103082681816}
 --- !u!114 &8250662942810543125
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -327,22 +330,6 @@ MonoBehaviour:
   _spriteRenderer: {fileID: 7781739795501308206}
   _darkenSpeed: 0.05
   _colorMin: 0.7
---- !u!114 &5660701106806805050
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5844357712523291346}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f604c48dbc7f514585dd66fd0eecb81, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _masksInInventory:
-  - {fileID: 11400000, guid: fa5d05fa82c39354d9ec6630c4377f45, type: 2}
-  - {fileID: 11400000, guid: 100fd8173850a2e49a9be87d6fbf9e05, type: 2}
-  - {fileID: 11400000, guid: 43c3814c5be5c2b4ebabcd5477f2731c, type: 2}
 --- !u!114 &1808654732899523482
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -21,35 +21,35 @@ public class GroupData : ScriptableObject
     /// </summary>
     private void OnValidate()
     {
-        List<MASK_TYPE> maskTypes = new List<MASK_TYPE>();
+        List<PROPERTY_TYPE> maskTypes = new List<PROPERTY_TYPE>();
         foreach(MaskProperty property in MaskRequirementsUpper)
         {
             if(property != null)
             {
-                if (maskTypes.Contains(property.MaskType))
+                if (maskTypes.Contains(property.PropertyType))
                 {
-                    Debug.LogError("ERROR : Mask Requirements Upper can only have one MaskProperty of each type ! Currently, there are two (or more) masks of type "+property.MaskType);
+                    Debug.LogError("ERROR : Mask Requirements Upper can only have one MaskProperty of each type ! Currently, there are two (or more) masks of type "+property.PropertyType);
                     break;
                 }
                 else
                 {
-                    maskTypes.Add(property.MaskType);
+                    maskTypes.Add(property.PropertyType);
                 }
             }
         }
-        maskTypes = new List<MASK_TYPE>();
+        maskTypes = new List<PROPERTY_TYPE>();
         foreach (MaskProperty property in MaskRequirementsLower)
         {
             if (property != null)
             {
-                if (maskTypes.Contains(property.MaskType))
+                if (maskTypes.Contains(property.PropertyType))
                 {
-                    Debug.LogError("ERROR : Mask Requirements Lower can only have one MaskProperty of each type ! Currently, there are two (or more) masks of type " + property.MaskType);
+                    Debug.LogError("ERROR : Mask Requirements Lower can only have one MaskProperty of each type ! Currently, there are two (or more) masks of type " + property.PropertyType);
                     break;
                 }
                 else
                 {
-                    maskTypes.Add(property.MaskType);
+                    maskTypes.Add(property.PropertyType);
                 }
             }
         }

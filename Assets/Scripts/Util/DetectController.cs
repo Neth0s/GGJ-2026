@@ -4,7 +4,7 @@ using UnityEngine;
 /// <summary>
 /// This script will govern the detection by the player towards NPCs and other shits like that
 /// </summary>
-[RequireComponent(typeof(PlayerMaskController))]
+[RequireComponent(typeof(MaskController))]
 [RequireComponent(typeof(SpriteDarkener))]
 public class DetectController : MonoBehaviour
 {
@@ -15,7 +15,7 @@ public class DetectController : MonoBehaviour
     private GroupController _currentGroup = null; //CAN BE NULL
     private MerchantController _currentMerchant = null; //CAN BE NULL
 
-    private PlayerMaskController _playerMask;
+    private MaskController _playerMask;
     private SpriteDarkener _playerDark;
     private Player player;
 
@@ -30,7 +30,7 @@ public class DetectController : MonoBehaviour
 
     private void Awake()
     {
-        _playerMask = GetComponent<PlayerMaskController>();
+        _playerMask = GetComponent<MaskController>();
         _playerDark = GetComponent<SpriteDarkener>();
         player = GetComponent<Player>();
     }
@@ -59,7 +59,7 @@ public class DetectController : MonoBehaviour
             else player.DisableAccusation();
         }
 
-        GroupController groupController = ObtainGroupController();
+        GroupController groupController = GetGroupInRange();
 
         if(_currentGroup != groupController)
         {
@@ -72,7 +72,7 @@ public class DetectController : MonoBehaviour
 
                 List<MaskProperty> upperMaskReq = _currentGroup.GetUpperMaskRequirements();
                 List<MaskProperty> lowerMaskReq = _currentGroup.GetLowerMaskRequirements();
-                masksAreOK = _playerMask.ComparePlayerGroupMask(upperMaskReq, lowerMaskReq);
+                masksAreOK = _playerMask.VerifyMaskRequirements(upperMaskReq, lowerMaskReq);
                 
                 if (masksAreOK) _playerDark.Darken();
                 _currentGroup.SelectGroup(masksAreOK);
@@ -85,7 +85,7 @@ public class DetectController : MonoBehaviour
             }
         }
 
-        MerchantController merchantController = GetMerchantController();
+        MerchantController merchantController = GetMerchantInRange();
         if (_currentMerchant != merchantController)
         {
             _currentMerchant = merchantController;
@@ -147,7 +147,7 @@ public class DetectController : MonoBehaviour
     #endregion
 
     #region DETECT GROUPS
-    private GroupController ObtainGroupController()
+    private GroupController GetGroupInRange()
     {
         Collider[] collidersDetected = Physics.OverlapSphere(gameObject.transform.position, _detectRadius);
         foreach (var collider in collidersDetected) 
@@ -166,7 +166,7 @@ public class DetectController : MonoBehaviour
     /// Function that will return the merchant controller if found
     /// </summary>
     /// <returns></returns>
-    private MerchantController GetMerchantController()
+    private MerchantController GetMerchantInRange()
     {
         Collider[] collidersDetected = Physics.OverlapSphere(gameObject.transform.position, _detectRadius);
         foreach (var collider in collidersDetected)

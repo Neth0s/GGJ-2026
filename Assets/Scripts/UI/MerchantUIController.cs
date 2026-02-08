@@ -2,123 +2,96 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-/// <summary>
-/// This script will govern the UI-side of the merchant
-/// </summary>
 public class MerchantUIController : MonoBehaviour
 {
     #region VARIABLES
-    [Header("Inventory")]
-    [SerializeField] private List<MaskObject> _merchantInventory = new List<MaskObject>();
     [Header("Player Choice UI elements")]
     [SerializeField] private GameObject _playerChoicePage;
-    [SerializeField] private List<MaskButtonMerchant> _playerInventoryButtons = new List<MaskButtonMerchant>();
+    [SerializeField] private Transform _playerMaskButtonsParent;
+    [SerializeField] private MaskButtonMerchant _playerMaskButton;
+
     [Header("Merchant UI elements")]
     [SerializeField] private GameObject _merchantChoicePage;
-    [SerializeField] private List<MaskButtonMerchant> _merchantButtons = new List<MaskButtonMerchant>();
+    [SerializeField] private Transform _merchantButtonsParent;
+    [SerializeField] private MaskButtonMerchant _merchantButton;
 
-    private PlayerInventory _playerInventory;
+    private MaskController _maskController;
+    private MerchantController _merchantController;
     #endregion
-
-    private void Awake()
-    {
-        if(_merchantButtons.Count < 1)
-        {
-            Debug.LogWarning("WARNING : Merchant button elements list must not be null");
-        }
-        if (_playerInventoryButtons.Count < 1)
-        {
-            Debug.LogWarning("WARNING : Player inventory buttons must not be null");
-        }
-        if (_merchantInventory.Count < 1)
-        {
-            Debug.LogWarning("WARNING : Merchant inventory is empty");
-        }
-    }
 
     /// <summary>
     /// Function that will display the Player choice page or the merchant choice page
     /// </summary>
-    /// <param name="status">True to display player choice, false for merchant choice page</param>
-    private void ActivatePlayerChoicePage(bool status)
+    /// <param name="page">0 for player choice page, 1 for merchant choice page</param>
+    private void DisplayChoicePage(int page)
     {
-        if (status)
+        if (page == 0)
         {
             _playerChoicePage.SetActive(true);
             _merchantChoicePage.SetActive(false);
-            EventSystem.current.SetSelectedGameObject(_playerInventoryButtons[0].gameObject);
+            EventSystem.current.SetSelectedGameObject(_playerMaskButtonsParent.GetChild(0).gameObject);
         }
         else
         {
             _playerChoicePage.SetActive(false);
             _merchantChoicePage.SetActive(true);
-            EventSystem.current.SetSelectedGameObject(_merchantButtons[0].gameObject);
+            EventSystem.current.SetSelectedGameObject(_merchantButtonsParent.GetChild(0).gameObject);
         }
     }
 
-    /// <summary>
-    /// Will setup the UI of the Merchant UI Controller, setting the masks for each buttons
-    /// </summary>
-    public void InitializeUI()
+    public void InitializeUI(MaskController maskController, MerchantController merchantController)
     {
-        //First we begin by setting, behind the scenes, the various buttons :
-        // The player choice buttons :
-        List<MaskObject> playerInventoryMasks = PlayerInventory.Instance.GetMasksInInventory();
-        for (int ite = 0; ite < _playerInventoryButtons.Count; ite++)
+        _maskController = maskController;
+        _merchantController = merchantController;
+
+        List<MaskObject> _playerInventory = _maskController.MasksInventory;
+        List<MaskObject> _merchantInventory = _merchantController.Inventory;
+
+        //Remove previous buttons
+        foreach (Transform child in _playerMaskButtonsParent)
         {
-            _playerInventoryButtons[ite].UpdateMask(playerInventoryMasks[ite]);
-        }
-        // The merchant choice buttons :
-        List<MaskObject> masksNotInPlayerInventory = ObtainListMasksNotInPlayerInventory();
-        if(masksNotInPlayerInventory.Count != _merchantButtons.Count)
-        {
-            Debug.LogError("ERROR : This shouldn't be possible RIGHT NOW. However, if number of masks/buttons increase, this will need to change.");
-        }
-        for (int ite=0; ite < _merchantButtons.Count; ite++)
-        {
-            _merchantButtons[ite].UpdateMask(masksNotInPlayerInventory[ite]);
+            Destroy(child.gameObject);
         }
 
-        //Next, we start the UI of the player choice's page first :
-        ActivatePlayerChoicePage(true);
+        foreach (Transform child in _merchantButtonsParent)
+        {
+            Destroy(child.gameObject);
+        }
+
+        //Setup buttons
+        for (int i = 0; i < _playerInventory.Count; i++)
+        {
+            GameObject button = Instantiate(_playerMaskButton.gameObject, _playerMaskButtonsParent);
+            MaskButtonMerchant merchantButton = button.GetComponent<MaskButtonMerchant>();
+            merchantButton.Setup(this, true);
+            merchantButton.UpdateMask(_playerInventory[i]);
+        }
+
+        for (int i = 0; i < _merchantInventory.Count; i++)
+        {
+            GameObject button = Instantiate(_merchantButton.gameObject, _merchantButtonsParent);
+            MaskButtonMerchant merchantButton = button.GetComponent<MaskButtonMerchant>();
+            merchantButton.Setup(this, false);
+            merchantButton.UpdateMask(_merchantInventory[i]);
+        }
+
+        DisplayChoicePage(0);
     }
 
-    /// <summary>
-    /// Will return the list of masks that are absent from the player's inventory
-    /// </summary>
-    /// <returns></returns>
-    private List<MaskObject> ObtainListMasksNotInPlayerInventory()
+    public void OnPlayerButtonSelected(MaskObject selectedMask)
     {
-        List<MaskObject> playerInventoryMasks = PlayerInventory.Instance.GetMasksInInventory();
-        List<MaskObject> listReturn = new (_merchantInventory);
-        
-        foreach(var mask in playerInventoryMasks)
-        {
-            listReturn.Remove(mask);
-        }
-        return listReturn;
+        _maskController.RemoveMaskFromInventory(selectedMask);
+        _merchantController.AddToInventory(selectedMask);
+
+        DisplayChoicePage(1);
     }
 
-    /// <summary>
-    /// Function called by the MaskButtonMerchant buttons, when a player inventory mask has been selected
-    /// </summary>
-    /// <param name="selectedMask">Mask selected by the player</param>
-    public void OnPlayerInventoryButtonSelected(MaskObject selectedMask)
+    public void OnMerchantButtonSelected(MaskObject selectedMask)
     {
-        print("Selected mask for deletion : " + selectedMask.name);
-        PlayerInventory.Instance.RemoveMaskFromInventory(selectedMask);
-        ActivatePlayerChoicePage(false);
-    }
+        _maskController.AddMaskToInventory(selectedMask);
+        _merchantController.RemoveFromInventory(selectedMask);
 
-    /// <summary>
-    /// Function called by the MaskButtonMerchant buttons, when a merchant inventory mask has been selected
-    /// </summary>
-    /// <param name="selectedMask"></param>
-    public void OnMerchantInventoryButtonSelected(MaskObject selectedMask)
-    {
-        print("Selected mask for purchase : " + selectedMask.name);
-        PlayerInventory.Instance.AddMaskToInventory(selectedMask);
-        UIManager.Instance.DisplayMerchantUI(false);
+        UIManager.Instance.CloseMerchantUI();
         GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().LeaveMerchant();
     }
 }

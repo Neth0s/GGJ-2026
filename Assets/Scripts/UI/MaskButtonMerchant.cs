@@ -1,40 +1,35 @@
 using UnityEngine;
 using UnityEngine.UI;
+
 /// <summary>
-/// This script will govern a button in the merchnat's UI
+/// This script will govern a button in the merchant's UI
 /// </summary>
+[RequireComponent(typeof(Button))]
 public class MaskButtonMerchant : MonoBehaviour
 {
-    #region VARIABLES
-    [SerializeField] private MaskObject _maskObject;
     [SerializeField] private Image upperImage;
     [SerializeField] private Image lowerImage;
 
-    [SerializeField] private MerchantUIController _merchantUIController;
-    #endregion
+    private MerchantUIController _merchantUIController;
+    private MaskObject _maskObject;
+    private bool isPlayerButton;
 
-    private void Awake()
+    public void Setup(MerchantUIController merchantUIController, bool playerButton)
     {
-        if (_merchantUIController == null)
-        {
-            Debug.LogError("ERROR : Oi, fix this.");
-        }
+        _merchantUIController = merchantUIController;
+        isPlayerButton = playerButton;
     }
 
     public void UpdateMask(MaskObject mask)
     {
         _maskObject = mask;
-        upperImage.sprite = _maskObject.GetUpperPart().MaskSprite;
-        lowerImage.sprite = _maskObject.GetLowerPart().MaskSprite;
+        upperImage.sprite = _maskObject.UpperPart().MaskSprite;
+        lowerImage.sprite = _maskObject.LowerPart().MaskSprite;
     }
 
-    public void OnPlayerInventoryButtonClicked()
+    public void OnClick()
     {
-        _merchantUIController.OnPlayerInventoryButtonSelected(_maskObject);
-    }
-
-    public void OnMerchantInventoryButtonClicked()
-    {
-        _merchantUIController.OnMerchantInventoryButtonSelected(_maskObject);
+        if (isPlayerButton) _merchantUIController.OnPlayerButtonSelected(_maskObject);
+        else _merchantUIController.OnMerchantButtonSelected(_maskObject);
     }
 }

@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 32097782954701830}
+  - component: {fileID: 5125558344649984722}
   - component: {fileID: 3070158935248555530}
   - component: {fileID: 7163684589661113351}
-  - component: {fileID: 5125558344649984722}
   m_Layer: 5
   m_Name: MaskUIElement
   m_TagString: Untagged
@@ -40,6 +40,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &5125558344649984722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 57127857027767335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f3822ce5abd9eb4cbb48025d2910205, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _upperSprite: {fileID: 6592247410757064203}
+  _lowerSprite: {fileID: 5358302070305461813}
 --- !u!223 &3070158935248555530
 Canvas:
   m_ObjectHideFlags: 0
@@ -57,7 +71,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_VertexColorAlwaysGammaSpace: 0
+  m_VertexColorAlwaysGammaSpace: 1
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
@@ -80,20 +94,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &5125558344649984722
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 57127857027767335}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f3822ce5abd9eb4cbb48025d2910205, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _upperPart: {fileID: 5042470644336178607}
-  _lowerPart: {fileID: 2760906885045790441}
 --- !u!1 &2760906885045790441
 GameObject:
   m_ObjectHideFlags: 0
