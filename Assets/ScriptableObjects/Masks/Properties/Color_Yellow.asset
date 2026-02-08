@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed2cf522a0c08f644bbb63e787cd2a06, type: 3}
   m_Name: Color_Yellow
   m_EditorClassIdentifier: 
-  MaskType: 1
+  PropertyType: 1

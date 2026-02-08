@@ -1,14 +1,12 @@
 using UnityEngine;
 
-public enum MASK_TYPE
+public enum PROPERTY_TYPE
 {
     FAMILY,
     COLOR
 }
-/// <summary>
-/// Mask property
-/// </summary>
+
 public abstract class MaskProperty : ScriptableObject
 {
-    public MASK_TYPE MaskType;
+    public PROPERTY_TYPE PropertyType;
 }
