@@ -119,40 +119,18 @@ public class MaskController : MonoBehaviour
 
     public bool VerifyMaskRequirements(List<MaskProperty> upperMaskReqs, List<MaskProperty> lowerMaskReqs)
     {
-        //By the grace of Shaddam IV of House Corino, I swear on the ten gods : there are ways to modularise this shit
-        //We start by comparing upper mask part :
         foreach (MaskProperty property in upperMaskReqs)
         {
-            bool isInMaskPart = false;
-            foreach (MaskProperty playerProperty in currentMask.UpperPart().MaskProperties)
+            if (!currentMask.UpperPart().MaskProperties.Contains(property))
             {
-                if(playerProperty == property)
-                {
-                    isInMaskPart = true; 
-                    break; 
-                }
-            }
-            if (!isInMaskPart)
-            {
-                //Debug.Log("Failed on upper mask part property: " + groupProp);
                 return false;
             }
         }
-        //We continue by comparing lower mask part :
-        foreach (MaskProperty groupProp in lowerMaskReqs)
+
+        foreach (MaskProperty property in lowerMaskReqs)
         {
-            bool isInMaskPart = false;
-            foreach (MaskProperty playerMaskPartProp in currentMask.LowerPart().MaskProperties)
+            if (!currentMask.LowerPart().MaskProperties.Contains(property))
             {
-                if (playerMaskPartProp == groupProp)
-                {
-                    isInMaskPart = true;
-                    break;
-                }
-            }
-            if (!isInMaskPart)
-            {
-                //Debug.Log("Failed on lower mask part property: " + groupProp);
                 return false;
             }
         }
