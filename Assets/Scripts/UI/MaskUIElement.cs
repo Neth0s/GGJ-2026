@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MaskUIElementController : MonoBehaviour
+public class MaskUIElement : MonoBehaviour
 {
     [Header("Mask UI Elements")]
     [SerializeField] private Image _upperSprite;

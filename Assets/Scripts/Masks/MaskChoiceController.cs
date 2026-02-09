@@ -15,7 +15,8 @@ public class MaskChoiceController : MonoBehaviour
     [SerializeField] private GameObject _startButton;
 
     [Header("Player Inventory Display")]
-    [SerializeField] private List<MaskUIElementController> _playerInventoryDisplay = new(); //TODO : make this dynamic in case the player can have more than 3 masks
+    [SerializeField] private GameObject _maskUIPrefab;
+    [SerializeField] private Transform _playerInventoryParent;
 
     private MaskPart currentDisplayUpperPart;
     private MaskPart currentDisplayLowerPart;
@@ -24,22 +25,27 @@ public class MaskChoiceController : MonoBehaviour
     private int currentIndexLowerPart;
 
     private MaskController _maskController;
-    private List<MaskObject> _inventory;
     private List<MaskPart> _upperParts;
     private List<MaskPart> _lowerParts;
     #endregion
 
-    /// <summary>
-    /// This function will be called when UI must be initialized.
-    /// </summary>
     public void InitializeUI(MaskController maskController)
     {
         _maskController = maskController;
-        _inventory = _maskController.MasksInventory;
         _upperParts = _maskController.GetUpperPartsInventory();
         _lowerParts = _maskController.GetLowerPartsInventory();
-        
-        UpdateInventoryDisplay();
+
+        foreach (Transform child in _playerInventoryParent.transform)
+        {
+            Destroy(child.gameObject);
+        }
+
+        foreach (MaskObject mask in _maskController.MasksInventory)
+        {
+            GameObject MaskUI = Instantiate(_maskUIPrefab, _playerInventoryParent);
+            MaskUI.GetComponent<MaskUIElement>().UpdateMaskVisual(mask);
+        }
+
         EventSystem.current.SetSelectedGameObject(_startButton);
 
         currentDisplayUpperPart = _maskController.CurrentMask.UpperPart();
@@ -49,14 +55,6 @@ public class MaskChoiceController : MonoBehaviour
         currentDisplayLowerPart = _maskController.CurrentMask.LowerPart();
         lowerImage.sprite = currentDisplayLowerPart.MaskSprite;
         currentIndexUpperPart = _lowerParts.IndexOf(currentDisplayLowerPart);
-    }
-
-    private void UpdateInventoryDisplay()
-    {
-        for(int i = 0; i < _inventory.Count; i++)
-        {
-            _playerInventoryDisplay[i].UpdateMaskVisual(_inventory[i]);
-        }
     }
 
     #region BUTTON FUNCTIONS

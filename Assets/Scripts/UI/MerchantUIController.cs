@@ -8,12 +8,12 @@ public class MerchantUIController : MonoBehaviour
     [Header("Player Choice UI elements")]
     [SerializeField] private GameObject _playerChoicePage;
     [SerializeField] private Transform _playerMaskButtonsParent;
-    [SerializeField] private MaskButtonMerchant _playerMaskButton;
+    [SerializeField] private GameObject _playerMaskButton;
 
     [Header("Merchant UI elements")]
     [SerializeField] private GameObject _merchantChoicePage;
     [SerializeField] private Transform _merchantButtonsParent;
-    [SerializeField] private MaskButtonMerchant _merchantButton;
+    [SerializeField] private GameObject _merchantButton;
 
     private MaskController _maskController;
     private MerchantController _merchantController;

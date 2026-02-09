@@ -79,11 +79,6 @@ public class MaskController : MonoBehaviour
     #region ADD AND REMOVE MASK
     public void AddMaskToInventory(MaskObject mask)
     {
-        if (maskInventory.Count >= GameParameters.MAXIMUM_MASK_INVENTORY)
-        {
-            Debug.LogWarning("WARNING : Cannot add mask to inventory : inventory full");
-            return;
-        }
         maskInventory.Add(mask);
     }
 

@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 5772116507419530782}
   - component: {fileID: 4676449357816833565}
   m_Layer: 0
-  m_Name: MaskButton
+  m_Name: MerchantButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
