@@ -25,6 +25,11 @@ public class MaskController : MonoBehaviour
     #region GETTERS
     public MaskObject CurrentMask => currentMask;
     public List<MaskObject> MasksInventory => maskInventory;
+    
+    public bool HasMask(MaskObject mask)
+    {
+        return maskInventory.Contains(mask);
+    }
 
     public List<MaskPart> GetUpperPartsInventory()
     {

@@ -12,15 +12,28 @@ public class GroupController : MonoBehaviour
 
     private HoverSprite _hoverSprite;
     private TextMeshPro textBubble;
-    private int currentDialogIndex = 0;
+    private int curDialogueIndex = 0;
 
+    private bool _hasRequirements;
+    private bool _maskOk = false;
     private bool _isAccusing = false;
     private bool _hasWon = false;
 
     #endregion
 
+    private void Awake()
+    {
+        bubbleDialog.SetActive(false);
+        textBubble = bubbleDialog.GetComponentInChildren<TextMeshPro>();
+        _hoverSprite = GetComponent<HoverSprite>();
+
+        _hasRequirements = _data.MaskRequirementsLower.Count + _data.MaskRequirementsUpper.Count > 0;
+    }
+
     public void SelectGroup(bool maskOk)
     {
+        //Hidden dialogue and rewards are not used if there are no requirements
+        _maskOk = maskOk && _hasRequirements;
         _hoverSprite.Appear(maskOk);
     }
 
@@ -29,37 +42,34 @@ public class GroupController : MonoBehaviour
         _hoverSprite.Hide();
     }
 
-    private void Awake()
-    {
-        bubbleDialog.SetActive(false);
-        textBubble = bubbleDialog.GetComponentInChildren<TextMeshPro>();
-        _hoverSprite = GetComponent<HoverSprite>();
-    }
-
     public bool DisplayBubble()
     {
         bubbleDialog.SetActive(true);
+        int dialogueLength = _maskOk ? _data.hiddenDialogue.Count : 
+                                       _data.baseDialogue.Count;
 
         //Text between < and > corresponds to clues that will be displayed in red
-        if (currentDialogIndex < _data.dialogs.Count)
-        {           
-            textBubble.text = _data.dialogs[currentDialogIndex]
-                .Replace("<", "<color=red*")
-                .Replace(">", @"</color*")
-                .Replace("*", ">");
-            currentDialogIndex++;
+        if (curDialogueIndex < dialogueLength)
+        {
+            string dialogue = _maskOk ? _data.hiddenDialogue[curDialogueIndex] : 
+                                        _data.baseDialogue[curDialogueIndex];
+
+            textBubble.text = dialogue.Replace("<", "<color=red*")
+                                      .Replace(">", @"</color*")
+                                      .Replace("*", ">");
+            curDialogueIndex++;
             return true;
         }
         else
         {
             bubbleDialog.SetActive(false);
-            currentDialogIndex = 0;
+            curDialogueIndex = 0;
             return false;
         }        
     }
 
     /// <summary>
-    /// Will display the accusation bubble for a specific NPC
+    /// Displays the accusation bubble for a specific NPC
     /// </summary>
     /// <param name="selectedNPC">Currently selected NPC</param>
     /// <returns>Boolean (true if accusation is correct) </returns>
@@ -103,14 +113,19 @@ public class GroupController : MonoBehaviour
         return _data.MaskRequirementsLower;
     }
 
-    public string GetGroupIndice()
+    public string GetGroupClue()
     {
-        return _data.indice;
+        return _maskOk ? _data.hiddenClue : _data.baseClue;
+    }
+
+    public MaskObject GetGroupMask()
+    {
+        return _maskOk ? _data.hiddenMask : _data.baseMask;
     }
 
     public void ForceStopDialog()
     {
-        currentDialogIndex = 0;
+        curDialogueIndex = 0;
         bubbleDialog.SetActive(false);
     }
 }

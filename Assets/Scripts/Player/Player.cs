@@ -45,7 +45,7 @@ public class Player : MonoBehaviour
     private Vector3 startPosition;
     private float spriteScale;
 
-    private readonly List<string> indices = new();
+    private readonly List<string> clues = new();
 
     private void OnEnable()
     {
@@ -129,7 +129,7 @@ public class Player : MonoBehaviour
     private void DisplayIndicesUI()
     {
         indicesPanelOpen = !indicesPanelOpen;
-        UIManager.Instance.DisplayIndices(indicesPanelOpen, indices);
+        UIManager.Instance.DisplayIndices(indicesPanelOpen, clues);
     }
 
     private void TogglePauseMenu()
@@ -213,11 +213,22 @@ public class Player : MonoBehaviour
     private void InteractGroup()
     {
         isInDialog = currentGroup.DisplayBubble();
-        string indice = currentGroup.GetGroupIndice();
 
-        if (!indices.Contains(indice) && !string.IsNullOrEmpty(indice))
+        if (!isInDialog)
         {
-            indices.Add(indice);
+            Debug.Log("Dialogue finished, clue and mask reward obtained");
+            
+            string clue = currentGroup.GetGroupClue();
+            if (!clues.Contains(clue) && !string.IsNullOrEmpty(clue))
+            {
+                clues.Add(clue);
+            }
+
+            MaskObject mask = currentGroup.GetGroupMask();
+            if (mask != null && !maskController.HasMask(mask))
+            {
+                maskController.AddMaskToInventory(mask);
+            }
         }
     }
 
