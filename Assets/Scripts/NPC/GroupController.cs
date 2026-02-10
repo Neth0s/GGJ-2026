@@ -10,6 +10,12 @@ public class GroupController : MonoBehaviour
     [SerializeField] private GroupData _data;
     [SerializeField] private GameObject bubbleDialog;
 
+    [Header("Rewards")]
+    [Tooltip("Events triggered when interacting with group")]
+    [SerializeField] private UnityEngine.Events.UnityEvent baseRewards;
+    [Tooltip("Events triggered when interacting with group with correct mask")]
+    [SerializeField] private UnityEngine.Events.UnityEvent hiddenRewards;
+
     private HoverSprite _hoverSprite;
     private TextMeshPro textBubble;
     private int curDialogueIndex = 0;
@@ -18,6 +24,7 @@ public class GroupController : MonoBehaviour
     private bool _maskOk = false;
     private bool _isAccusing = false;
     private bool _hasWon = false;
+    private bool rewardsGiven = false;
     #endregion
 
     public GroupData Data => _data;
@@ -119,9 +126,14 @@ public class GroupController : MonoBehaviour
         return _maskOk ? _data.hiddenClue : _data.baseClue;
     }
 
-    public MaskObject GetGroupMask()
+    public void GetRewards()
     {
-        return _maskOk ? _data.hiddenMask : _data.baseMask;
+        if (!rewardsGiven)
+        {
+            if (_maskOk) hiddenRewards.Invoke();
+            else baseRewards.Invoke();
+            rewardsGiven = true;
+        }
     }
 
     public void ForceStopDialog()

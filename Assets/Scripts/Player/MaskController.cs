@@ -84,7 +84,7 @@ public class MaskController : MonoBehaviour
     #region ADD AND REMOVE MASK
     public void AddMaskToInventory(MaskObject mask)
     {
-        maskInventory.Add(mask);
+        if (!HasMask(mask)) maskInventory.Add(mask);
     }
 
     public void RemoveMaskFromInventory(MaskObject mask)

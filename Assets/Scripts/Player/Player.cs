@@ -48,6 +48,8 @@ public class Player : MonoBehaviour
     private readonly List<string> clues = new();
     public bool CanAccuse => canAccuse;
 
+    public void AllowAccusations() => canAccuse = true;
+
     private void OnEnable()
     {
         moveAction = playerInputs.Player.Move;
@@ -223,11 +225,7 @@ public class Player : MonoBehaviour
                 clues.Add(clue);
             }
 
-            MaskObject mask = currentGroup.GetGroupMask();
-            if (mask != null && !maskController.HasMask(mask))
-            {
-                maskController.AddMaskToInventory(mask);
-            }
+            currentGroup.GetRewards();
         }
     }
 

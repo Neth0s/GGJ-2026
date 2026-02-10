@@ -13,12 +13,9 @@ public class GroupData : ScriptableObject
     [Tooltip("Dialogue accessible only when player fulfills the mask requirements of the group")]
     public List<string> hiddenDialogue = new();
 
-    [Header("Rewards")]
+    [Header("Clues")]
     [Tooltip("Clue given with base dialogue")] public string baseClue;
     [Tooltip("Clue given with hidden dialogue")] public string hiddenClue;
-    [Space(10)]
-    [Tooltip("Mask given with base dialogue")] public MaskObject baseMask;
-    [Tooltip("Mask given with hidden dialogue")] public MaskObject hiddenMask;
 
     [Header("Requirements")]
     public List<MaskProperty> MaskRequirementsUpper = new();
