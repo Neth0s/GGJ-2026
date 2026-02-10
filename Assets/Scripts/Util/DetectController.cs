@@ -47,7 +47,7 @@ public class DetectController : MonoBehaviour
     private void StartDetectScan()
     {
         NPCController closestNPC = GetClosestNPC();
-        if (closestNPC != _currentNPC) 
+        if (player.CanAccuse && closestNPC != _currentNPC) 
         {
             if (_currentNPC != null) _currentNPC.Deselect();
 

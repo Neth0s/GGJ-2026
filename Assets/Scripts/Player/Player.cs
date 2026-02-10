@@ -46,6 +46,7 @@ public class Player : MonoBehaviour
     private float spriteScale;
 
     private readonly List<string> clues = new();
+    public bool CanAccuse => canAccuse;
 
     private void OnEnable()
     {
@@ -249,12 +250,8 @@ public class Player : MonoBehaviour
     private IEnumerator LockPlayer()
     {
         canMove = false;
-        canAccuse = false;
-
         yield return new WaitForSeconds(UIManager.Instance.PlayerResetDuration);
-
         canMove = true;
-        canAccuse = true;
     }
 
     #region MERCHANT RELATED
