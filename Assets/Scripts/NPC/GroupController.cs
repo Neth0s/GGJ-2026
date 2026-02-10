@@ -18,8 +18,9 @@ public class GroupController : MonoBehaviour
     private bool _maskOk = false;
     private bool _isAccusing = false;
     private bool _hasWon = false;
-
     #endregion
+
+    public GroupData Data => _data;
 
     private void Awake()
     {

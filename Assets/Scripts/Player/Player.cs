@@ -215,9 +215,7 @@ public class Player : MonoBehaviour
         isInDialog = currentGroup.DisplayBubble();
 
         if (!isInDialog)
-        {
-            Debug.Log("Dialogue finished, clue and mask reward obtained");
-            
+        {   
             string clue = currentGroup.GetGroupClue();
             if (!clues.Contains(clue) && !string.IsNullOrEmpty(clue))
             {

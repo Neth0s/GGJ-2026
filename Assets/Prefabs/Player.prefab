@@ -240,7 +240,7 @@ GameObject:
   - component: {fileID: 1808654732899523482}
   - component: {fileID: 721272366759085965}
   - component: {fileID: 382147458866492163}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -314,7 +314,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e93fdf0be7288944929f36ec24fb940, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _detectRadius: 0
+  _detectRadius: 1.5
 --- !u!114 &8250662942810543125
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,9 +16,6 @@ public class GuardController : MonoBehaviour
     [SerializeField] private float penaltySeconds = 20f;
     [Tooltip("Cooldown time (in seconds) after catching player")]
     [SerializeField] private float triggerCooldown = 1f;   // prevents immediate re-trigger
-    [Tooltip("Mask requirements even when player is not in a group")]
-    [SerializeField] private List<MaskProperty> baseUpRequirements;
-    [SerializeField] private List<MaskProperty> baseLowRequirements;
 
     [Header("Display")]
     [SerializeField] private GameObject guardSprite;
@@ -31,6 +27,7 @@ public class GuardController : MonoBehaviour
     private Animator animator;
     private GameObject player;
     private DetectController detectController;
+    private GroupController guardInteraction; //Can be null if guard has no requirements or no dialogue
 
     //Variables
     private int currentWaypoint = 0;
@@ -42,7 +39,7 @@ public class GuardController : MonoBehaviour
     private bool hasRequirement = false;
     private bool immobileGuard = true;
     private bool inCooldown = false;
-    private bool isDetectingPlayer = false;
+    private bool suspicious = false;
     private bool soundEffectTriggered = false;
 
     private void Awake()
@@ -50,7 +47,14 @@ public class GuardController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         animator = GetComponentInChildren<Animator>();
         spriteScale = guardSprite.transform.localScale.x;
-        hasRequirement = baseUpRequirements.Count + baseLowRequirements.Count > 0;
+
+        guardInteraction = GetComponentInChildren<GroupController>();
+        if (guardInteraction != null)
+        {
+            GroupData guardData = guardInteraction.Data;
+            hasRequirement = guardData.MaskRequirementsLower.Count + guardData.MaskRequirementsUpper.Count > 0;
+        }
+        else hasRequirement = false;
     }
 
     private void Start()
@@ -78,7 +82,7 @@ public class GuardController : MonoBehaviour
 
     void Update()
     {
-        if (!immobileGuard && !isDetectingPlayer && !inCooldown)
+        if (!immobileGuard && !suspicious && !inCooldown)
         {
             if (isWalking)
             {
@@ -121,7 +125,6 @@ public class GuardController : MonoBehaviour
 
         if (inCooldown)
         {
-
             pauseTimer += Time.deltaTime;
             if (pauseTimer >= triggerCooldown)
             {
@@ -129,7 +132,7 @@ public class GuardController : MonoBehaviour
                 detectionTimer = 0f;
             }
         }
-        else if (isDetectingPlayer)
+        else if (suspicious)
         {
             detectionTimer += Time.deltaTime;
 
@@ -151,45 +154,40 @@ public class GuardController : MonoBehaviour
         UpdateDetectionIcons();
     }
 
-    private void OnTriggerStay(Collider collision)
+    private void OnTriggerStay(Collider other)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player"))
         {
             CheckDetection();
         }
     }
 
-    private void OnTriggerExit(Collider collision)
+    private void OnTriggerExit(Collider other)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player"))
         {
-            isDetectingPlayer = false;
+            suspicious = false;
             animator.SetBool("WalkBool", !immobileGuard);
         }
     }
 
     void CheckDetection()
     {
-        bool previousDetectingState = isDetectingPlayer;
+        bool previousDetectingState = suspicious;
 
         if (detectController.MasksAreOK)
         {
-            isDetectingPlayer = false;
+            suspicious = false;
         }
         else
         {
-            if (hasRequirement)
-            {
-
-            }
-
-            GroupController currentGroup = detectController.GetCurrentGroup();
-            isDetectingPlayer = (currentGroup != null);
+            GroupController currentGroup = detectController.CurrentGroup;
+            suspicious = (currentGroup != null || hasRequirement);
         }
 
-        if (isDetectingPlayer != previousDetectingState)
+        if (suspicious != previousDetectingState)
         {
-            animator.SetBool("WalkBool", !isDetectingPlayer && !immobileGuard);
+            animator.SetBool("WalkBool", !suspicious && !immobileGuard);
         }
     }
     

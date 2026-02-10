@@ -4,6 +4,7 @@ using UnityEngine;
 /// <summary>
 /// This script will govern the detection by the player towards NPCs and other shits like that
 /// </summary>
+[RequireComponent(typeof(Player))]
 [RequireComponent(typeof(MaskController))]
 [RequireComponent(typeof(SpriteDarkener))]
 public class DetectController : MonoBehaviour
@@ -23,8 +24,8 @@ public class DetectController : MonoBehaviour
     #endregion
 
     #region GETTERS AND SETTERS
-    public NPCController GetCurrentNPC() { return _currentNPC; }
-    public GroupController GetCurrentGroup() { return _currentGroup; }
+    public NPCController CurrentNPC => _currentNPC;
+    public GroupController CurrentGroup => _currentGroup;
     public bool MasksAreOK => masksAreOK;
     #endregion
 
