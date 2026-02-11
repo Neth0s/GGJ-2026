@@ -7,7 +7,6 @@ public static class GameEventsManager
 
     public static void TriggerMaskChange()
     {
-        Debug.Log("Mask change event triggered");
         OnMaskChange.Invoke();
     }
 }

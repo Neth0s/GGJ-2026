@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eddcce320353dd24b98477a8a260059d, type: 3}
+  m_Name: Group 4
+  m_EditorClassIdentifier: 
+  baseDialogue:
+  - "C'est un joli masque v\xE9nitien que vous portez l\xE0."
+  - "Si jamais vous voulez diversifier un peu votre attirail, un marchand se trouve
+    juste derri\xE8re nous."
+  - "Il poss\xE8de des masques qui ne viennent pas d'ici, ils sont ravissants !"
+  - "Il vous \xE9changera l'un de vos masques contre l'un des siens."
+  - Pratique si vous voulez arborer des masques en tout genre !
+  hiddenDialogue:
+  - "Vous avez un regard d\xE9termin\xE9, je sens que vous cherchez quelque chose."
+  - Une malfaitrice parmi nous ?
+  - "Cherchez dans <le groupe le plus grand>, \xE0 c\xF4t\xE9 de nous."
+  - Je crois y avoir vu quelqu'un de louche...
+  - 'Autre chose :'
+  - "Essayez de r\xE9colter un maximum d'indices sur la personne que vous cherchez."
+  - "Une fois que vous pensez avoir trouv\xE9 la bonne, <appuyez sur X> pour l'attraper."
+  - "Mais attention \xE0 ne pas aller accuser n'importe qui, cela vous fera perdre
+    du temps !"
+  baseClue: 
+  hiddenClue: Elle se trouve dans le plus grand groupe
+  MaskRequirementsUpper:
+  - {fileID: 11400000, guid: bade4170d6a890841a9974f9d0ed0a16, type: 2}
+  - {fileID: 11400000, guid: a707ba1efd0de5f45b88189cff1f9a1a, type: 2}
+  MaskRequirementsLower:
+  - {fileID: 11400000, guid: 388747d244b07bb4bb13796222c0f6b9, type: 2}
+  - {fileID: 11400000, guid: 048562a77c854024997a621422e9933c, type: 2}

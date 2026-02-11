@@ -19,12 +19,10 @@ MonoBehaviour:
   - Vous ne portez pas de <masque bleu>.
   - Seuls les VIP portent un masque bleu.
   hiddenDialogue:
-  - "Enchant\xE9!"
+  - "Enchant\xE9."
   - Je vois que vous portez un masque bleu, vous pouvez passer.
   baseClue: 
   hiddenClue: 
-  baseMask: {fileID: 0}
-  hiddenMask: {fileID: 0}
   MaskRequirementsUpper:
   - {fileID: 11400000, guid: bade4170d6a890841a9974f9d0ed0a16, type: 2}
   MaskRequirementsLower:

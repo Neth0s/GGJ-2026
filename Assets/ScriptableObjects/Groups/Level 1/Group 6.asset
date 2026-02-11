@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eddcce320353dd24b98477a8a260059d, type: 3}
+  m_Name: Group 6
+  m_EditorClassIdentifier: 
+  baseDialogue:
+  - Saluti!
+  - "Une enqu\xEAte ? Que c'est excitant !"
+  - "Nous voudrons bien t'aider \xE0 une condition :"
+  - Quel est le point commun entre tous les masques que nous portons ?
+  - "Pr\xEAte bien attention \xE0 la partie basse comme \xE0 la partie haute !"
+  hiddenDialogue:
+  - "Bravo, tu as trouv\xE9 !"
+  - "En effet, nous portons tous les deux un bas de masque v\xE9nitien rouge-"
+  - "-et en haut, bien que nous ne portions pas le m\xEAme, ce sont tous des masques
+    tribaux !"
+  - "Pour te f\xE9liciter, voici un indice sur la personne que tu cherches :"
+  - <Une partie de son masque n'est pas bleue>.
+  - "Tu fais bien de noter tous les indices que tu r\xE9cup\xE8res, c'est essentiel
+    pour mener une enqu\xEAte \xE0 bien !"
+  - "<(Appuyez sur W pour voir tous les indices que vous avez r\xE9cup\xE9r\xE9.)>"
+  baseClue: 
+  hiddenClue: Une partie de son masque n'est pas bleue
+  MaskRequirementsUpper:
+  - {fileID: 11400000, guid: 8a58247a1dc67c14faf9f488f9d2924d, type: 2}
+  MaskRequirementsLower:
+  - {fileID: 11400000, guid: a707ba1efd0de5f45b88189cff1f9a1a, type: 2}
+  - {fileID: 11400000, guid: 388747d244b07bb4bb13796222c0f6b9, type: 2}
