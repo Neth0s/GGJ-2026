@@ -24,7 +24,8 @@ public class GroupController : MonoBehaviour
     private bool _maskOk = false;
     private bool _isAccusing = false;
     private bool _hasWon = false;
-    private bool rewardsGiven = false;
+    private bool baseRewardsGiven = false;
+    private bool hiddenRewardsGiven = false;
     #endregion
 
     public GroupData Data => _data;
@@ -128,11 +129,15 @@ public class GroupController : MonoBehaviour
 
     public void GetRewards()
     {
-        if (!rewardsGiven)
+        if (_maskOk && hiddenRewardsGiven)
         {
-            if (_maskOk) hiddenRewards.Invoke();
-            else baseRewards.Invoke();
-            rewardsGiven = true;
+            hiddenRewards.Invoke();
+            hiddenRewardsGiven = true;
+        }
+        if (!_maskOk && baseRewardsGiven)
+        {
+            baseRewards.Invoke();
+            baserewardsGiven = true;
         }
     }
 
