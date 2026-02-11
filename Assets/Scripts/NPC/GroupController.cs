@@ -28,7 +28,9 @@ public class GroupController : MonoBehaviour
     private bool hiddenRewardsGiven = false;
     #endregion
 
-    public GroupData Data => _data;
+    public bool HasRequirements => _hasRequirements;
+    public List<MaskProperty> MaskReqsUp => _data.MaskRequirementsUpper;
+    public List<MaskProperty> MaskReqsLow => _data.MaskRequirementsLower;
 
     private void Awake()
     {
@@ -39,14 +41,14 @@ public class GroupController : MonoBehaviour
         _hasRequirements = _data.MaskRequirementsLower.Count + _data.MaskRequirementsUpper.Count > 0;
     }
 
-    public void SelectGroup(bool maskOk)
+    public void Select(bool maskOk)
     {
         //Hidden dialogue and rewards are not used if there are no requirements
         _maskOk = maskOk && _hasRequirements;
         _hoverSprite.Appear(maskOk);
     }
 
-    public void DeselectGroup()
+    public void Deselect()
     {
         _hoverSprite.Hide();
     }
@@ -129,15 +131,15 @@ public class GroupController : MonoBehaviour
 
     public void GetRewards()
     {
-        if (_maskOk && hiddenRewardsGiven)
+        if (_maskOk && !hiddenRewardsGiven)
         {
             hiddenRewards.Invoke();
             hiddenRewardsGiven = true;
         }
-        if (!_maskOk && baseRewardsGiven)
+        if (!_maskOk && !baseRewardsGiven)
         {
             baseRewards.Invoke();
-            baserewardsGiven = true;
+            baseRewardsGiven = true;
         }
     }
 

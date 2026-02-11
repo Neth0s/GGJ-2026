@@ -19,12 +19,12 @@ public class MerchantController : MonoBehaviour
         }
     }
 
-    public void SelectMerchant()
+    public void Select()
     {
         _hoverSprite.Appear(true);
     }
 
-    public void DeselectMerchant()
+    public void Deselect()
     {
         _hoverSprite.Hide();
     }

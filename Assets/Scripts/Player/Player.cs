@@ -191,7 +191,7 @@ public class Player : MonoBehaviour
     {
         interactIcon.SetActive(true);
         currentMerchant = merchant;
-        currentMerchant.SelectMerchant();
+        currentMerchant.Select();
     }
 
     public void DisableInteraction()
@@ -204,7 +204,7 @@ public class Player : MonoBehaviour
     public void DisableMerchantInteraction()
     {
         interactIcon.SetActive(false);
-        currentMerchant.DeselectMerchant();
+        currentMerchant.Deselect();
         currentMerchant = null;
     }
 

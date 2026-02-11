@@ -72,6 +72,8 @@ public class MaskController : MonoBehaviour
         currentMask.SetLowerPart(lower);
         currentMask.SetUpperPart(upper);
         UpdateMaskVisual();
+
+        GameEventsManager.TriggerMaskChange();
     }
 
     private void UpdateMaskVisual()

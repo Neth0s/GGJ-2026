@@ -1,3 +1,5 @@
+using NUnit.Framework;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -27,7 +29,6 @@ public class GuardController : MonoBehaviour
     private Animator animator;
     private GameObject player;
     private DetectController detectController;
-    private GroupController guardInteraction; //Can be null if guard has no requirements or no dialogue
 
     //Variables
     private int currentWaypoint = 0;
@@ -37,6 +38,7 @@ public class GuardController : MonoBehaviour
 
     private bool isWalking = true;
     private bool hasRequirement = false;
+    private bool requirementsMet = false;
     private bool immobileGuard = true;
     private bool inCooldown = false;
     private bool suspicious = false;
@@ -48,13 +50,7 @@ public class GuardController : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
         spriteScale = guardSprite.transform.localScale.x;
 
-        guardInteraction = GetComponentInChildren<GroupController>();
-        if (guardInteraction != null)
-        {
-            GroupData guardData = guardInteraction.Data;
-            hasRequirement = guardData.MaskRequirementsLower.Count + guardData.MaskRequirementsUpper.Count > 0;
-        }
-        else hasRequirement = false;
+        GameEventsManager.OnMaskChange.AddListener(CheckRequirements);
     }
 
     private void Start()
@@ -78,6 +74,15 @@ public class GuardController : MonoBehaviour
         iconDark.fillAmount = 0f;
 
         animator.SetBool("WalkBool", !immobileGuard);
+
+
+        //Can be null if guard has no requirements or no dialogue
+        GroupController guardInteraction = GetComponentInChildren<GroupController>();
+
+        if (guardInteraction != null) hasRequirement = guardInteraction.HasRequirements;
+        else hasRequirement = false;
+
+        requirementsMet = !hasRequirement;
     }
 
     void Update()
@@ -171,6 +176,14 @@ public class GuardController : MonoBehaviour
         }
     }
 
+    public void CheckRequirements()
+    {
+        GroupController guardInteraction = GetComponentInChildren<GroupController>();
+        List<MaskProperty> upperReqs = guardInteraction.MaskReqsUp;
+        List<MaskProperty> lowerReqs = guardInteraction.MaskReqsLow;
+        requirementsMet = detectController.VerifyMaskRequirements(upperReqs, lowerReqs);
+    }
+
     void CheckDetection()
     {
         bool previousDetectingState = suspicious;
@@ -182,7 +195,7 @@ public class GuardController : MonoBehaviour
         else
         {
             GroupController currentGroup = detectController.CurrentGroup;
-            suspicious = (currentGroup != null || hasRequirement);
+            suspicious = (currentGroup != null || !requirementsMet);
         }
 
         if (suspicious != previousDetectingState)

@@ -18,7 +18,7 @@ public class DetectController : MonoBehaviour
 
     private MaskController _playerMask;
     private SpriteDarkener _playerDark;
-    private Player player;
+    private Player _player;
 
     private bool masksAreOK = false;
     #endregion
@@ -33,11 +33,35 @@ public class DetectController : MonoBehaviour
     {
         _playerMask = GetComponent<MaskController>();
         _playerDark = GetComponent<SpriteDarkener>();
-        player = GetComponent<Player>();
+        _player = GetComponent<Player>();
+
+        GameEventsManager.OnMaskChange.AddListener(ResetScan);
     }
 
     private void Update()
     {
+        StartDetectScan();
+    }
+
+    public bool VerifyMaskRequirements(List<MaskProperty> upperReq, List<MaskProperty> lowerReq)
+    {
+        return _playerMask.VerifyMaskRequirements(upperReq, lowerReq);
+    }
+
+    public void ResetScan()
+    {
+        if (_currentNPC != null) _currentNPC.Deselect();
+        if (_currentGroup != null) _currentGroup.Deselect();
+        if (_currentMerchant != null) _currentMerchant.Deselect();
+
+        _currentNPC = null;
+        _currentGroup = null;
+        _currentMerchant = null;
+
+        _player.DisableInteraction();
+        _player.DisableAccusation();
+        _playerDark.Brighten();
+
         StartDetectScan();
     }
 
@@ -47,7 +71,7 @@ public class DetectController : MonoBehaviour
     private void StartDetectScan()
     {
         NPCController closestNPC = GetClosestNPC();
-        if (player.CanAccuse && closestNPC != _currentNPC) 
+        if (_player.CanAccuse && closestNPC != _currentNPC) 
         {
             if (_currentNPC != null) _currentNPC.Deselect();
 
@@ -55,33 +79,33 @@ public class DetectController : MonoBehaviour
             if (closestNPC != null)
             {
                 closestNPC.Select();
-                player.EnableAccusation(closestNPC);
+                _player.EnableAccusation(closestNPC);
             }
-            else player.DisableAccusation();
+            else _player.DisableAccusation();
         }
 
         GroupController groupController = GetGroupInRange();
 
         if(_currentGroup != groupController)
         {
-            if (_currentGroup != null) _currentGroup.DeselectGroup();
+            if (_currentGroup != null) _currentGroup.Deselect();
             _currentGroup = groupController; //Group CAN be null
 
             if (_currentGroup != null)
             {
-                player.EnableInteraction(_currentGroup);
+                _player.EnableInteraction(_currentGroup);
 
                 List<MaskProperty> upperMaskReq = _currentGroup.GetUpperMaskRequirements();
                 List<MaskProperty> lowerMaskReq = _currentGroup.GetLowerMaskRequirements();
                 masksAreOK = _playerMask.VerifyMaskRequirements(upperMaskReq, lowerMaskReq);
                 
                 if (masksAreOK) _playerDark.Darken();
-                _currentGroup.SelectGroup(masksAreOK);
+                _currentGroup.Select(masksAreOK);
             }
             else 
             { 
                 masksAreOK = false;
-                player.DisableInteraction();
+                _player.DisableInteraction();
                 _playerDark.Brighten();
             }
         }
@@ -92,11 +116,11 @@ public class DetectController : MonoBehaviour
             _currentMerchant = merchantController;
             if (_currentMerchant != null)
             {
-                player.EnableInteraction(_currentMerchant);
+                _player.EnableInteraction(_currentMerchant);
             }
             else
             {
-                player.DisableMerchantInteraction();
+                _player.DisableMerchantInteraction();
             }
         }
     }
