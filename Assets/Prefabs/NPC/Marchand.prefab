@@ -114,7 +114,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.55919296, y: -0, z: -0, w: 0.82903755}
   m_LocalPosition: {x: 0, y: -0.8, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 4843496892420264067}
@@ -222,6 +222,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6ca4bc5ff3386249bcf1100a02a1489, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _inventory: []
 --- !u!114 &7447421257680917121
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -235,9 +236,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spriteRenderer: {fileID: 3590068283493955994}
-  alphaSpeed: 0.05
-  alphaHover: 0.45
-  alphaSelected: 0.45
+  changeSpeed: 4
+  colorHover: {r: 0, g: 0, b: 0, a: 0.4509804}
+  colorSelected: {r: 0, g: 0, b: 0, a: 0.4509804}
 --- !u!65 &6655812085984246216
 BoxCollider:
   m_ObjectHideFlags: 0

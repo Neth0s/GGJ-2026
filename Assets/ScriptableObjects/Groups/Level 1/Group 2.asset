@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eddcce320353dd24b98477a8a260059d, type: 3}
+  m_Name: Group 2
+  m_EditorClassIdentifier: 
+  baseDialogue:
+  - Buongiorno signora~
+  - "Vous menez une enqu\xEAte ?"
+  - Si vous faites preuve de style, je pourrais vous aider~
+  hiddenDialogue:
+  - Magnifico!
+  - "\xC7a c'est un masque de go\xFBt."
+  - "Prenez ce <masque v\xE9nitien bleu>."
+  - "Il vous donnera acc\xE8s \xE0 la section VIP du carnaval."
+  baseClue: 
+  hiddenClue: 
+  MaskRequirementsUpper:
+  - {fileID: 11400000, guid: 388747d244b07bb4bb13796222c0f6b9, type: 2}
+  - {fileID: 11400000, guid: a707ba1efd0de5f45b88189cff1f9a1a, type: 2}
+  MaskRequirementsLower:
+  - {fileID: 11400000, guid: 75a6f38f88c14844c9a4a50c52c781f1, type: 2}
+  - {fileID: 11400000, guid: a707ba1efd0de5f45b88189cff1f9a1a, type: 2}

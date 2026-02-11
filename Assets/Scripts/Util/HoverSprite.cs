@@ -6,9 +6,9 @@ public class HoverSprite : MonoBehaviour
     #region VARIABLES
     [SerializeField] private SpriteRenderer _spriteRenderer;
 
-    [SerializeField] private float alphaSpeed = 0.02f;
-    [SerializeField] private float alphaHover = 0.5f;
-    [SerializeField] private float alphaSelected = 1.0f;
+    [SerializeField] private float changeSpeed = 1f;
+    [SerializeField] private Color colorHover = Color.black;
+    [SerializeField] private Color colorSelected = Color.black;
 
     private Color _initialColor;
     private Coroutine _currentCoroutine = null;
@@ -37,16 +37,17 @@ public class HoverSprite : MonoBehaviour
 
     private IEnumerator AppearCoroutine(bool selected)
     {
-        float targetAlpha = selected ? alphaSelected : alphaHover;
+        Color targetColor = selected ? colorSelected : colorHover;
+        float t = 0.0f;
 
-        while (_spriteRenderer.color.a <= targetAlpha)
+        while (t < 1)
         {
-            float alpha = _spriteRenderer.color.a + alphaSpeed;
-            Color newColor = _spriteRenderer.color;
-            newColor.a = alpha;
-            _spriteRenderer.color = newColor;
+            t += changeSpeed * Time.deltaTime;
+            _spriteRenderer.color = Color.Lerp(_initialColor, targetColor, t);
             yield return new WaitForFixedUpdate();
         }
+
+        _spriteRenderer.color = targetColor;
     }
 
 

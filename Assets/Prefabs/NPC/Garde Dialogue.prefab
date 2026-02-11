@@ -136,9 +136,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spriteRenderer: {fileID: 4446451774240565646}
-  alphaSpeed: 0.02
-  alphaHover: 0.5
-  alphaSelected: 1
+  changeSpeed: 4
+  colorHover: {r: 0, g: 0, b: 0, a: 0.29803923}
+  colorSelected: {r: 0, g: 0, b: 0, a: 0.6}
 --- !u!114 &7029142174640181219
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -153,6 +153,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _data: {fileID: 11400000, guid: 6a2eb837aae51fb4f97fc7f0c57c9e1a, type: 2}
   bubbleDialog: {fileID: 4291050120062954817}
+  baseRewards:
+    m_PersistentCalls:
+      m_Calls: []
+  hiddenRewards:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!65 &887509063823385533
 BoxCollider:
   m_ObjectHideFlags: 0

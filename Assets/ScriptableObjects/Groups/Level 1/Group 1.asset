@@ -14,10 +14,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseDialogue:
   - Bienvenue au carnaval !
-  hiddenDialogue: []
+  - "C'est un joli masque que vous portez l\xE0."
+  - Avoir du style est de la plus haute importance ici.
+  - "Les gens seront plus \xE0 m\xEAme de s'ouvrir \xE0 vous si avez un style qui
+    leur parle."
+  - "Tenez, prenez ce <masque v\xE9nitien jaune>."
+  - "Je suis s\xFBr qu'il vous sera tr\xE8s utile."
+  - <(Appuyez sur V pour changer de masque.)>
+  hiddenDialogue:
+  - Bellissimo!
+  - "Ce masque vous va \xE0 ravir!"
+  - "Vous pouvez d'ailleurs m\xE9langer les masques que vous poss\xE9dez pour faire
+    votre propre cr\xE9ation."
+  - "N'oubliez pas, porter un masque adapt\xE9 \xE0 votre auditoire vous ouvrira
+    des portes :"
+  - "Soyez bien attentifs aux masques des personnes \xE0 qui vous vous adressez !"
   baseClue: 
   hiddenClue: 
-  baseMask: {fileID: 11400000, guid: fa5d05fa82c39354d9ec6630c4377f45, type: 2}
-  hiddenMask: {fileID: 0}
-  MaskRequirementsUpper: []
-  MaskRequirementsLower: []
+  MaskRequirementsUpper:
+  - {fileID: 11400000, guid: 75a6f38f88c14844c9a4a50c52c781f1, type: 2}
+  - {fileID: 11400000, guid: a707ba1efd0de5f45b88189cff1f9a1a, type: 2}
+  MaskRequirementsLower:
+  - {fileID: 11400000, guid: 75a6f38f88c14844c9a4a50c52c781f1, type: 2}
+  - {fileID: 11400000, guid: a707ba1efd0de5f45b88189cff1f9a1a, type: 2}

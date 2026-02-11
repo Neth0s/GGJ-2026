@@ -28,37 +28,31 @@ public class GroupData : ScriptableObject
     /// </summary>
     private void OnValidate()
     {
-        List<PROPERTY_TYPE> maskTypes = new();
+        List<PROPERTY_TYPE> properties = new();
         foreach(MaskProperty property in MaskRequirementsUpper)
         {
-            if(property != null)
+            if (property != null)
             {
-                if (maskTypes.Contains(property.PropertyType))
+                if (property.PropertyType == PROPERTY_TYPE.FAMILY &&
+                    properties.Contains(PROPERTY_TYPE.FAMILY))
                 {
-                    Debug.LogError("ERROR : Mask Requirements Upper can only have one MaskProperty of each type ! Currently, there are two (or more) masks of type "+property.PropertyType);
-                    break;
+                    Debug.LogWarning("Warning : Mask Requirements contains two family types, they will be impossible to meet");
                 }
-                else
-                {
-                    maskTypes.Add(property.PropertyType);
-                }
+                properties.Add(property.PropertyType);
             }
         }
 
-        maskTypes = new List<PROPERTY_TYPE>();
+        properties = new List<PROPERTY_TYPE>();
         foreach (MaskProperty property in MaskRequirementsLower)
         {
             if (property != null)
             {
-                if (maskTypes.Contains(property.PropertyType))
+                if (property.PropertyType == PROPERTY_TYPE.FAMILY &&
+                    properties.Contains(PROPERTY_TYPE.FAMILY))
                 {
-                    Debug.LogError("ERROR : Mask Requirements Lower can only have one MaskProperty of each type ! Currently, there are two (or more) masks of type " + property.PropertyType);
-                    break;
+                    Debug.LogWarning("Warning : Mask Requirements contains two family types, they will be impossible to meet");
                 }
-                else
-                {
-                    maskTypes.Add(property.PropertyType);
-                }
+                properties.Add(property.PropertyType);
             }
         }
     }
