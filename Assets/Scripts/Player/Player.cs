@@ -37,6 +37,7 @@ public class Player : MonoBehaviour
     private bool isWalking = false;
     private bool isFacingRight = false;
     private bool isInDialog = false;
+    private bool isInAccusation = false;
     private bool maskPanelOpen = false;
     private bool indicesPanelOpen = false;
     private bool pauseMenuOpen = false;
@@ -109,11 +110,19 @@ public class Player : MonoBehaviour
 
         if (interactAction.triggered)
         {
+            if (isInAccusation)
+            {
+                Accusation();
+                return;
+            }
             if (currentGroup) InteractGroup();
             if (currentMerchant && !isInDialog) InteractMerchant();
         }
 
-        if (canAccuse && accuseAction.triggered && currentNPC) Accusation();
+        if (canAccuse && accuseAction.triggered && currentNPC)
+        {
+            Accusation();
+        }
     }
 
     private void FixedUpdate()
@@ -231,6 +240,7 @@ public class Player : MonoBehaviour
 
     private void Accusation()
     {
+        isInAccusation = !isInAccusation;
         isInDialog = currentGroup.DisplayBubbleAccusation(currentNPC);
     }
 

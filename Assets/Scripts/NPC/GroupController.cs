@@ -41,6 +41,12 @@ public class GroupController : MonoBehaviour
         _hasRequirements = _data.MaskRequirementsLower.Count + _data.MaskRequirementsUpper.Count > 0;
     }
 
+    public void SetData(GroupData data)
+    {
+        _data = data;
+        _hasRequirements = _data.MaskRequirementsLower.Count + _data.MaskRequirementsUpper.Count > 0;
+    }
+
     public void Select(bool maskOk)
     {
         //Hidden dialogue and rewards are not used if there are no requirements
@@ -76,7 +82,7 @@ public class GroupController : MonoBehaviour
             bubbleDialog.SetActive(false);
             curDialogueIndex = 0;
             return false;
-        }        
+        }       
     }
 
     /// <summary>
