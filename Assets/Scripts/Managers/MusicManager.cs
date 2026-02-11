@@ -14,6 +14,9 @@ public class MusicManager : MonoBehaviour
     [SerializeField] private AudioClip guardSuspicious;
     [SerializeField] private AudioClip guardCatch;
 
+    private float musicVolume = 1f;
+    private float effectsVolume = 1f;
+
     private void Awake()
     {
         if (instance != null && instance != this)
@@ -34,6 +37,19 @@ public class MusicManager : MonoBehaviour
         musicAudioSource.loop = true;
     }
 
+    public void SetMusicVolume(float volume)
+    {
+        musicVolume = volume;
+        musicAudioSource.volume = musicVolume;
+    }
+
+    public void SetEffectsVolume(float volume)
+    {
+        effectsVolume = volume;
+        guardSource.volume = effectsVolume;
+        musicAccusedSource.volume = effectsVolume;
+    }
+
     public void StopMusic()
     {
         musicAudioSource.Stop();
@@ -48,9 +64,9 @@ public class MusicManager : MonoBehaviour
     {
         if (!guardSource.isPlaying)
         {
-            musicAudioSource.volume = 0.5f;
+            musicAudioSource.volume = 0.5f * musicVolume;
             guardSource.PlayOneShot(guardSuspicious);
-            StartCoroutine(waitForSound(guardSource));
+            StartCoroutine(WaitForSound(guardSource));
         }
     }
 
@@ -58,20 +74,20 @@ public class MusicManager : MonoBehaviour
     {
         if (!guardSource.isPlaying)
         {
-            musicAudioSource.volume = 0.5f;
+            musicAudioSource.volume = 0.5f * musicVolume;
             guardSource.PlayOneShot(guardCatch);
-            StartCoroutine(waitForSound(guardSource));
+            StartCoroutine(WaitForSound(guardSource));
         }
     }
 
     public void PlayAccuseAndLoop()
     {
-        musicAudioSource.volume = 0.1f;
+        musicAudioSource.volume = 0.1f * musicVolume;
         musicAccusedSource.PlayOneShot(accusedClip);
-        StartCoroutine(waitForSound(musicAccusedSource));
+        StartCoroutine(WaitForSound(musicAccusedSource));
     }
 
-    private IEnumerator waitForSound(AudioSource audioSource)
+    private IEnumerator WaitForSound(AudioSource audioSource)
     {
         //Wait Until Sound has finished playing
         while (audioSource.isPlaying)
@@ -79,6 +95,6 @@ public class MusicManager : MonoBehaviour
             yield return null;
         }
 
-        musicAudioSource.volume = 1f;
+        musicAudioSource.volume = 1f * musicVolume;
     }
 }

@@ -148,4 +148,14 @@ public class UIManager : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
     }
+
+    public void SetMusicVolume(float volume)
+    {
+        MusicManager.Instance.SetMusicVolume(volume);
+    }
+
+    public void SetEffectsVolume(float volume)
+    {
+        MusicManager.Instance.SetEffectsVolume(volume);
+    }
 }
